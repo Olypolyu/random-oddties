@@ -1,6 +1,6 @@
-# BTA Babric Minimal Mod
+# Kheprep's Emporium of Random Oddties 
 
-Babric example mod, but without the examples.
+Babric mod, adds random shite.
 
 ## Prerequisites
 - JDK for Java 17 ([Eclipse Temurin](https://adoptium.net/temurin/releases/) recommended)
