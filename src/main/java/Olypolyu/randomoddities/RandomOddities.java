@@ -1,16 +1,17 @@
 package Olypolyu.randomoddities;
 
-import Olypolyu.randomoddities.entities.EntityBoar;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import turniplabs.halplibe.helper.*;
 import net.minecraft.src.*;
+import Olypolyu.randomoddities.entities.EntityBoar;
+
 
 
 
 public class RandomOddities implements ModInitializer {
-    public static final String MOD_ID = "Kheprep's Emporium of Random Oddities.";
+    public static final String MOD_ID = "Kheprep's Emporium of Random Oddities";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public static String name(String name) {
