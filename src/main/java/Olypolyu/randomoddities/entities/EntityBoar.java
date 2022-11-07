@@ -2,26 +2,38 @@ package Olypolyu.randomoddities.entities;
 
 import net.minecraft.src.*;
 import net.minecraft.src.helper.DamageType;
+
 import java.util.List;
 
 public class EntityBoar extends EntityMob {
     private int angerLevel = 0;
+    private int forgivenessLevel;
+    private boolean enraged = false;
 
     public EntityBoar(World world) {
         super(world);
         this.texture = "/mob/boar.png";
         this.health = 35;
         this.moveSpeed = 0.25F;
-        this.attackStrength = 5;
+        this.attackStrength = 7;
         this.scoreValue = 30;
     }
 
     public void setAngerStats(){
         this.texture = "/mob/boarAngry.png";
-        this.moveSpeed = 1F;
+        this.moveSpeed = 1.5F;
         this.scoreValue = 300;
+        this.enraged = true;
     }
-
+    public void setPassiveStats() {
+        this.angerLevel = 0;
+        this.texture = "/mob/boar.png";
+        this.health = 35;
+        this.moveSpeed = 0.25F;
+        this.scoreValue = 30;
+        this.entityToAttack = null;
+        this.enraged = false;
+    }
         public void writeEntityToNBT(NBTTagCompound nbttagcompound) {
         super.writeEntityToNBT(nbttagcompound);
         nbttagcompound.setShort("Anger", (short)this.angerLevel);
@@ -31,6 +43,7 @@ public class EntityBoar extends EntityMob {
     public void readEntityFromNBT(NBTTagCompound nbttagcompound) {
         super.readEntityFromNBT(nbttagcompound);
         this.angerLevel = nbttagcompound.getShort("Anger");
+        if (this.angerLevel >= 1) this.setAngerStats();
     }
     protected Entity findPlayerToAttack() {
         return this.angerLevel == 0 ? null : super.findPlayerToAttack();
@@ -56,11 +69,14 @@ public class EntityBoar extends EntityMob {
 
     private void becomeAngryAt(Entity entity) {
         this.entityToAttack = entity;
-        this.angerLevel = 400 + this.rand.nextInt(400);
+        this.angerLevel = 4 + this.rand.nextInt(7);
+        this.setAngerStats();
     }
 
     public void onLivingUpdate() {
-        if (this.angerLevel >= 1) this.setAngerStats();
+        if (this.forgivenessLevel < 100) this.forgivenessLevel++;
+        if (this.forgivenessLevel >= 100 && this.angerLevel >= 1) { this.angerLevel--; this.forgivenessLevel = 0;}
+        if (this.angerLevel < 1 && this.enraged) this.setPassiveStats();
         super.onLivingUpdate();
     }
 
@@ -74,12 +90,10 @@ public class EntityBoar extends EntityMob {
 
     protected String getDeathSound() { return "mob.pigdeath"; }
 
-    @Override
     protected int getDropItemId() {
         return this.fire > 0 ? Item.foodPorkchopCooked.itemID : Item.foodPorkchopRaw.itemID;
     }
 
-    @Override
     protected void dropFewItems() {
         int i = this.getDropItemId();
         if (i > 0) {
