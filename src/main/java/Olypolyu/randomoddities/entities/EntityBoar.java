@@ -37,7 +37,6 @@ public class EntityBoar extends EntityMob {
         public void writeEntityToNBT(NBTTagCompound nbttagcompound) {
         super.writeEntityToNBT(nbttagcompound);
         nbttagcompound.setShort("Anger", (short)this.angerLevel);
-        System.out.println(this.angerLevel);
     }
 
     public void readEntityFromNBT(NBTTagCompound nbttagcompound) {
@@ -104,4 +103,11 @@ public class EntityBoar extends EntityMob {
         }
     }
 
+    public boolean getCanSpawnHere() {
+        int i = MathHelper.floor_double(this.posX);
+        int j = MathHelper.floor_double(this.boundingBox.minY);
+        int k = MathHelper.floor_double(this.posZ);
+        int blockId = this.worldObj.getBlockId(i, j - 1, k);
+        return (blockId == Block.grass.blockID || blockId == Block.dirt.blockID || blockId == Block.grassRetro.blockID) && this.worldObj.getFullBlockLightValue(i, j, k) > 8;
+    }
 }
