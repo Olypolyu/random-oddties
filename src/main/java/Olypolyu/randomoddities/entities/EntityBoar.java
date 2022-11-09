@@ -6,9 +6,9 @@ import net.minecraft.src.helper.DamageType;
 import java.util.List;
 
 public class EntityBoar extends EntityMob {
-    private int angerLevel = 0;
-    private int forgivenessLevel;
-    private boolean enraged = false;
+    protected int angerLevel = 0;
+    protected int forgivenessLevel;
+    protected boolean enraged = false;
 
     public EntityBoar(World world) {
         super(world);
@@ -19,12 +19,15 @@ public class EntityBoar extends EntityMob {
         this.scoreValue = 30;
     }
 
+    // changes the boar's state to enraged
     public void setAngerStats(){
         this.texture = "/mob/boarAngry.png";
         this.moveSpeed = 1.5F;
         this.scoreValue = 300;
         this.enraged = true;
     }
+
+    // resets the boar back to its passive state.
     public void setPassiveStats() {
         this.angerLevel = 0;
         this.texture = "/mob/boar.png";
@@ -34,7 +37,7 @@ public class EntityBoar extends EntityMob {
         this.entityToAttack = null;
         this.enraged = false;
     }
-        public void writeEntityToNBT(NBTTagCompound nbttagcompound) {
+    public void writeEntityToNBT(NBTTagCompound nbttagcompound) {
         super.writeEntityToNBT(nbttagcompound);
         nbttagcompound.setShort("Anger", (short)this.angerLevel);
     }
@@ -42,6 +45,8 @@ public class EntityBoar extends EntityMob {
     public void readEntityFromNBT(NBTTagCompound nbttagcompound) {
         super.readEntityFromNBT(nbttagcompound);
         this.angerLevel = nbttagcompound.getShort("Anger");
+
+        // sets the boar's state back to enraged when loading in from nbt.
         if (this.angerLevel >= 1) this.setAngerStats();
     }
     protected Entity findPlayerToAttack() {
@@ -51,7 +56,9 @@ public class EntityBoar extends EntityMob {
     public boolean attackEntityFrom(Entity entity, int i, DamageType type) {
         if (entity instanceof EntityPlayer) {
             List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(32.0, 32.0, 32.0));
+            // creates a list with every entity in a 32x32x32 bounding box.
 
+            //if they are boars set their target to whoever hurt the fist boar and enrage them.
             for(int j = 0; j < list.size(); ++j) {
                 Entity entity1 = (Entity)list.get(j);
                 if (entity1 instanceof EntityBoar) {
@@ -68,31 +75,33 @@ public class EntityBoar extends EntityMob {
 
     private void becomeAngryAt(Entity entity) {
         this.entityToAttack = entity;
-        this.angerLevel = 4 + this.rand.nextInt(7);
+        this.angerLevel = 4 + this.rand.nextInt(14);
         this.setAngerStats();
     }
 
+    //maybe,  just maybe, you should not have punched that boar.
+    protected boolean canDespawn() {
+        return !this.enraged;
+    }
+
+    // adds one forgiveness level each tick, every 100 forgiveness levels we take an anger level.
+    // If the boar is in an enraged state and has less than 1 anger level we revert it back to being passive.
     public void onLivingUpdate() {
-        if (this.forgivenessLevel < 100) this.forgivenessLevel++;
+        if (this.forgivenessLevel < 100) this.forgivenessLevel++; // stops at 100 cuz... let's not blow past the 64 bit limit shall we?
         if (this.forgivenessLevel >= 100 && this.angerLevel >= 1) { this.angerLevel--; this.forgivenessLevel = 0;}
         if (this.angerLevel < 1 && this.enraged) this.setPassiveStats();
         super.onLivingUpdate();
     }
 
-    protected String getLivingSound() {
-        return "mob.pig";
-    }
-
-    protected String getHurtSound() {
-        return "mob.pig";
-    }
-
+    //makes it sound like a pig
+    protected String getLivingSound() { return "mob.pig"; }
+    protected String getHurtSound() { return "mob.pig"; }
     protected String getDeathSound() { return "mob.pigdeath"; }
 
+    // makes it drop pork-chops and what rate.
     protected int getDropItemId() {
         return this.fire > 0 ? Item.foodPorkchopCooked.itemID : Item.foodPorkchopRaw.itemID;
     }
-
     protected void dropFewItems() {
         int i = this.getDropItemId();
         if (i > 0) {
@@ -103,6 +112,7 @@ public class EntityBoar extends EntityMob {
         }
     }
 
+    //honestly, i just copied EntityLiving's getCanSpawnHere and removed the super. call, so far hasn't caused any issues related to mob spawning. I would be weary about them.
     public boolean getCanSpawnHere() {
         int i = MathHelper.floor_double(this.posX);
         int j = MathHelper.floor_double(this.boundingBox.minY);
