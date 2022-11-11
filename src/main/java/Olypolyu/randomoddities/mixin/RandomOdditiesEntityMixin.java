@@ -6,7 +6,10 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(Entity.class)
 public interface RandomOdditiesEntityMixin {
-    @Accessor("fallDistance")
-        void callFallDistance(float value);
 
+    @Accessor("fallDistance")
+    float getFallDistance();
+
+    @Accessor("fallDistance")
+        void setFallDistance(float value);
 }

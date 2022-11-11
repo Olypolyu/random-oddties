@@ -1,6 +1,7 @@
 package Olypolyu.randomoddities;
 
 import Olypolyu.randomoddities.entities.EntityBoar;
+import Olypolyu.randomoddities.entities.TileEntityLauncher;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.src.*;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import turniplabs.halplibe.helper.EntityHelper;
 import turniplabs.halplibe.helper.RecipeHelper;
 import turniplabs.halplibe.helper.TextureHelper;
 import turniplabs.halplibe.mixin.helper.BlockInterface;
+import turniplabs.halplibe.mixin.helper.TileEntityInterface;
 
 
 public class RandomOddities implements ModInitializer {
@@ -31,6 +33,7 @@ public class RandomOddities implements ModInitializer {
 
         // add in entities
         EntityHelper.createEntity(EntityBoar.class, new RenderLiving(new ModelQuadruped(6, 0), 0.5f), 61, "Boar");
+        TileEntityInterface.callAddMapping(TileEntityLauncher.class, "Trampoline");
 
         // load textures
         TextureHelper.addTextureToTerrain(MOD_ID, "FlintBlock.png",31,14);
