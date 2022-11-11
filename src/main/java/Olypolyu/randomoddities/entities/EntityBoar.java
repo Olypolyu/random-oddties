@@ -22,7 +22,7 @@ public class EntityBoar extends EntityMob {
     // changes the boar's state to enraged
     public void setAngerStats(){
         this.texture = "/mob/boarAngry.png";
-        this.moveSpeed = 1.5F;
+        this.moveSpeed = 1F;
         this.scoreValue = 300;
         this.enraged = true;
     }
@@ -55,12 +55,12 @@ public class EntityBoar extends EntityMob {
 
     public boolean attackEntityFrom(Entity entity, int i, DamageType type) {
         if (entity instanceof EntityPlayer) {
-            List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(32.0, 32.0, 32.0));
             // creates a list with every entity in a 32x32x32 bounding box.
+            List<Entity> list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(32.0, 32.0, 32.0));
 
             //if they are boars set their target to whoever hurt the fist boar and enrage them.
             for(int j = 0; j < list.size(); ++j) {
-                Entity entity1 = (Entity)list.get(j);
+                Entity entity1 = list.get(j);
                 if (entity1 instanceof EntityBoar) {
                     EntityBoar entityboar = (EntityBoar)entity1;
                     entityboar.becomeAngryAt(entity);
@@ -105,7 +105,7 @@ public class EntityBoar extends EntityMob {
     protected void dropFewItems() {
         int i = this.getDropItemId();
         if (i > 0) {
-            int j = rand.nextInt(5);
+            int j = rand.nextInt(4) + 1;
             for( int k = 0; k < j; k++) {
                 this.dropItem(i, 1);
             }

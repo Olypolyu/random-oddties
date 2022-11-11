@@ -4,7 +4,8 @@
     "package": "Olypolyu.randomoddities.mixin",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
-        "BoarGenMixin"
+        "BoarGenMixin",
+        "RandomOdditiesEntityMixin"
     ],
     "client": [
     ],

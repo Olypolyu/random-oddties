@@ -1,3 +1,12 @@
+tile.RandomOddities.test.chest.name=Can you, kindly, stop fucking spamming my logs with errors? thanks!
+tile.RandomOddities.test.chest.desc=no clue how you got this
+
+tile.RandomOddities.Trampoline.name=Trampoline
+tile.RandomOddities.Trampoline.desc=Up and away! (to your death.)
+
+tile.RandomOddities.FlintBlock.name=Flint Block
+tile.RandomOddities.FlintBlock.desc=A block made out of flint... what else were you expecting?
+
 gui.done=Done
 gui.cancel=Cancel
 gui.toMenu=Back to title screen
