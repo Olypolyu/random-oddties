@@ -37,7 +37,7 @@ public class RandomOddities implements ModInitializer {
             0f);
 
     public static final Block RandomOdditiesTrampoline =  BlockHelper.createBlock(
-            new BlockEntityLauncher(RandomOdditiesIds + 2, Material.iron, 0,0.5,2),
+            new BlockEntityLauncher(RandomOdditiesIds + 2, Material.iron, 0,1,0),
             name("Trampoline"),
             31, 15, 31, 17, 31, 16,
             Block.soundMetalFootstep,
