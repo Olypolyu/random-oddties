@@ -7,10 +7,13 @@ tile.RandomOddities.Trampoline.desc=Up and away! (to your death.)
 tile.RandomOddities.FlintBlock.name=Flint Block
 tile.RandomOddities.FlintBlock.desc=A block made out of flint... what else were you expecting?
 
-tile.RandomOddities.IronChest.name= Iron Chest [WIP, DO NOT USE]
+tile.RandomOddities.Pillow.name=Pillow
+tile.RandomOddities.Pillow.desc=squishy and confy.
+
+tile.RandomOddities.IronChest.name= Iron Chest
 tile.RandomOddities.IronChest.desc= Seriously, why do you need so much storage?
 
-tile.RandomOddities.ObsidianChest.name= Obsidian Chest [WIP, DO NOT USE]
+tile.RandomOddities.ObsidianChest.name= Obsidian Chest
 tile.RandomOddities.ObsidianChest.desc=you *might* be a hoarder.
 
 gui.done=Done

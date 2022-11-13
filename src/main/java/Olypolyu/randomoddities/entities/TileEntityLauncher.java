@@ -37,7 +37,7 @@ public class TileEntityLauncher extends TileEntity {
     public void updateEntity() {
 
             // get entities within bounding box, then yeet.
-            List<Entity> list = this.worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(this.xCoord - 0.25, this.yCoord, this.zCoord - 0.25, this.xCoord + 1.25, this.yCoord + 2.5, this.zCoord + 1.25));
+            List<Entity> list = this.worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(this.xCoord, this.yCoord, this.zCoord, this.xCoord + 1, this.yCoord + 1.5, this.zCoord + 1));
 
             for (int j = 0; j < list.size(); ++j) {
                 Entity entity = list.get(j);

@@ -2,15 +2,16 @@ package Olypolyu.randomoddities.entities;
 
 import net.minecraft.src.*;
 
-public class TileEntityIronChest extends TileEntity implements IInventory {
+public class TileEntityResizableChest extends TileEntity implements IInventory {
     private final String InvName;
-    private static int chestSize;
+    private final int chestSize;
 
-    public TileEntityIronChest(int chestSize, String InvName) {
+    public TileEntityResizableChest(int chestSize, String InvName) {
         this.chestSize = chestSize;
         this.InvName = InvName;
+        this.chestContents = new ItemStack[this.chestSize];
     }
-    private ItemStack[] chestContents = new ItemStack[this.chestSize];
+    private ItemStack[] chestContents;
 
     public int getSizeInventory() {
         return this.chestSize;
@@ -63,7 +64,7 @@ public class TileEntityIronChest extends TileEntity implements IInventory {
         for(int i = 0; i < nbttaglist.tagCount(); ++i) {
             NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.tagAt(i);
             int j = nbttagcompound1.getByte("Slot") & 255;
-            if (j >= 0 && j < this.chestContents.length) {
+            if (j < this.chestContents.length) {
                 this.chestContents[j] = new ItemStack(nbttagcompound1);
             }
         }
