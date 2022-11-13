@@ -1,8 +1,8 @@
 package Olypolyu.randomoddities;
 
 import Olypolyu.randomoddities.entities.EntityBoar;
-import Olypolyu.randomoddities.entities.TileEntityResizableChest;
 import Olypolyu.randomoddities.entities.TileEntityLauncher;
+import Olypolyu.randomoddities.entities.TileEntityResizableChest;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.src.*;
 import org.slf4j.Logger;
@@ -11,7 +11,6 @@ import turniplabs.halplibe.helper.BlockHelper;
 import turniplabs.halplibe.helper.EntityHelper;
 import turniplabs.halplibe.helper.RecipeHelper;
 import turniplabs.halplibe.helper.TextureHelper;
-import turniplabs.halplibe.mixin.helper.BlockInterface;
 import turniplabs.halplibe.mixin.helper.TileEntityInterface;
 
 
@@ -37,7 +36,9 @@ public class RandomOddities implements ModInitializer {
             0f);
 
     public static final Block RandomOdditiesTrampoline =  BlockHelper.createBlock(
-            new BlockEntityLauncher(RandomOdditiesIds + 2, Material.iron, 0,1,0),
+            new BlockEntityLauncher(RandomOdditiesIds + 2,
+            Material.iron,
+            0,1.25,0),
             name("Trampoline"),
             31, 15, 31, 17, 31, 16,
             Block.soundMetalFootstep,
@@ -46,7 +47,9 @@ public class RandomOddities implements ModInitializer {
             0);
 
     public static final Block RandomOdditiesPillow = BlockHelper.createBlock(
-            new BlockEntityLauncher(RandomOdditiesIds + 3, Material.cloth, 0,0,0),
+            new BlockEntityLauncher(RandomOdditiesIds + 3,
+            Material.cloth,
+            0,0,0),
             name("Pillow"),
             31, 21, 31, 21, 31, 22,
             Block.soundClothFootstep,
@@ -54,8 +57,27 @@ public class RandomOddities implements ModInitializer {
             1f,
             0f);
 
-    public static final Block RandomOdditiesObsidianChest = new BlockResizableChest(RandomOddities.RandomOdditiesIds + 4, Material.iron,108,31, 18, 31, 20, 31, 19);
-    public static final Block RandomOdditiesIronChest = new BlockResizableChest(RandomOddities.RandomOdditiesIds + 5, Material.iron, 45,31, 23, 31, 25, 31, 24);
+    public static final Block RandomOdditiesObsidianChest = BlockHelper.createBlock(
+            new BlockResizableChest(RandomOddities.RandomOdditiesIds + 4,
+            Material.iron,
+            108,31, 18, 31, 20, 31, 19),
+            name("ObsidianChest"),
+            420,69,
+            Block.soundMetalFootstep,
+            5.0F,
+            150.0F,
+            0F);
+
+    public static final Block RandomOdditiesIronChest = BlockHelper.createBlock(
+            new BlockResizableChest(RandomOddities.RandomOdditiesIds + 5,
+            Material.iron,
+            45,31, 23, 31, 25, 31, 24),
+            name("IronChest"),
+            420,69,
+            Block.soundMetalFootstep,
+            2.5F,
+            2.5F,
+            0F);
 
     public void onInitialize() {
         LOGGER.info("RandomOddities initialized.");
@@ -66,8 +88,8 @@ public class RandomOddities implements ModInitializer {
 
         // add in entities
         EntityHelper.createEntity(EntityBoar.class, new RenderLiving(new ModelQuadruped(6, 0), 0.5f), 61, "Boar");
-        TileEntityInterface.callAddMapping(TileEntityLauncher.class, "Trampoline");
-        TileEntityInterface.callAddMapping(TileEntityResizableChest.class, "Iron Chest");
+        TileEntityInterface.callAddMapping(TileEntityLauncher.class,"trampoline");
+        TileEntityInterface.callAddMapping(TileEntityResizableChest.class,"resizableChest");
 
         // load textures
         TextureHelper.addTextureToTerrain(MOD_ID, "FlintBlock.png",31,14);
@@ -95,19 +117,6 @@ public class RandomOddities implements ModInitializer {
 
         RecipeHelper.Crafting.createRecipe(RandomOdditiesIronChest, 1, new Object[]{"ISI", "SCS", "ISI", 'I', new ItemStack(Block.blockIron, 1), 'S', Item.ingotSteelCrude, 'C', new ItemStack(Block.chestPlanksOak, 1)}); // Iron Chest
         RecipeHelper.Crafting.createRecipe(RandomOdditiesObsidianChest, 1, new Object[]{"ODO", "DCD", "ODO", 'O', new ItemStack(Block.obsidian, 1), 'D', Item.diamond, 'C', new ItemStack(RandomOdditiesIronChest, 1)}); // Obsidian Chest
-
-
-        //Custom Block Fuckery
-        RandomOdditiesObsidianChest.setBlockName("RandomOddities.ObsidianChest");
-        ((BlockInterface) RandomOdditiesObsidianChest).callSetHardness(2000.0F);
-        ((BlockInterface) RandomOdditiesObsidianChest).callSetResistance(10.0F);
-        ((BlockInterface) RandomOdditiesObsidianChest).callSetStepSound(Block.soundMetalFootstep);
-
-        RandomOdditiesIronChest.setBlockName("RandomOddities.IronChest");
-        ((BlockInterface) RandomOdditiesIronChest).callSetHardness(1.0F);
-        ((BlockInterface) RandomOdditiesIronChest).callSetResistance(2.0F);
-        ((BlockInterface) RandomOdditiesIronChest).callSetStepSound(Block.soundMetalFootstep);
-
 
     }
 

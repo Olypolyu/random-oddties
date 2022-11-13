@@ -18,6 +18,7 @@ public class TileEntityLauncher extends TileEntity {
 
     private String soundEffect = "random.bow";
     private String particle = "flame";
+    private int cooldown = 2;
 
     public TileEntityLauncher( double launchX, double launchY, double launchZ ) {
         this.launchX = launchX;
@@ -36,34 +37,41 @@ public class TileEntityLauncher extends TileEntity {
 
     public void updateEntity() {
 
-            // get entities within bounding box, then yeet.
-            List<Entity> list = this.worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(this.xCoord, this.yCoord, this.zCoord, this.xCoord + 1, this.yCoord + 1.5, this.zCoord + 1));
+        // get entities within bounding box, then yeet.
+        List<Entity> list = this.worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(this.xCoord, this.yCoord, this.zCoord, this.xCoord + 1, this.yCoord + 2, this.zCoord + 1));
 
-            for (int j = 0; j < list.size(); ++j) {
-                Entity entity = list.get(j);
+        for (int j = 0; j < list.size(); ++j) {
+            Entity entity = list.get(j);
 
-                // negates fall damage.
-                ((RandomOdditiesEntityMixin) entity).setFallDistance(0f);
+            // negates fall damage.
+            ((RandomOdditiesEntityMixin) entity).setFallDistance(0f);
+
+            //fixes trampoline shoving players up ceilings
+            if (this.cooldown == 0 && list.size() > 0) {
+                this.cooldown = 8;
 
                 // will send the entity back with 1/4 of it's falling back + it's launch force
                 if (this.launchY != 0 && entity.motionY < launchY * 0.75) {
-                        entity.motionY = ( (entity.motionY * -1) / 4 ) + this.launchY;
-                        doVisualEffects(entity);
-                    }
+                    entity.motionY = ((entity.motionY * -1) / 4) + this.launchY;
+                    doVisualEffects(entity);
+                }
 
-                    // x axis
-                    if (this.launchX != 0 && entity.motionX < launchX * 0.75) {
-                        entity.motionX = this.launchX;
-                        doVisualEffects(entity);
-                    }
+                // x axis
+                if (this.launchX != 0 && entity.motionX < launchX * 0.75) {
+                    entity.motionX = this.launchX;
+                    doVisualEffects(entity);
+                }
 
-                    // Z axis
-                    if (this.launchZ != 0 && entity.motionZ < launchZ * 0.75) {
-                        entity.motionZ = this.launchZ;
-                        doVisualEffects(entity);
-                    }
+                // Z axis
+                if (this.launchZ != 0 && entity.motionZ < launchZ * 0.75) {
+                    entity.motionZ = this.launchZ;
+                    doVisualEffects(entity);
                 }
             }
+        }
+
+        if(this.cooldown >= 1) this.cooldown--;
+    }
 
         // generate particles and play sound.
         private void doVisualEffects(Entity entity) {

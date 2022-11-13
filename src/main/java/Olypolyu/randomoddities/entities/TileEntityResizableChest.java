@@ -3,16 +3,15 @@ package Olypolyu.randomoddities.entities;
 import net.minecraft.src.*;
 
 public class TileEntityResizableChest extends TileEntity implements IInventory {
-    private final String InvName;
     private final int chestSize;
-
-    public TileEntityResizableChest(int chestSize, String InvName) {
-        this.chestSize = chestSize;
-        this.InvName = InvName;
-        this.chestContents = new ItemStack[this.chestSize];
-    }
     private ItemStack[] chestContents;
 
+
+    public TileEntityResizableChest(int chestSize) {
+        this.chestSize = chestSize;
+        this.chestContents = new ItemStack[this.chestSize];
+
+    }
     public int getSizeInventory() {
         return this.chestSize;
     }
@@ -27,17 +26,15 @@ public class TileEntityResizableChest extends TileEntity implements IInventory {
             if (this.chestContents[i].stackSize <= j) {
                 itemstack1 = this.chestContents[i];
                 this.chestContents[i] = null;
-                this.onInventoryChanged();
-                return itemstack1;
             } else {
                 itemstack1 = this.chestContents[i].splitStack(j);
                 if (this.chestContents[i].stackSize == 0) {
                     this.chestContents[i] = null;
                 }
 
-                this.onInventoryChanged();
-                return itemstack1;
             }
+            this.onInventoryChanged();
+            return itemstack1;
         } else {
             return null;
         }
@@ -53,7 +50,7 @@ public class TileEntityResizableChest extends TileEntity implements IInventory {
     }
 
     public String getInvName() {
-        return this.InvName;
+        return "resizableChest";
     }
 
     public void readFromNBT(NBTTagCompound nbttagcompound) {

@@ -8,7 +8,6 @@ import java.util.Random;
 
 public class BlockResizableChest extends BlockContainer {
     private final Random random = new Random();
-    private final int id;
     private final int chestSize;
     private final int topX;
     private final int topY;
@@ -19,7 +18,6 @@ public class BlockResizableChest extends BlockContainer {
 
     public BlockResizableChest(int i, Material material, int chestSize, int topX, int topY, int sideX, int sideY, int frontX, int frontY) {
         super(i, material);
-        this.id = i;
         this.chestSize = chestSize;
         this.topX = topX;
         this.topY = topY;
@@ -132,6 +130,6 @@ public class BlockResizableChest extends BlockContainer {
 
 
     protected TileEntity getBlockEntity() {
-        return new TileEntityResizableChest(this.chestSize, translateBlockName(this.id));
+        return new TileEntityResizableChest(this.chestSize);
     }
 }
