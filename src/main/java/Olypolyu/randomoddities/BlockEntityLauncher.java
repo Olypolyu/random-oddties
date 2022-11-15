@@ -20,11 +20,14 @@ public class BlockEntityLauncher extends BlockContainerRotatable {
         this.launchZ = launchZ;
 
     }
+
     public boolean isOpaqueCube() {
         return false;
     }
 
     protected TileEntity getBlockEntity() {
-        return new TileEntityLauncher(launchX, launchY, launchZ);
+        TileEntityLauncher launcher = new TileEntityLauncher();
+        launcher.setLauncherParameters(this.launchX, this.launchY, this.launchZ);
+        return launcher;
     }
 }

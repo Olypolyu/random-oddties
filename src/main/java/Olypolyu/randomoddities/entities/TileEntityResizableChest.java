@@ -3,23 +3,26 @@ package Olypolyu.randomoddities.entities;
 import net.minecraft.src.*;
 
 public class TileEntityResizableChest extends TileEntity implements IInventory {
-    private final int chestSize;
+    private int chestSize;
     private ItemStack[] chestContents;
 
+    public  TileEntityResizableChest() {
+    }
 
-    public TileEntityResizableChest(int chestSize) {
+    public void SetTileEntityResizableChest(int chestSize) {
         this.chestSize = chestSize;
         this.chestContents = new ItemStack[this.chestSize];
-
     }
+
     public int getSizeInventory() {
         return this.chestSize;
     }
 
-    public ItemStack getStackInSlot(int i) {
+     public ItemStack getStackInSlot(int i) {
         return this.chestContents[i];
     }
 
+    
     public ItemStack decrStackSize(int i, int j) {
         if (this.chestContents[i] != null) {
             ItemStack itemstack1;
@@ -47,14 +50,33 @@ public class TileEntityResizableChest extends TileEntity implements IInventory {
         }
 
         this.onInventoryChanged();
-    }
+    } 
 
     public String getInvName() {
-        return "resizableChest";
+        String invName;
+
+        // Sorry! I still have no clue what InvName does besides setting up the little String in the gui. :p
+        switch (this.chestSize) {
+            default:
+                invName = "ERROR";
+                break;
+
+            case 45:
+                invName = "Iron Chest";
+                break;
+
+            case 108:
+                invName = "Obsidian Chest";
+                break;
+        }
+
+        return invName;
     }
 
     public void readFromNBT(NBTTagCompound nbttagcompound) {
         super.readFromNBT(nbttagcompound);
+
+        this.chestSize = nbttagcompound.getShort("Size");
         NBTTagList nbttaglist = nbttagcompound.getTagList("Items");
         this.chestContents = new ItemStack[this.getSizeInventory()];
 
@@ -65,7 +87,6 @@ public class TileEntityResizableChest extends TileEntity implements IInventory {
                 this.chestContents[j] = new ItemStack(nbttagcompound1);
             }
         }
-
     }
 
     public void writeToNBT(NBTTagCompound nbttagcompound) {
@@ -80,8 +101,8 @@ public class TileEntityResizableChest extends TileEntity implements IInventory {
                 nbttaglist.setTag(nbttagcompound1);
             }
         }
-
         nbttagcompound.setTag("Items", nbttaglist);
+        nbttagcompound.setShort("Size", (short)this.chestSize);
     }
 
     public int getInventoryStackLimit() {

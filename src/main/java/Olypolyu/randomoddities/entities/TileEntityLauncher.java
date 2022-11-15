@@ -3,6 +3,7 @@ package Olypolyu.randomoddities.entities;
 import Olypolyu.randomoddities.mixin.RandomOdditiesEntityMixin;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Entity;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
 
 import java.util.List;
@@ -12,21 +13,29 @@ public class TileEntityLauncher extends TileEntity {
 
     private final Random random = new Random();
 
-    private final double launchX;
-    private final double launchY;
-    private final double launchZ;
-
-    private String soundEffect = "random.bow";
-    private String particle = "flame";
+    // parameters for motion values and cooldown.
+    private double launchX;
+    private double launchY;
+    private double launchZ;
     private int cooldown = 2;
 
-    public TileEntityLauncher( double launchX, double launchY, double launchZ ) {
+
+    // Visual effects
+    private String soundEffect;
+    private String particle;
+
+    public TileEntityLauncher(){
+    }
+    
+    public void setLauncherParameters( double launchX, double launchY, double launchZ ) {
         this.launchX = launchX;
         this.launchY = launchY;
         this.launchZ = launchZ;
+        this.soundEffect = "random.bow";
+        this.particle = "flame";
     }
 
-    public TileEntityLauncher( double launchX, double launchY, double launchZ, String soundEffect, String particle) {
+    public void setLauncherParameters( double launchX, double launchY, double launchZ, String soundEffect, String particle) {
         this.launchX = launchX;
         this.launchY = launchY;
         this.launchZ = launchZ;
@@ -35,7 +44,7 @@ public class TileEntityLauncher extends TileEntity {
     }
 
 
-    public void updateEntity() {
+   public void updateEntity() {
 
         // get entities within bounding box, then yeet.
         List<Entity> list = this.worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(this.xCoord, this.yCoord, this.zCoord, this.xCoord + 1, this.yCoord + 2, this.zCoord + 1));
@@ -73,8 +82,8 @@ public class TileEntityLauncher extends TileEntity {
         if(this.cooldown >= 1) this.cooldown--;
     }
 
-        // generate particles and play sound.
-        private void doVisualEffects(Entity entity) {
+   // generate particles and play sound.
+   private void doVisualEffects(Entity entity) {
             this.worldObj.playSoundEffect((double) this.xCoord + 0.5, (double) this.yCoord + 0.5, (double) this.zCoord + 0.5, this.soundEffect, 0.3F, 0.6F);
             for (int i = 0; i < 8 + this.random.nextInt(7); i++){
                 this.worldObj.spawnParticle(this.particle,
@@ -86,4 +95,24 @@ public class TileEntityLauncher extends TileEntity {
                 (this.random.nextFloat()-0.5));
             }
         }
+
+   // writes values stated on BlockEntityLauncher to NBT
+   public void writeToNBT(NBTTagCompound nbttagcompound) {
+       super.writeToNBT(nbttagcompound);
+       nbttagcompound.setDouble("launchX", this.launchX);
+       nbttagcompound.setDouble("launchY", this.launchY);
+       nbttagcompound.setDouble("launchZ", this.launchZ);
+       nbttagcompound.setString("soundEffect", soundEffect);
+       nbttagcompound.setString("particle", particle);
+   }
+
+   // reads all values stated on BlockEntityLauncher from NBT
+   public void readFromNBT(NBTTagCompound nbttagcompound) {
+       super.readFromNBT(nbttagcompound);
+       this.launchX = nbttagcompound.getDouble("launchX");
+       this.launchY = nbttagcompound.getDouble("launchY");
+       this.launchZ = nbttagcompound.getDouble("launchZ");
+       this.soundEffect = nbttagcompound.getString("soundEffect");
+       this.particle = nbttagcompound.getString("particle");
+   }
 }

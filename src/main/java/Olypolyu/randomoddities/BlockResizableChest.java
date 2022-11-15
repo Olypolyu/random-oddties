@@ -130,6 +130,8 @@ public class BlockResizableChest extends BlockContainer {
 
 
     protected TileEntity getBlockEntity() {
-        return new TileEntityResizableChest(this.chestSize);
+        TileEntityResizableChest chest = new TileEntityResizableChest();
+        chest.SetTileEntityResizableChest(this.chestSize);
+        return chest;
     }
 }

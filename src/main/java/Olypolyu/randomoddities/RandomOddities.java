@@ -83,13 +83,13 @@ public class RandomOddities implements ModInitializer {
         LOGGER.info("RandomOddities initialized.");
 
         // items
-        Item.itemsList[RandomOdditiesIronChest.blockID] = new ItemBlock(RandomOdditiesIronChest.blockID - Block.blocksList.length);
-        Item.itemsList[RandomOdditiesObsidianChest.blockID] = new ItemBlock(RandomOdditiesObsidianChest.blockID - Block.blocksList.length);
+       // Item.itemsList[RandomOdditiesIronChest.blockID] = new ItemBlock(RandomOdditiesIronChest.blockID - Block.blocksList.length);
+        // Item.itemsList[RandomOdditiesObsidianChest.blockID] = new ItemBlock(RandomOdditiesObsidianChest.blockID - Block.blocksList.length);
 
         // add in entities
         EntityHelper.createEntity(EntityBoar.class, new RenderLiving(new ModelQuadruped(6, 0), 0.5f), 61, "Boar");
-        TileEntityInterface.callAddMapping(TileEntityLauncher.class,"trampoline");
-        TileEntityInterface.callAddMapping(TileEntityResizableChest.class,"resizableChest");
+        TileEntityInterface.callAddMapping(TileEntityLauncher.class,"TileEntityLauncher");
+        TileEntityInterface.callAddMapping(TileEntityResizableChest.class,"TileEntityResizableChest");
 
         // load textures
         TextureHelper.addTextureToTerrain(MOD_ID, "FlintBlock.png",31,14);
