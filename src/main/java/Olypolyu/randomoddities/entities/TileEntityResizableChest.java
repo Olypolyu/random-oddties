@@ -1,5 +1,6 @@
 package Olypolyu.randomoddities.entities;
 
+import Olypolyu.randomoddities.RandomOddities;
 import net.minecraft.src.*;
 
 public class TileEntityResizableChest extends TileEntity implements IInventory {
@@ -61,12 +62,12 @@ public class TileEntityResizableChest extends TileEntity implements IInventory {
                 invName = "ERROR";
                 break;
 
-            case 45:
-                invName = "Iron Chest";
+            case 108:
+                invName = RandomOddities.ObsidianChest.translateBlockName(RandomOddities.ObsidianChest.blockID);
                 break;
 
-            case 108:
-                invName = "Obsidian Chest";
+            case 45:
+                invName = RandomOddities.IronChest.translateBlockName(RandomOddities.IronChest.blockID);
                 break;
         }
 

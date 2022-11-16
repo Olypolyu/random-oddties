@@ -10,11 +10,14 @@ tile.RandomOddities.FlintBlock.desc=A block made out of flint... what else were 
 tile.RandomOddities.Pillow.name=Pillow
 tile.RandomOddities.Pillow.desc=squishy and confy.
 
-tile.RandomOddities.IronChest.name= Iron Chest
+tile.RandomOddities.IronChest.name=Iron Chest
 tile.RandomOddities.IronChest.desc= Seriously, why do you need so much storage?
 
-tile.RandomOddities.ObsidianChest.name= Obsidian Chest
+tile.RandomOddities.ObsidianChest.name=Obsidian Chest
 tile.RandomOddities.ObsidianChest.desc=you *might* be a hoarder.
+
+item.RandomOddities.PumpkinPie.name=Pumpkin Pie
+item.RandomOddities.PumpkinPie.desc=somehow, you feel like this thing has been with you all along.
 
 gui.done=Done
 gui.cancel=Cancel
