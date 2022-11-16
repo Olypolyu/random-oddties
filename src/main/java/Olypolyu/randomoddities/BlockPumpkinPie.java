@@ -13,23 +13,21 @@ public class BlockPumpkinPie extends BlockCake {
     }
 
     public void setBlockBoundsBasedOnState(World world, int i, int j, int k) {
-        int l = world.getBlockMetadata(i, j, k);
+        int slice = world.getBlockMetadata(i, j, k);
         float f = 0.0625F;
-        float f1 = (float)(1 + l * 3.5) / 16.0F;
-        float f2 = 0.3125F;
-        this.setBlockBounds(f1, 0.0F, f, 1.0F - f, f2 ,1.0F - f);
+        float f1 = (1 + slice * 4) / 16.0F;
+        this.setBlockBounds(f1, 0.0F, f, 1.0F - f, 0.3125F ,1.0F - f);
     }
 
     public void setBlockBoundsForItemRender() {
         float f = 0.0625F;
-        float f1 = 0.3125F;
-        this.setBlockBounds(f, 0.0F, f, 1.0F - f, f1, 1.0F - f);
+        this.setBlockBounds(f, 0.0F, f, 1.0F - f, 0.3125F, 1.0F - f);
     }
 
     public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int i, int j, int k) {
-        int l = world.getBlockMetadata(i, j, k);
+        int slice = world.getBlockMetadata(i, j, k);
         float f = 0.0625F;
-        float f1 = (float)(1 + l * 3.5) / 16.0F;
+        float f1 = (1 + slice * 4) / 16.0F;
         float f2 = 0.3125F;
         return AxisAlignedBB.getBoundingBoxFromPool((float)i + f1, j, (float)k + f, (float)(i + 1) - f, (float)j + f2, (float)(k + 1) - f);
     }
