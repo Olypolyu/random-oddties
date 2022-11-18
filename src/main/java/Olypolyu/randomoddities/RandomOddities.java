@@ -14,8 +14,6 @@ import turniplabs.halplibe.helper.TextureHelper;
 import turniplabs.halplibe.mixin.helper.CraftingManagerInterface;
 import turniplabs.halplibe.mixin.helper.TileEntityInterface;
 
-import static net.minecraft.src.Block.*;
-
 public class RandomOddities implements ModInitializer {
 
     public static final String MOD_ID = "RandomOddities";
@@ -34,7 +32,7 @@ public class RandomOddities implements ModInitializer {
             new Block(RandomOdditiesIds + 1, Material.rock),
             name("FlintBlock"),
             31,14,
-            soundStoneFootstep,
+            Block.soundStoneFootstep,
             3f,
             2f,
             0f);
@@ -45,7 +43,7 @@ public class RandomOddities implements ModInitializer {
             0,1.25,0),
             name("Trampoline"),
             31, 15, 31, 17, 31, 16,
-            soundMetalFootstep,
+            Block.soundMetalFootstep,
             2.5f,
             5f,
             0);
@@ -56,7 +54,7 @@ public class RandomOddities implements ModInitializer {
             0,0,0),
             name("Pillow"),
             31, 21, 31, 21, 31, 22,
-            soundClothFootstep,
+            Block.soundClothFootstep,
             1F,
             1f,
             0f);
@@ -67,7 +65,7 @@ public class RandomOddities implements ModInitializer {
             108,31, 18, 31, 20, 31, 19),
             name("ObsidianChest"),
             420,69,
-            soundMetalFootstep,
+            Block.soundMetalFootstep,
             15.0F,
             150.0F,
             0F);
@@ -78,7 +76,7 @@ public class RandomOddities implements ModInitializer {
             45,31, 23, 31, 25, 31, 24),
             name("IronChest"),
             420,69,
-            soundMetalFootstep,
+            Block.soundMetalFootstep,
             5F,
             2.5F,
             0F);
@@ -87,7 +85,7 @@ public class RandomOddities implements ModInitializer {
             new BlockPumpkinPie(RandomOdditiesIds + 6),
             name("PumpkinPie"),
             31,26,31,27,31,28,
-            soundClothFootstep,
+            Block.soundClothFootstep,
             1F,
             2f,
             0f);
@@ -162,12 +160,12 @@ public class RandomOddities implements ModInitializer {
         RecipeHelper.Crafting.createShapelessRecipe(Item.flint, 4, new Object[]{new ItemStack(FlintBlock, 1)}); // flint block to flint
 
         RecipeHelper.Crafting.createRecipe(Trampoline, 1, new Object[]{"LFL", "IFI", 'F', Item.featherChicken, 'I', Item.ingotIron, 'L', new ItemStack(Item.dye, 1, 4)}); // Trampoline
-        RecipeHelper.Crafting.createRecipe(Pillow, 4, new Object[]{"WWW", "FFF", 'W', wool, 'F', Item.featherChicken}); //pillow
+        RecipeHelper.Crafting.createRecipe(Pillow, 4, new Object[]{"WWW", "FFF", 'W', Block.wool, 'F', Item.featherChicken}); //pillow
 
-        RecipeHelper.Crafting.createRecipe(IronChest, 1, new Object[]{"ISI", "SCS", "ISI", 'I', new ItemStack(blockIron, 1), 'S', Item.ingotSteelCrude, 'C', new ItemStack(chestPlanksOak, 1)}); // Iron Chest
-        RecipeHelper.Crafting.createRecipe(ObsidianChest, 1, new Object[]{"ODO", "DCD", "ODO", 'O', new ItemStack(obsidian, 1), 'D', Item.diamond, 'C', new ItemStack(IronChest, 1)}); // Obsidian Chest
+        RecipeHelper.Crafting.createRecipe(IronChest, 1, new Object[]{"ISI", "SCS", "ISI", 'I', new ItemStack(Block.blockIron, 1), 'S', Item.ingotSteelCrude, 'C', new ItemStack(Block.chestPlanksOak, 1)}); // Iron Chest
+        RecipeHelper.Crafting.createRecipe(ObsidianChest, 1, new Object[]{"ODO", "DCD", "ODO", 'O', new ItemStack(Block.obsidian, 1), 'D', Item.diamond, 'C', new ItemStack(IronChest, 1)}); // Obsidian Chest
 
-        RecipeHelper.Crafting.createRecipe(ItemPumpkinPie, 1, new Object[]{"EPE", "WMW", 'P', new ItemStack(pumpkin, 1), 'E', Item.eggChicken, 'W', Item.wheat, 'M', Item.bucketMilk});  // Pumpkin Pie
+        RecipeHelper.Crafting.createRecipe(ItemPumpkinPie, 1, new Object[]{"EPE", "WMW", 'P', new ItemStack(Block.pumpkin, 1), 'E', Item.eggChicken, 'W', Item.wheat, 'M', Item.bucketMilk});  // Pumpkin Pie
 
 
         int craftPainBrushes;
