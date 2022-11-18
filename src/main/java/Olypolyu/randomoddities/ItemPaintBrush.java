@@ -3,15 +3,19 @@ package Olypolyu.randomoddities;
 import net.minecraft.src.*;
 
 public class ItemPaintBrush extends Item {
-    public ItemPaintBrush(int id) {
+
+    private final int color;
+
+    public ItemPaintBrush(int id, int color) {
         super(id);
         this.maxStackSize = 1;
-        this.notInCreativeMenu = true;
-        this.setMaxDamage(16);
+        this.notInCreativeMenu = false;
+        this.setMaxDamage(24);
+        this.color = color;
     }
 
     public int getIconIndex(ItemStack itemstack) {
-        return Item.iconCoordToIndex(16, itemstack.tag.getInteger("color") );
+        return Item.iconCoordToIndex(16, this.color );
     }
 
     private boolean canPaint(int id) {
@@ -33,23 +37,20 @@ public class ItemPaintBrush extends Item {
     public boolean onItemUse(ItemStack itemstack, EntityPlayer entityplayer, World world, int i, int j, int k, int l, double heightPlaced) {
         int block = world.getBlockId(i, j, k);
 
-        int color = itemstack.tag.getInteger("color");
-        System.out.println(color);
-
         if (block == 50) {
             world.setBlock(i, j, k, 51);
-            world.setBlockMetadataWithNotify(i, j, k, color);
+            world.setBlockMetadataWithNotify(i, j, k, this.color);
             itemstack.damageItem( 1, entityplayer);
             return true;
         }
 
         if (canPaint(block)) {
-            world.setBlockMetadataWithNotify(i, j, k, color);
+            if(world.getBlockMetadata(i, j, k) == this.color) return false;
+            world.setBlockMetadataWithNotify(i, j, k, this.color);
             itemstack.damageItem( 1, entityplayer);
             return true;
         } else
             return false;
 
     }
-
 }
