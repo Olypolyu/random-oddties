@@ -16,13 +16,63 @@ tile.RandomOddities.IronChest.desc= Seriously, why do you need so much storage?
 tile.RandomOddities.ObsidianChest.name=Obsidian Chest
 tile.RandomOddities.ObsidianChest.desc=you *might* be a hoarder.
 
+// pie
+
 item.RandomOddities.PumpkinPie.name=Pumpkin Pie
 item.RandomOddities.PumpkinPie.desc=somehow, you feel like this thing has been with you all along.
 tile.RandomOddities.PumpkinPie.name=Pumpkin Pie
 tile.RandomOddities.PumpkinPie.desc=somehow, you feel like this thing has been with you all along.
 
-item.RandomOddities.PaintBrush.name=Paint Brush
-item.RandomOddities.PaintBrush.desc=what a brush off...
+// paint brushes.
+
+item.RandomOddities.WhitePaintBrush.name=White Paint Brush
+item.RandomOddities.WhitePaintBrush.desc=what a brush off...
+
+item.RandomOddities.OrangePaintBrush.name=Orange Paint Brush
+item.RandomOddities.OrangePaintBrush.desc=what a brush off...
+
+item.RandomOddities.MagentaPaintBrush.name=Magenta Paint Brush
+item.RandomOddities.MagentaPaintBrush.desc=what a brush off...
+
+item.RandomOddities.LightBluePaintBrush.name=Light Blue Paint Brush
+item.RandomOddities.LightBluePaintBrush.desc=what a brush off...
+
+item.RandomOddities.YellowPaintBrush.name=Yellow Paint Brush
+item.RandomOddities.YellowPaintBrush.desc=what a brush off...
+
+item.RandomOddities.LimePaintBrush.name=Lime Paint Brush
+item.RandomOddities.LimePaintBrush.desc=what a brush off...
+
+item.RandomOddities.PinkPaintBrush.name=Pink Paint Brush
+item.RandomOddities.PinkPaintBrush.desc=what a brush off...
+
+item.RandomOddities.GrayPaintBrush.name=Gray Paint Brush
+item.RandomOddities.GrayPaintBrush.desc=what a brush off...
+
+item.RandomOddities.LightGrayPaintBrush.name=Light Gray Paint Brush
+item.RandomOddities.LightGrayPaintBrush.desc=what a brush off...
+
+item.RandomOddities.CyanPaintBrush.name=Cyan Paint Brush
+item.RandomOddities.CyanPaintBrush.desc=what a brush off...
+
+item.RandomOddities.PurplePaintBrush.name=Purple Paint Brush
+item.RandomOddities.PurplePaintBrush.desc=what a brush off...
+
+item.RandomOddities.BluePaintBrush.name=Blue Paint Brush
+item.RandomOddities.BluePaintBrush.desc=what a brush off...
+
+item.RandomOddities.BrownPaintBrush.name=Brown Paint Brush
+item.RandomOddities.BrownPaintBrush.desc=what a brush off...
+
+item.RandomOddities.GreenPaintBrush.name=Green Paint Brush
+item.RandomOddities.GreenPaintBrush.desc=what a brush off...
+
+item.RandomOddities.RedPaintBrush.name=Red Paint Brush
+item.RandomOddities.RedPaintBrush.desc=what a brush off...
+
+item.RandomOddities.BlackPaintBrush.name=Black Paint Brush
+item.RandomOddities.BlackPaintBrush.desc=what a brush off...
+
 
 gui.done=Done
 gui.cancel=Cancel

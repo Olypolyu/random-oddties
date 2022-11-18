@@ -73,7 +73,7 @@ public class EntityBoar extends EntityMob {
         return super.attackEntityFrom(entity, i, type);
     }
 
-    private void becomeAngryAt(Entity entity) {
+    public void becomeAngryAt(Entity entity) {
         this.entityToAttack = entity;
         this.angerLevel = 4 + this.rand.nextInt(14);
         this.setAngerStats();

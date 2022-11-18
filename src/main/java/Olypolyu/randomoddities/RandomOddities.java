@@ -148,7 +148,8 @@ public class RandomOddities implements ModInitializer {
         TextureHelper.addTextureToTerrain(MOD_ID, "pumpkinPieSides.png", 31, 28);
         TextureHelper.addTextureToTerrain(MOD_ID, "pumpkinPieEaten.png", 31, 29);
 
-        TextureHelper.addTextureToItems(MOD_ID, "paintBrush.png", 16,0);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush.png", 16,16);
+        TextureHelper.addTextureToItems(MOD_ID, "whitePaintBrush.png", 16,0);
         TextureHelper.addTextureToItems(MOD_ID, "orangePaintBrush.png", 16,1);
         TextureHelper.addTextureToItems(MOD_ID, "magentaPaintBrush.png", 16, 2);
         TextureHelper.addTextureToItems(MOD_ID, "lightBluePaintBrush.png", 16,3);
@@ -177,10 +178,10 @@ public class RandomOddities implements ModInitializer {
 
         RecipeHelper.Crafting.createRecipe(ItemPumpkinPie, 1, new Object[]{"EPE", "WMW", 'P', new ItemStack(Block.pumpkin, 1), 'E', Item.eggChicken, 'W', Item.wheat, 'M', Item.bucketMilk});  // Pumpkin Pie
 
-
+        // create crafting recipes for all paint brushes, you are sorely mistaken if you think im going to add another 16 lines for this.
         int craftPainBrushes;
         for ( craftPainBrushes = 0; craftPainBrushes <= 15; craftPainBrushes++) {
-            RecipeHelper.Crafting.createRecipe( PaintBrushColors[craftPainBrushes], 1, new Object[]{" C", "SD", 'D', new ItemStack(Item.dye, 1, 15 - craftPainBrushes), 'C', Item.cloth, 'S', Item.stick});
+            RecipeHelper.Crafting.createRecipe(PaintBrushColors[craftPainBrushes], 1, new Object[]{" C", "SD", 'D', new ItemStack(Item.dye, 1, 15 - craftPainBrushes), 'C', Item.cloth, 'S', Item.stick});
         }
 
     }
