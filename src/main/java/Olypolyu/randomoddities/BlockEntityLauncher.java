@@ -4,6 +4,7 @@ import Olypolyu.randomoddities.entities.TileEntityLauncher;
 import net.minecraft.src.BlockContainerRotatable;
 import net.minecraft.src.Material;
 import net.minecraft.src.TileEntity;
+import net.minecraft.src.World;
 
 public class BlockEntityLauncher extends BlockContainerRotatable {
 
@@ -11,8 +12,8 @@ public class BlockEntityLauncher extends BlockContainerRotatable {
     private final double launchY;
     private final double launchZ;
 
-    public BlockEntityLauncher(int i, Material material, double launchX, double launchY, double launchZ) {
-        super(i, material);
+    public BlockEntityLauncher(int id, Material material, double launchX, double launchY, double launchZ) {
+        super(id, material);
         this.setBlockBounds(0F, 0F, 0F, 1.0F, 0.5F, 1.0F);
         this.setLightOpacity(1);
         this.launchX = launchX;
@@ -25,7 +26,11 @@ public class BlockEntityLauncher extends BlockContainerRotatable {
         return false;
     }
 
-    protected TileEntity getBlockEntity() {
+    public boolean canPlaceOnSurfaceOnCondition(World world, int x, int y, int z) {
+        return false;
+    }
+
+        protected TileEntity getBlockEntity() {
         TileEntityLauncher launcher = new TileEntityLauncher();
         launcher.setLauncherParameters(this.launchX, this.launchY, this.launchZ);
         return launcher;

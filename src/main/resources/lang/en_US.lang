@@ -18,6 +18,11 @@ tile.RandomOddities.ObsidianChest.desc=you *might* be a hoarder.
 
 item.RandomOddities.PumpkinPie.name=Pumpkin Pie
 item.RandomOddities.PumpkinPie.desc=somehow, you feel like this thing has been with you all along.
+tile.RandomOddities.PumpkinPie.name=Pumpkin Pie
+tile.RandomOddities.PumpkinPie.desc=somehow, you feel like this thing has been with you all along.
+
+item.RandomOddities.PaintBrush.name=Paint Brush
+item.RandomOddities.PaintBrush.desc=what a brush off...
 
 gui.done=Done
 gui.cancel=Cancel
