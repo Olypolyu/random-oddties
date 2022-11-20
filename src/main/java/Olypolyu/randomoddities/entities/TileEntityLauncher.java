@@ -85,7 +85,7 @@ public class TileEntityLauncher extends TileEntity {
    // generate particles and play sound.
    private void doVisualEffects(Entity entity) {
             this.worldObj.playSoundEffect((double) this.xCoord + 0.5, (double) this.yCoord + 0.5, (double) this.zCoord + 0.5, this.soundEffect, 0.3F, 0.6F);
-            for (int i = 0; i < 8 + this.random.nextInt(7); i++){
+            for (int i = 0; i < 8; i++){
                 this.worldObj.spawnParticle(this.particle,
                 entity.posX,
                 entity.posY-0.5f,

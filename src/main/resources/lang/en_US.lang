@@ -73,6 +73,12 @@ item.RandomOddities.RedPaintBrush.desc=what a brush off...
 item.RandomOddities.BlackPaintBrush.name=Black Paint Brush
 item.RandomOddities.BlackPaintBrush.desc=what a brush off...
 
+item.RandomOddities.windBottle.name=Wind Bottle
+item.RandomOddities.windBottle.desc=who needs a parachute anyways?
+
+item.RandomOddities.emptyWindBottle.name=Empty Wind Bottle
+item.RandomOddities.emptyWindBottle.desc=looks sad.
+
 
 gui.done=Done
 gui.cancel=Cancel

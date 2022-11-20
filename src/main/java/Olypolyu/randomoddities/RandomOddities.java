@@ -1,8 +1,10 @@
 package Olypolyu.randomoddities;
 
+import Olypolyu.randomoddities.entities.DungeonLootMixin;
 import Olypolyu.randomoddities.entities.EntityBoar;
 import Olypolyu.randomoddities.entities.TileEntityLauncher;
 import Olypolyu.randomoddities.entities.TileEntityResizableChest;
+import Olypolyu.randomoddities.mixin.ReparableRecipeMixin;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.src.*;
 import org.slf4j.Logger;
@@ -12,6 +14,8 @@ import turniplabs.halplibe.helper.EntityHelper;
 import turniplabs.halplibe.helper.RecipeHelper;
 import turniplabs.halplibe.helper.TextureHelper;
 import turniplabs.halplibe.mixin.helper.TileEntityInterface;
+
+import java.util.Random;
 
 public class RandomOddities implements ModInitializer {
 
@@ -93,32 +97,71 @@ public class RandomOddities implements ModInitializer {
     public static final Item ItemPumpkinPie = new ItemSugarcane(RandomOdditiesIds + 7,PumpkinPie).setIconCoord(13, 3).setItemName(name("PumpkinPie"));
 
     // paint brushes
-    public static final Item ItemWhitePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 8,0).setItemName(name("WhitePaintBrush"));
-    public static final Item ItemOrangePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 9,1).setItemName(name("OrangePaintBrush"));
-    public static final Item ItemMagentaPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 10,2).setItemName(name("MagentaPaintBrush"));
-    public static final Item ItemLightBluePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 11,3).setItemName(name("LightBluePaintBrush"));
-    public static final Item ItemYellowPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 12,4).setItemName(name("YellowPaintBrush"));
-    public static final Item ItemLimePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 13,5).setItemName(name("LimePaintBrush"));
-    public static final Item ItemPinkPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 14,6).setItemName(name("PinkPaintBrush"));
-    public static final Item ItemGrayPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 15,7).setItemName(name("GrayPaintBrush"));
-    public static final Item ItemLightGrayPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 16,8).setItemName(name("LightGrayPaintBrush"));
-    public static final Item ItemCyanPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 17,9).setItemName(name("CyanPaintBrush"));
-    public static final Item ItemPurplePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 18,10).setItemName(name("PurplePaintBrush"));
-    public static final Item ItemBluePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 19,11).setItemName(name("BluePaintBrush"));
-    public static final Item ItemBrownPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 20,12).setItemName(name("BrownPaintBrush"));
-    public static final Item ItemGreenPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 21,13).setItemName(name("GreenPaintBrush"));
-    public static final Item ItemRedPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 22,14).setItemName(name("RedPaintBrush"));
-    public static final Item ItemBlackPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 23,15).setItemName(name("BlackPaintBrush"));
+    public static final Item WhitePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 8,0).setItemName(name("WhitePaintBrush"));
+    public static final Item OrangePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 9,1).setItemName(name("OrangePaintBrush"));
+    public static final Item MagentaPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 10,2).setItemName(name("MagentaPaintBrush"));
+    public static final Item LightBluePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 11,3).setItemName(name("LightBluePaintBrush"));
+    public static final Item YellowPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 12,4).setItemName(name("YellowPaintBrush"));
+    public static final Item LimePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 13,5).setItemName(name("LimePaintBrush"));
+    public static final Item PinkPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 14,6).setItemName(name("PinkPaintBrush"));
+    public static final Item GrayPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 15,7).setItemName(name("GrayPaintBrush"));
+    public static final Item LightGrayPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 16,8).setItemName(name("LightGrayPaintBrush"));
+    public static final Item CyanPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 17,9).setItemName(name("CyanPaintBrush"));
+    public static final Item PurplePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 18,10).setItemName(name("PurplePaintBrush"));
+    public static final Item BluePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 19,11).setItemName(name("BluePaintBrush"));
+    public static final Item BrownPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 20,12).setItemName(name("BrownPaintBrush"));
+    public static final Item GreenPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 21,13).setItemName(name("GreenPaintBrush"));
+    public static final Item RedPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 22,14).setItemName(name("RedPaintBrush"));
+    public static final Item BlackPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 23,15).setItemName(name("BlackPaintBrush"));
 
-    private final Item[] PaintBrushColors = {ItemWhitePaintBrush, ItemOrangePaintBrush, ItemMagentaPaintBrush, ItemLightBluePaintBrush, ItemYellowPaintBrush, ItemLimePaintBrush, ItemPinkPaintBrush, ItemGrayPaintBrush, ItemLightGrayPaintBrush,
-            ItemCyanPaintBrush, ItemPurplePaintBrush, ItemBluePaintBrush, ItemBrownPaintBrush, ItemGreenPaintBrush, ItemRedPaintBrush, ItemBlackPaintBrush};
+    private final Item[] PaintBrushColors = {WhitePaintBrush, OrangePaintBrush, MagentaPaintBrush, LightBluePaintBrush, YellowPaintBrush, LimePaintBrush, PinkPaintBrush, GrayPaintBrush, LightGrayPaintBrush,
+            CyanPaintBrush, PurplePaintBrush, BluePaintBrush, BrownPaintBrush, GreenPaintBrush, RedPaintBrush, BlackPaintBrush};
+
+    // wind bottle
+    private static final int WindBottleCharges = 3;
+
+    public static final Item WindBottleFilled = new ItemWindBottle(RandomOdditiesIds + 25, WindBottleCharges).setItemName(name("windBottle"));
+
+
+
+
 
     public void onInitialize() {
+        LOGGER.info("RandomOddities initialized.");
 
+        // world gen
+        int i;
+        for (i = 0; i <= 100; i++){
+            ItemStack dugeonLoot = DungeonLootMixin.pickMobSpawner(new Random());
+            if (dugeonLoot != null ) {
+                LOGGER.info(dugeonLoot.getItemName());
+                LOGGER.info( Integer.toString(dugeonLoot.stackSize) );
+                }
+                else LOGGER.info("null!");
+
+        }
+
+        LOGGER.info("////////////");
+
+        DungeonLootMixin.addDungeonLoot( new ItemStack(ItemPumpkinPie) );
+        DungeonLootMixin.addDungeonLoot( new ItemStack(BrownPaintBrush) );
+
+
+        for (i = 0; i <= 100; i++) {
+            ItemStack dugeonLoot = DungeonLootMixin.pickMobSpawner(new Random());
+            if (dugeonLoot != null) {
+                LOGGER.info(dugeonLoot.getItemName());
+                LOGGER.info(Integer.toString(dugeonLoot.stackSize));
+                }
+                else LOGGER.info("null!");
+        }
+
+        System.out.println(DungeonLootMixin.getDungeonLoot(24));
+
+        // items
         RandomOddities.ItemPumpkinPie.setMaxStackSize(1);
         RandomOddities.PumpkinPie.notInCreativeMenu = true;
 
-        LOGGER.info("RandomOddities initialized.");
 
         // add in entities
         EntityHelper.createEntity(EntityBoar.class, new RenderLiving(new ModelQuadruped(6, 0), 0.5f), 61, "Boar");
@@ -148,7 +191,6 @@ public class RandomOddities implements ModInitializer {
         TextureHelper.addTextureToTerrain(MOD_ID, "pumpkinPieSides.png", 31, 28);
         TextureHelper.addTextureToTerrain(MOD_ID, "pumpkinPieEaten.png", 31, 29);
 
-        TextureHelper.addTextureToItems(MOD_ID, "paintBrush.png", 16,16);
         TextureHelper.addTextureToItems(MOD_ID, "whitePaintBrush.png", 16,0);
         TextureHelper.addTextureToItems(MOD_ID, "orangePaintBrush.png", 16,1);
         TextureHelper.addTextureToItems(MOD_ID, "magentaPaintBrush.png", 16, 2);
@@ -166,6 +208,9 @@ public class RandomOddities implements ModInitializer {
         TextureHelper.addTextureToItems(MOD_ID, "redPaintBrush.png", 16,14);
         TextureHelper.addTextureToItems(MOD_ID, "blackPaintBrush.png", 16,15);
 
+        TextureHelper.addTextureToItems(MOD_ID, "emptyWindBottle.png", 17,0);
+        TextureHelper.addTextureToItems(MOD_ID, "windBottle.png", 17,1);
+
         // load crafting recipes
         RecipeHelper.Crafting.createRecipe(FlintBlock, 1, new Object[]{"FF", "FF", 'F', Item.flint}); // flint to flint block
         RecipeHelper.Crafting.createShapelessRecipe(Item.flint, 4, new Object[]{new ItemStack(FlintBlock, 1)}); // flint block to flint
@@ -182,7 +227,9 @@ public class RandomOddities implements ModInitializer {
         int craftPainBrushes;
         for ( craftPainBrushes = 0; craftPainBrushes <= 15; craftPainBrushes++) {
             RecipeHelper.Crafting.createRecipe(PaintBrushColors[craftPainBrushes], 1, new Object[]{" C", "SD", 'D', new ItemStack(Item.dye, 1, 15 - craftPainBrushes), 'C', Item.cloth, 'S', Item.stick});
-        }
+            }
+
+        ((ReparableRecipeMixin)RecipeHelper.craftingManager).callAddRepairableStackableRecipe(WindBottleFilled,  new ItemStack(Item.featherChicken)); // Wind Bottle
 
     }
 

@@ -10,7 +10,7 @@ public class ItemPaintBrush extends Item {
         super(id);
         this.maxStackSize = 1;
         this.notInCreativeMenu = false;
-        this.setMaxDamage(3);
+        this.setMaxDamage(24);
         this.color = color;
         this.bFull3D = true;
     }
@@ -42,7 +42,7 @@ public class ItemPaintBrush extends Item {
         world.setBlockRaw(x, y, z, result);
 
         // all blocks have their color variants spaced on 16 by 16.
-        // I just figure out the difference between the current block and a block of "id 0" on the current color and set to that.
+        // I just figure out the difference between the current block and a block of "id 0" on the desired color and set to that.
         if(isComplex) {
             world.setBlockMetadataWithNotify(x, y, z, blockData - ((blockData / 16) * 16) + (this.color * 16));
             } else
