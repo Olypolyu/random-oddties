@@ -115,9 +115,9 @@ public class RandomOddities implements ModInitializer {
             CyanPaintBrush, PurplePaintBrush, BluePaintBrush, BrownPaintBrush, GreenPaintBrush, RedPaintBrush, BlackPaintBrush};
 
     // wind bottle
-    private static final int WindBottleCharges = 3;
+    private static final int WindLampCharges = 3;
 
-    public static final Item WindBottleFilled = new ItemWindBottle(RandomOdditiesIds + 25, WindBottleCharges).setItemName(name("windBottle"));
+    public static final Item WindLamp = new ItemWindLamp(RandomOdditiesIds + 25, WindLampCharges).setItemName(name("windLamp"));
 
 
 
@@ -197,7 +197,7 @@ public class RandomOddities implements ModInitializer {
             RecipeHelper.Crafting.createRecipe(PaintBrushColors[craftPainBrushes], 1, new Object[]{" C", "SD", 'D', new ItemStack(Item.dye, 1, 15 - craftPainBrushes), 'C', Item.cloth, 'S', Item.stick});
             }
 
-        ((ReparableRecipeMixin)RecipeHelper.craftingManager).callAddRepairableStackableRecipe(WindBottleFilled,  new ItemStack(Item.featherChicken)); // Wind Bottle
+        ((ReparableRecipeMixin)RecipeHelper.craftingManager).callAddRepairableStackableRecipe(WindLamp,  new ItemStack(Item.featherChicken)); // Wind Bottle
 
     }
 

@@ -8,8 +8,11 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 public interface RandomOdditiesEntityMixin {
 
     @Accessor("fallDistance")
-    float getFallDistance();
+        float getFallDistance();
 
     @Accessor("fallDistance")
         void setFallDistance(float value);
+
+    @Accessor("maxAir")
+        int getMaxAir();
 }

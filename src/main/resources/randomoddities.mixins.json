@@ -6,7 +6,9 @@
     "mixins": [
         "BoarGenMixin",
         "RandomOdditiesEntityMixin",
-        "ReparableRecipeMixin"
+        "ReparableRecipeMixin",
+        "DungeonLootMixin"
+
     ],
     "client": [
     ],

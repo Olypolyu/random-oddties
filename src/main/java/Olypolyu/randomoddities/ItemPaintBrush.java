@@ -59,6 +59,15 @@ public class ItemPaintBrush extends Item {
         // base blocks
         switch (block) {
 
+            // super mat's thing
+            case 800: //nether heck
+                if (this.color == 1){
+                    world.setBlockRaw(i, j, k, 801);
+                    itemstack.damageItem(1, entityplayer);
+                    return true;
+                    }
+                return false;
+
             case 50: // planks
             case 80: // fences
                 paint(block + 1, false, world, i, j, k, itemstack, entityplayer);

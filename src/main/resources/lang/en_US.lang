@@ -1,11 +1,11 @@
-tile.RandomOddities.test.chest.name=Can you, kindly, stop fucking spamming my logs with errors? thanks!
-tile.RandomOddities.test.chest.desc=no clue how you got this
+tile.RandomOddities.test.name= T E S T
+
+// Blocks
+tile.RandomOddities.FlintBlock.name=Flint Block
+tile.RandomOddities.FlintBlock.desc=A block made out of flint... what else were you expecting?
 
 tile.RandomOddities.Trampoline.name=Trampoline
 tile.RandomOddities.Trampoline.desc=Up and away! (to your death.)
-
-tile.RandomOddities.FlintBlock.name=Flint Block
-tile.RandomOddities.FlintBlock.desc=A block made out of flint... what else were you expecting?
 
 tile.RandomOddities.Pillow.name=Pillow
 tile.RandomOddities.Pillow.desc=squishy and confy.
@@ -17,14 +17,17 @@ tile.RandomOddities.ObsidianChest.name=Obsidian Chest
 tile.RandomOddities.ObsidianChest.desc=you *might* be a hoarder.
 
 // pie
-
 item.RandomOddities.PumpkinPie.name=Pumpkin Pie
 item.RandomOddities.PumpkinPie.desc=somehow, you feel like this thing has been with you all along.
+
 tile.RandomOddities.PumpkinPie.name=Pumpkin Pie
 tile.RandomOddities.PumpkinPie.desc=somehow, you feel like this thing has been with you all along.
 
-// paint brushes.
+// wind bottle
+item.RandomOddities.windLamp.name=Wind Lamp
+item.RandomOddities.windLamp.desc=who needs a parachute anyways?
 
+// paint brushes
 item.RandomOddities.WhitePaintBrush.name=White Paint Brush
 item.RandomOddities.WhitePaintBrush.desc=what a brush off...
 
@@ -72,13 +75,6 @@ item.RandomOddities.RedPaintBrush.desc=what a brush off...
 
 item.RandomOddities.BlackPaintBrush.name=Black Paint Brush
 item.RandomOddities.BlackPaintBrush.desc=what a brush off...
-
-item.RandomOddities.windBottle.name=Wind Bottle
-item.RandomOddities.windBottle.desc=who needs a parachute anyways?
-
-item.RandomOddities.emptyWindBottle.name=Empty Wind Bottle
-item.RandomOddities.emptyWindBottle.desc=looks sad.
-
 
 gui.done=Done
 gui.cancel=Cancel
