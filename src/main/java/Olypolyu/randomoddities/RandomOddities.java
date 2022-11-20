@@ -1,6 +1,5 @@
 package Olypolyu.randomoddities;
 
-import Olypolyu.randomoddities.entities.DungeonLootMixin;
 import Olypolyu.randomoddities.entities.EntityBoar;
 import Olypolyu.randomoddities.entities.TileEntityLauncher;
 import Olypolyu.randomoddities.entities.TileEntityResizableChest;
@@ -14,8 +13,6 @@ import turniplabs.halplibe.helper.EntityHelper;
 import turniplabs.halplibe.helper.RecipeHelper;
 import turniplabs.halplibe.helper.TextureHelper;
 import turniplabs.halplibe.mixin.helper.TileEntityInterface;
-
-import java.util.Random;
 
 public class RandomOddities implements ModInitializer {
 
@@ -128,35 +125,6 @@ public class RandomOddities implements ModInitializer {
 
     public void onInitialize() {
         LOGGER.info("RandomOddities initialized.");
-
-        // world gen
-        int i;
-        for (i = 0; i <= 100; i++){
-            ItemStack dugeonLoot = DungeonLootMixin.pickMobSpawner(new Random());
-            if (dugeonLoot != null ) {
-                LOGGER.info(dugeonLoot.getItemName());
-                LOGGER.info( Integer.toString(dugeonLoot.stackSize) );
-                }
-                else LOGGER.info("null!");
-
-        }
-
-        LOGGER.info("////////////");
-
-        DungeonLootMixin.addDungeonLoot( new ItemStack(ItemPumpkinPie) );
-        DungeonLootMixin.addDungeonLoot( new ItemStack(BrownPaintBrush) );
-
-
-        for (i = 0; i <= 100; i++) {
-            ItemStack dugeonLoot = DungeonLootMixin.pickMobSpawner(new Random());
-            if (dugeonLoot != null) {
-                LOGGER.info(dugeonLoot.getItemName());
-                LOGGER.info(Integer.toString(dugeonLoot.stackSize));
-                }
-                else LOGGER.info("null!");
-        }
-
-        System.out.println(DungeonLootMixin.getDungeonLoot(24));
 
         // items
         RandomOddities.ItemPumpkinPie.setMaxStackSize(1);
