@@ -1,8 +1,12 @@
 package Olypolyu.randomoddities;
 
+import Olypolyu.randomoddities.blocks.*;
 import Olypolyu.randomoddities.entities.EntityBoar;
+import Olypolyu.randomoddities.entities.TileEntityBubbleColumn;
 import Olypolyu.randomoddities.entities.TileEntityLauncher;
 import Olypolyu.randomoddities.entities.TileEntityResizableChest;
+import Olypolyu.randomoddities.items.ItemPaintBrush;
+import Olypolyu.randomoddities.items.ItemWindLamp;
 import Olypolyu.randomoddities.mixin.ReparableRecipeMixin;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.src.*;
@@ -90,6 +94,25 @@ public class RandomOddities implements ModInitializer {
             2f,
             0f);
 
+    public static final Block BubbleGenerator = BlockHelper.createBlock(
+            new BlockBubbleGenerator(RandomOdditiesIds + 7, Material.iron),
+            name("BubbleGenerator"),
+            31, 31, 31, 17, 31, 30,
+            Block.soundStoneFootstep,
+            2.5f,
+            5f,
+            0);
+
+    public static final Block Platform = BlockHelper.createBlock(
+            new BlockPlatform(RandomOdditiesIds + 8, Material.iron),
+            name("Platform"),
+            31,12,
+            Block.soundMetalFootstep,
+            2.5f,
+            5f,
+            0);
+
+
     // items
     public static final Item ItemPumpkinPie = new ItemSugarcane(RandomOdditiesIds + 7,PumpkinPie).setIconCoord(13, 3).setItemName(name("PumpkinPie"));
 
@@ -130,12 +153,16 @@ public class RandomOddities implements ModInitializer {
         RandomOddities.ItemPumpkinPie.setMaxStackSize(1);
         RandomOddities.PumpkinPie.notInCreativeMenu = true;
 
+        // hehe... it's buggy
+        RandomOddities.Platform.notInCreativeMenu = true;
+
 
         // add in entities
         EntityHelper.createEntity(EntityBoar.class, new RenderLiving(new ModelQuadruped(6, 0), 0.5f), 61, "Boar");
 
         TileEntityInterface.callAddMapping(TileEntityLauncher.class, "TileEntityLauncher");
         TileEntityInterface.callAddMapping(TileEntityResizableChest.class, "TileEntityResizableChest");
+        TileEntityInterface.callAddMapping(TileEntityBubbleColumn.class, "TileEntityBubbleColumn");
 
         // load textures
         TextureHelper.addTextureToTerrain(MOD_ID, "FlintBlock.png", 31, 14);
@@ -158,6 +185,9 @@ public class RandomOddities implements ModInitializer {
         TextureHelper.addTextureToTerrain(MOD_ID, "pumpkinPieBottom.png", 31, 27);
         TextureHelper.addTextureToTerrain(MOD_ID, "pumpkinPieSides.png", 31, 28);
         TextureHelper.addTextureToTerrain(MOD_ID, "pumpkinPieEaten.png", 31, 29);
+
+        TextureHelper.addTextureToTerrain(MOD_ID, "bubbleSide.png", 31,30);
+        TextureHelper.addTextureToTerrain(MOD_ID, "bubbleTop.png", 31,31);
 
         TextureHelper.addTextureToItems(MOD_ID, "whitePaintBrush.png", 16,0);
         TextureHelper.addTextureToItems(MOD_ID, "orangePaintBrush.png", 16,1);

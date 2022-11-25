@@ -1,4 +1,4 @@
-package Olypolyu.randomoddities;
+package Olypolyu.randomoddities.blocks;
 
 import Olypolyu.randomoddities.entities.TileEntityLauncher;
 import net.minecraft.src.BlockContainerRotatable;

@@ -1,4 +1,4 @@
-package Olypolyu.randomoddities;
+package Olypolyu.randomoddities.items;
 
 import net.minecraft.src.*;
 
