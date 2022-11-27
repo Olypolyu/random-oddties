@@ -1,9 +1,6 @@
 package Olypolyu.randomoddities.entities;
 
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.Block;
-import net.minecraft.src.Entity;
-import net.minecraft.src.TileEntity;
+import net.minecraft.src.*;
 
 import java.util.List;
 import java.util.Random;
@@ -13,11 +10,14 @@ public class TileEntityBubbleColumn extends TileEntity {
     private int columnLength;
 
     private void getColumnLength() {
+        this.columnLength = 0;
         boolean reachedTop = false;
 
         while (!reachedTop) {
-            if (this.worldObj.getBlockId( this.xCoord, this.yCoord + 1 + this.columnLength, this.zCoord ) == Block.fluidWaterStill.blockID && columnLength < 21)
+            Material blockMaterial = this.worldObj.getBlockMaterial( this.xCoord, this.yCoord + 1 + this.columnLength, this.zCoord );
+            if ( blockMaterial == Block.fluidWaterStill.blockMaterial || blockMaterial == Block.fluidWaterFlowing.blockMaterial )
                 this.columnLength = this.columnLength + 1;
+
             else reachedTop = true;
             }
         }
@@ -27,11 +27,17 @@ public class TileEntityBubbleColumn extends TileEntity {
 
         if (this.columnLength > 1) {
             // get entities within bounding box, then yeet.
-            List<Entity> list = this.worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(this.xCoord + 0.25, this.yCoord, this.zCoord + 0.25, this.xCoord + 0.75, this.yCoord + 1 + this.columnLength, this.zCoord + 0.75));
+            List<Entity> list = this.worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(this.xCoord + 0.25, this.yCoord, this.zCoord + 0.25, this.xCoord + 0.75, this.yCoord + 0.6 + this.columnLength, this.zCoord + 0.75));
 
             for (int j = 0; j < list.size(); ++j) {
                 Entity entity = list.get(j);
-                entity.motionY = entity.motionY + 0.25 + (float)((this.columnLength - entity.getDistance(this.xCoord, this.yCoord, this.zCoord)) * 0.10);
+
+                if (entity.motionY < 0.8) {
+                    entity.motionY = entity.motionY + 0.25;
+
+                    float Strength = (float) ((this.columnLength - entity.getDistance(this.xCoord, this.yCoord, this.zCoord) + 1) * 0.10);
+                    if (Strength > 1) entity.motionY = entity.motionY + Strength;
+                    }
                 }
 
             int i;

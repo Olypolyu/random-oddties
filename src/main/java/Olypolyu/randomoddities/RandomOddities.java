@@ -112,6 +112,15 @@ public class RandomOddities implements ModInitializer {
             5f,
             0);
 
+    public static final Block FishTrap = BlockHelper.createBlock(
+            new BlockFishTrap(RandomOdditiesIds + 9, Material.rock),
+            name("FishTrap"),
+            420,69,
+            Block.soundStoneFootstep,
+            2.5f,
+            5f,
+            0);
+
 
     // items
     public static final Item ItemPumpkinPie = new ItemSugarcane(RandomOdditiesIds + 7,PumpkinPie).setIconCoord(13, 3).setItemName(name("PumpkinPie"));
@@ -189,6 +198,12 @@ public class RandomOddities implements ModInitializer {
         TextureHelper.addTextureToTerrain(MOD_ID, "bubbleSide.png", 31,30);
         TextureHelper.addTextureToTerrain(MOD_ID, "bubbleTop.png", 31,31);
 
+        TextureHelper.addTextureToTerrain(MOD_ID, "FishTrapSides.png", 30,31);
+        TextureHelper.addTextureToTerrain(MOD_ID, "FishTrapSidesEmpty.png", 30,30);
+        TextureHelper.addTextureToTerrain(MOD_ID, "FishTrapTop.png", 30,29);
+        TextureHelper.addTextureToTerrain(MOD_ID, "FishTrapTopEmpty.png", 30,28);
+
+
         TextureHelper.addTextureToItems(MOD_ID, "whitePaintBrush.png", 16,0);
         TextureHelper.addTextureToItems(MOD_ID, "orangePaintBrush.png", 16,1);
         TextureHelper.addTextureToItems(MOD_ID, "magentaPaintBrush.png", 16, 2);
@@ -220,6 +235,11 @@ public class RandomOddities implements ModInitializer {
         RecipeHelper.Crafting.createRecipe(ObsidianChest, 1, new Object[]{"ODO", "DCD", "ODO", 'O', new ItemStack(Block.obsidian, 1), 'D', Item.diamond, 'C', new ItemStack(IronChest, 1)}); // Obsidian Chest
 
         RecipeHelper.Crafting.createRecipe(ItemPumpkinPie, 1, new Object[]{"EPE", "WMW", 'P', new ItemStack(Block.pumpkin, 1), 'E', Item.eggChicken, 'W', Item.wheat, 'M', Item.bucketMilk});  // Pumpkin Pie
+
+        RecipeHelper.Crafting.createRecipe(BubbleGenerator, 1, new Object[]{"IFI", "IWI", "BFB", 'B', new ItemStack(Item.dye, 1, 4), 'I', Item.ingotIron, 'F',  Item.featherChicken, 'W', WindLamp}); // Bubble generator
+
+        RecipeHelper.Crafting.createRecipe(FishTrap, 1, new Object[]{"CSC", "SIS", "CSC", 'C', Block.cobbleStone, 'S', Item.stick, 'I',  Item.string }); // Bubble generator
+
 
         // create crafting recipes for all paint brushes, you are sorely mistaken if you think im going to add another 16 lines for this.
         int craftPainBrushes;
