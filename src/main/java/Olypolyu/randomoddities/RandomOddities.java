@@ -198,11 +198,9 @@ public class RandomOddities implements ModInitializer {
         TextureHelper.addTextureToTerrain(MOD_ID, "bubbleSide.png", 31,30);
         TextureHelper.addTextureToTerrain(MOD_ID, "bubbleTop.png", 31,31);
 
-        TextureHelper.addTextureToTerrain(MOD_ID, "FishTrapSides.png", 30,31);
-        TextureHelper.addTextureToTerrain(MOD_ID, "FishTrapSidesEmpty.png", 30,30);
-        TextureHelper.addTextureToTerrain(MOD_ID, "FishTrapTop.png", 30,29);
-        TextureHelper.addTextureToTerrain(MOD_ID, "FishTrapTopEmpty.png", 30,28);
-
+        TextureHelper.addTextureToTerrain(MOD_ID, "FishTrapEngaged.png", 30,31);
+        TextureHelper.addTextureToTerrain(MOD_ID, "FishTrap.png", 30,30);
+        TextureHelper.addTextureToTerrain(MOD_ID, "FishTrapFull.png", 30,29);
 
         TextureHelper.addTextureToItems(MOD_ID, "whitePaintBrush.png", 16,0);
         TextureHelper.addTextureToItems(MOD_ID, "orangePaintBrush.png", 16,1);
@@ -238,7 +236,7 @@ public class RandomOddities implements ModInitializer {
 
         RecipeHelper.Crafting.createRecipe(BubbleGenerator, 1, new Object[]{"IFI", "IWI", "BFB", 'B', new ItemStack(Item.dye, 1, 4), 'I', Item.ingotIron, 'F',  Item.featherChicken, 'W', WindLamp}); // Bubble generator
 
-        RecipeHelper.Crafting.createRecipe(FishTrap, 1, new Object[]{"CSC", "SIS", "CSC", 'C', Block.cobbleStone, 'S', Item.stick, 'I',  Item.string }); // Bubble generator
+        RecipeHelper.Crafting.createRecipe(FishTrap, 1, new Object[]{" A ", "AMA", " A ", 'A', Block.algae, 'M', Block.mesh }); // Bubble generator
 
 
         // create crafting recipes for all paint brushes, you are sorely mistaken if you think im going to add another 16 lines for this.

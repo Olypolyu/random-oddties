@@ -26,6 +26,9 @@ tile.RandomOddities.PumpkinPie.desc=somehow, you feel like this thing has been w
 tile.RandomOddities.BubbleGenerator.name=Bubble Generator
 tile.RandomOddities.BubbleGenerator.desc=Is this a bathhouse episode?
 
+tile.RandomOddities.FishTrap.name=Fish Trap
+tile.RandomOddities.FishTrap.desc=Textures made by Loafio
+
 // wind bottle
 item.RandomOddities.windLamp.name=Wind Lamp
 item.RandomOddities.windLamp.desc=It's wick seems to be a feather...
