@@ -121,6 +121,16 @@ public class RandomOddities implements ModInitializer {
             5f,
             0);
 
+    public static final Block CocoBeans = BlockHelper.createBlock(
+            new BlockBeans(RandomOdditiesIds + 12, Material.plants),
+            name("CocoBeans"),
+            31,21,
+            Block.soundGrassFootstep,
+            2.5f,
+            5f,
+            0);
+
+
 
     // items
     public static final Item ItemPumpkinPie = new ItemSugarcane(RandomOdditiesIds + 7,PumpkinPie).setIconCoord(13, 3).setItemName(name("PumpkinPie"));

@@ -29,6 +29,9 @@ tile.RandomOddities.BubbleGenerator.desc=Is this a bathhouse episode?
 tile.RandomOddities.FishTrap.name=Fish Trap
 tile.RandomOddities.FishTrap.desc=Textures made by Loafio
 
+tile.RandomOddities.CocoBeans.name=Cocoa Beans Plant
+tile.RandomOddities.CocoBeans.desc=You should not be able to get yo hands on these.
+
 // wind bottle
 item.RandomOddities.windLamp.name=Wind Lamp
 item.RandomOddities.windLamp.desc=It's wick seems to be a feather...
