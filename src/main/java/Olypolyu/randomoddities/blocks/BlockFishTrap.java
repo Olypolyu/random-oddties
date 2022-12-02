@@ -29,8 +29,7 @@ public class BlockFishTrap extends Block {
                 }
             }
 
-        return true;
-        //return water >= 6;
+        return water >= 6;
     }
 
     public boolean canPlaceBlockAt(World world, int i, int j, int k) {

@@ -11,13 +11,14 @@ public class BlockBeans extends Block {
     public BlockBeans(int i, Material material) {
         super(i, material);
         this.setTickOnLoad(true);
+        this.notInCreativeMenu = true;
     }
 
     public void updateTick(World world, int i, int j, int k, Random random) {
         int side = world.getBlockMetadata(i, j, k) & 0b1111;
         int growStage = world.getBlockMetadata(i, j, k) >> 4;
 
-        if ( random.nextInt(200) == 0 && growStage < 4 )
+        if ( random.nextInt(150) == 0 && growStage < 4 )
             world.setBlockMetadataWithNotify(i, j, k, ( ( growStage + 1 ) << 4 ) | side);
 
     }
@@ -27,14 +28,15 @@ public class BlockBeans extends Block {
         return texCoordToIndex(30,23 + growthStage);
     }
 
-    public ArrayList<Block> growsOn = new ArrayList<>();
-    {
-        this.growsOn.add(Block.logOakMossy);
-        this.growsOn.add(Block.logBirch);
-        this.growsOn.add(Block.logCherry);
-        this.growsOn.add(Block.logOak);
-        this.growsOn.add(Block.logEucalyptus);
-        this.growsOn.add(Block.logPine);
+    public static ArrayList<Block> growsOn = new ArrayList<>();
+
+    static {
+        growsOn.add(Block.logOakMossy);
+     /* growsOn.add(Block.logBirch);
+        growsOn.add(Block.logCherry);
+        growsOn.add(Block.logOak);
+        growsOn.add(Block.logEucalyptus);
+        growsOn.add(Block.logPine); */
     }
 
     public int getRenderType() {
@@ -50,7 +52,10 @@ public class BlockBeans extends Block {
     }
 
     public void dropBlockAsItemWithChance(World world, int x, int y, int z, int meta, float chance) {
+        if ( (meta >> 4) > 1 )
             world.dropItem(x, y, z, new ItemStack(Item.dye, world.rand.nextInt(meta >> 4) + 1, 3));
+        else
+            world.dropItem(x, y, z, new ItemStack(Item.dye,1, 3));
     }
 
     public boolean canPlaceBlockAt(World world, int i, int j, int k) {
@@ -134,7 +139,7 @@ public class BlockBeans extends Block {
                 break;
 
             case 3:
-                this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F);
+                this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.001F);
                 break;
 
             case 4:

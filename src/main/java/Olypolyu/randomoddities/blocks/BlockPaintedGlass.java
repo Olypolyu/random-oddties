@@ -1,23 +1,32 @@
 package Olypolyu.randomoddities.blocks;
 
-import net.minecraft.src.BlockPlanksPainted;
+import net.minecraft.src.BlockGlass;
+import net.minecraft.src.IBlockAccess;
+import net.minecraft.src.Material;
+import net.minecraft.src.World;
+import net.minecraft.src.helper.Colors;
 
-import java.util.Random;
+public class BlockPaintedGlass extends BlockGlass {
 
-public class BlockPaintedGlass extends BlockPlanksPainted {
-    public BlockPaintedGlass(int id) {
-        super(id);
+    public BlockPaintedGlass(int i, Material material, boolean flag) {
+        super(i, material, flag);
     }
 
-    public boolean isOpaqueCube() {
-        return false;
+    public int colorMultiplier(World world, IBlockAccess iblockaccess, int i, int j, int k) {
+        int meta = world.getBlockMetadata(i, j, k);
+        return this.getRenderColor(meta);
     }
 
-    public int quantityDropped(int metadata, Random random) {
-        return 0;
+    public int getRenderColor(int i) {
+        try {
+            return Colors.allPlankColors[i % 16].getARGB();
+        } catch (Exception var3) {
+            return 16711935;
+        }
     }
 
     public int getRenderBlockPass() {
-        return 1;
+        return 0;
     }
+
 }

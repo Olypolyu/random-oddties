@@ -85,6 +85,9 @@ item.RandomOddities.RedPaintBrush.desc=what a brush off...
 item.RandomOddities.BlackPaintBrush.name=Black Paint Brush
 item.RandomOddities.BlackPaintBrush.desc=what a brush off...
 
+tile.RandomOddities.PaintedGlass.white.name=Painted Glass
+tile.RandomOddities.PaintedGlass.white.desc=Who even PAINTS glass???
+
 gui.done=Done
 gui.cancel=Cancel
 gui.toMenu=Back to title screen

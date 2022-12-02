@@ -19,6 +19,8 @@ import turniplabs.halplibe.helper.TextureHelper;
 import turniplabs.halplibe.mixin.helper.CraftingManagerInterface;
 import turniplabs.halplibe.mixin.helper.TileEntityInterface;
 
+import static net.minecraft.src.Block.blocksList;
+
 public class RandomOddities implements ModInitializer {
 
     public static final String MOD_ID = "RandomOddities";
@@ -132,9 +134,9 @@ public class RandomOddities implements ModInitializer {
             0);
 
     public static final Block PaintedGlass = BlockHelper.createBlock(
-            new BlockPaintedGlass(RandomOdditiesIds + 13),
+            new BlockPaintedGlass(RandomOdditiesIds + 13, Material.glass, false),
             name("PaintedGlass"),
-            30,28,
+            1, 3,
             Block.soundGlassFootstep,
             0.3F,
             0.0F,
@@ -182,9 +184,11 @@ public class RandomOddities implements ModInitializer {
         RandomOddities.ItemPumpkinPie.setMaxStackSize(1);
         RandomOddities.PumpkinPie.notInCreativeMenu = true;
 
+        Item.itemsList[PaintedGlass.blockID] = new ItemBlockPainted(PaintedGlass.blockID - blocksList.length, true);
+
         // hehe... it's buggy
         RandomOddities.Platform.notInCreativeMenu = true;
-
+        RandomOddities.PaintedGlass.notInCreativeMenu = true;
 
         // add in entities
         EntityHelper.createEntity(EntityBoar.class, new RenderLiving(new ModelQuadruped(6, 0), 0.5f), 61, "Boar");
@@ -222,7 +226,7 @@ public class RandomOddities implements ModInitializer {
         TextureHelper.addTextureToTerrain(MOD_ID, "FishTrap.png", 30,30);
         TextureHelper.addTextureToTerrain(MOD_ID, "FishTrapFull.png", 30,29);
 
-        TextureHelper.addTextureToTerrain(MOD_ID, "tintedGlass.png", 30,28);
+        //TextureHelper.addTextureToTerrain(MOD_ID, "tintedGlass.png", 30,28);
 
         TextureHelper.addTextureToTerrain(MOD_ID, "vines.png", 30,27);
         TextureHelper.addTextureToTerrain(MOD_ID, "vines1.png", 30,26);
@@ -268,17 +272,14 @@ public class RandomOddities implements ModInitializer {
 
         RecipeHelper.Crafting.createRecipe(FishTrap, 1, new Object[]{" A ", "AMA", " A ", 'A', Block.algae, 'M', Block.mesh }); // Bubble generator
 
-
         // create crafting recipes for all paint brushes, you are sorely mistaken if you think im going to add another 16 lines for this.
         int Color;
         for ( Color = 0; Color <= 15; Color++) {
             RecipeHelper.Crafting.createRecipe(PaintBrushColors[Color], 1, new Object[]{" C", "SD", 'D', new ItemStack(Item.dye, 1, 15 - Color), 'C', Item.cloth, 'S', Item.stick});
         }
 
-        for ( Color = 0; Color <= 15; Color++) {
+        for ( Color = 1; Color <= 15; Color++)
             ((CraftingManagerInterface) RecipeHelper.craftingManager).callAddShapelessRecipe(new ItemStack(PaintedGlass, 1, Color), new Object[]{Block.glass, new ItemStack(Item.dye, 1, 15 - Color)});
-            ((CraftingManagerInterface) RecipeHelper.craftingManager).callAddShapelessRecipe(new ItemStack(PaintedGlass, 1, Color), new Object[]{PaintedGlass, new ItemStack(Item.dye, 1, 15 - Color)});
-        }
 
         ((ReparableRecipeMixin)RecipeHelper.craftingManager).callAddRepairableStackableRecipe(WindLamp,  new ItemStack(Item.featherChicken)); // Wind Bottle
 
