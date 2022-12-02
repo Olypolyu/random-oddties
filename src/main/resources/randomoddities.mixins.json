@@ -7,6 +7,7 @@
         "BoarGenMixin",
         "RandomOdditiesEntityMixin",
         "ReparableRecipeMixin",
+        "ItemDyeMixin",
         "DungeonLootMixin"
 
     ],

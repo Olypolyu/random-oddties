@@ -1,5 +1,6 @@
 package Olypolyu.randomoddities.items;
 
+import Olypolyu.randomoddities.RandomOddities;
 import net.minecraft.src.*;
 
 public class ItemPaintBrush extends Item {
@@ -39,7 +40,7 @@ public class ItemPaintBrush extends Item {
         int blockData = world.getBlockMetadata(x, y, z);
 
         // using raw here so chests don't drop their contents on the floor, might be a bad idea, dunno.
-        world.setBlockRaw(x, y, z, result);
+        world.setBlockRawWithNotify(x, y, z, result);
 
         // all blocks have their color variants spaced on 16 by 16.
         // I just figure out the difference between the current block and a block of "id 0" on the desired color and set to that.
@@ -73,6 +74,10 @@ public class ItemPaintBrush extends Item {
                 paint(block + 1, false, world, i, j, k, itemstack, entityplayer);
                 return true;
 
+            case 190: // Glass
+                paint(RandomOddities.PaintedGlass.blockID, false, world, i, j, k, itemstack, entityplayer);
+                return true;
+
             case 160: // wooden stairs
                 paint(171, true, world, i, j, k, itemstack, entityplayer);
                 return true;
@@ -94,6 +99,7 @@ public class ItemPaintBrush extends Item {
         // already painted blocks.
         switch (block) {
 
+            case 713:
             case 81: // fence
             case 51: // planks
             case 850: // lamps

@@ -16,6 +16,7 @@ import turniplabs.halplibe.helper.BlockHelper;
 import turniplabs.halplibe.helper.EntityHelper;
 import turniplabs.halplibe.helper.RecipeHelper;
 import turniplabs.halplibe.helper.TextureHelper;
+import turniplabs.halplibe.mixin.helper.CraftingManagerInterface;
 import turniplabs.halplibe.mixin.helper.TileEntityInterface;
 
 public class RandomOddities implements ModInitializer {
@@ -126,8 +127,17 @@ public class RandomOddities implements ModInitializer {
             name("CocoBeans"),
             31,21,
             Block.soundGrassFootstep,
-            2.5f,
-            5f,
+            0.3F,
+            0.0F,
+            0);
+
+    public static final Block PaintedGlass = BlockHelper.createBlock(
+            new BlockPaintedGlass(RandomOdditiesIds + 13),
+            name("PaintedGlass"),
+            30,28,
+            Block.soundGlassFootstep,
+            0.3F,
+            0.0F,
             0);
 
 
@@ -212,6 +222,16 @@ public class RandomOddities implements ModInitializer {
         TextureHelper.addTextureToTerrain(MOD_ID, "FishTrap.png", 30,30);
         TextureHelper.addTextureToTerrain(MOD_ID, "FishTrapFull.png", 30,29);
 
+        TextureHelper.addTextureToTerrain(MOD_ID, "tintedGlass.png", 30,28);
+
+        TextureHelper.addTextureToTerrain(MOD_ID, "vines.png", 30,27);
+        TextureHelper.addTextureToTerrain(MOD_ID, "vines1.png", 30,26);
+        TextureHelper.addTextureToTerrain(MOD_ID, "vines2.png", 30,25);
+        TextureHelper.addTextureToTerrain(MOD_ID, "vines3.png", 30,24);
+        TextureHelper.addTextureToTerrain(MOD_ID, "vines4.png", 30,23);
+
+
+
         TextureHelper.addTextureToItems(MOD_ID, "whitePaintBrush.png", 16,0);
         TextureHelper.addTextureToItems(MOD_ID, "orangePaintBrush.png", 16,1);
         TextureHelper.addTextureToItems(MOD_ID, "magentaPaintBrush.png", 16, 2);
@@ -250,10 +270,15 @@ public class RandomOddities implements ModInitializer {
 
 
         // create crafting recipes for all paint brushes, you are sorely mistaken if you think im going to add another 16 lines for this.
-        int craftPainBrushes;
-        for ( craftPainBrushes = 0; craftPainBrushes <= 15; craftPainBrushes++) {
-            RecipeHelper.Crafting.createRecipe(PaintBrushColors[craftPainBrushes], 1, new Object[]{" C", "SD", 'D', new ItemStack(Item.dye, 1, 15 - craftPainBrushes), 'C', Item.cloth, 'S', Item.stick});
-            }
+        int Color;
+        for ( Color = 0; Color <= 15; Color++) {
+            RecipeHelper.Crafting.createRecipe(PaintBrushColors[Color], 1, new Object[]{" C", "SD", 'D', new ItemStack(Item.dye, 1, 15 - Color), 'C', Item.cloth, 'S', Item.stick});
+        }
+
+        for ( Color = 0; Color <= 15; Color++) {
+            ((CraftingManagerInterface) RecipeHelper.craftingManager).callAddShapelessRecipe(new ItemStack(PaintedGlass, 1, Color), new Object[]{Block.glass, new ItemStack(Item.dye, 1, 15 - Color)});
+            ((CraftingManagerInterface) RecipeHelper.craftingManager).callAddShapelessRecipe(new ItemStack(PaintedGlass, 1, Color), new Object[]{PaintedGlass, new ItemStack(Item.dye, 1, 15 - Color)});
+        }
 
         ((ReparableRecipeMixin)RecipeHelper.craftingManager).callAddRepairableStackableRecipe(WindLamp,  new ItemStack(Item.featherChicken)); // Wind Bottle
 

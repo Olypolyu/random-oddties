@@ -16,8 +16,15 @@ public class BlockBeans extends Block {
     public void updateTick(World world, int i, int j, int k, Random random) {
         int side = world.getBlockMetadata(i, j, k) & 0b1111;
         int growStage = world.getBlockMetadata(i, j, k) >> 4;
-        System.out.println(side);
-        System.out.println(growStage);
+
+        if ( random.nextInt(200) == 0 && growStage < 4 )
+            world.setBlockMetadataWithNotify(i, j, k, ( ( growStage + 1 ) << 4 ) | side);
+
+    }
+
+    public int getBlockTextureFromSideAndMetadata(int side, int meta) {
+        int growthStage = meta >> 4;
+        return texCoordToIndex(30,23 + growthStage);
     }
 
     public ArrayList<Block> growsOn = new ArrayList<>();
@@ -31,7 +38,7 @@ public class BlockBeans extends Block {
     }
 
     public int getRenderType() {
-        return 8;
+        return 0;
     }
 
     public boolean renderAsNormalBlock() {
@@ -42,6 +49,9 @@ public class BlockBeans extends Block {
         return false;
     }
 
+    public void dropBlockAsItemWithChance(World world, int x, int y, int z, int meta, float chance) {
+            world.dropItem(x, y, z, new ItemStack(Item.dye, world.rand.nextInt(meta >> 4) + 1, 3));
+    }
 
     public boolean canPlaceBlockAt(World world, int i, int j, int k) {
         return growsOn.contains( Block.getBlock( world.getBlockId(i - 1, j, k) ))
@@ -54,25 +64,25 @@ public class BlockBeans extends Block {
 
         // North
         if ( growsOn.contains( Block.getBlock( world.getBlockId( i, j, k + 1) )) )  {
-            world.setBlockMetadataWithNotify(i, j, k, ( 5 << 4) | 2);
+            world.setBlockMetadataWithNotify(i, j, k,2);
             return;
         }
 
         // South
         if ( growsOn.contains( Block.getBlock( world.getBlockId( i, j,k - 1 ) )) ) {
-            world.setBlockMetadataWithNotify(i, j, k, ( 5 << 4) | 3);
+            world.setBlockMetadataWithNotify(i, j, k,3);
             return;
         }
 
         // West
         if ( growsOn.contains( Block.getBlock( world.getBlockId(i + 1, j, k ) )) ) {
-            world.setBlockMetadataWithNotify(i, j, k, ( 5 << 4) | 4);
+            world.setBlockMetadataWithNotify(i, j, k,4);
             return;
             }
 
         // East
         if ( growsOn.contains( Block.getBlock( world.getBlockId(i - 1, j, k ) )) ) {
-            world.setBlockMetadataWithNotify(i, j, k, ( 5 << 4) | 5);
+            world.setBlockMetadataWithNotify(i, j, k,5);
             return;
             }
 
@@ -86,25 +96,25 @@ public class BlockBeans extends Block {
 
             // North
             case 2:
-                if ( !world.isBlockNormalCube(i, j, k + 1) )
+                if ( !growsOn.contains( Block.getBlock( world.getBlockId(i, j, k + 1) )) )
                     world.setBlockWithNotify(i, j, k, 0);
                 break;
 
             // South
             case 3:
-                if ( !world.isBlockNormalCube( i, j, k - 1 ) )
+                if ( !growsOn.contains( Block.getBlock( world.getBlockId( i, j, k - 1 ) )) )
                     world.setBlockWithNotify(i, j, k, 0);
                 break;
 
             // West
             case 4:
-                if ( !world.isBlockNormalCube( i + 1, j, k ) )
+                if ( !growsOn.contains( Block.getBlock( world.getBlockId( i + 1, j, k ) )) )
                     world.setBlockWithNotify(i, j, k, 0);
                 break;
 
             // East
             case 5:
-                if ( !world.isBlockNormalCube( i - 1, j, k ) )
+                if ( !growsOn.contains( Block.getBlock( world.getBlockId( i - 1, j, k ) )) )
                     world.setBlockWithNotify(i, j, k, 0);
                 break;
 
@@ -115,7 +125,29 @@ public class BlockBeans extends Block {
         return null;
     }
 
-    public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int i, int j, int k) {
+    public void setBlockBoundsBasedOnState(World world, int i, int j, int k) {
+        int side = world.getBlockMetadata(i, j, k) & 0b1111;
+
+        switch (side) {
+            case 2:
+                this.setBlockBounds(0.0F, 0.0F, 0.999F, 1.0F, 1.0F, 1.0F);
+                break;
+
+            case 3:
+                this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F);
+                break;
+
+            case 4:
+                this.setBlockBounds(0.999F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+                break;
+
+            case 5:
+                this.setBlockBounds(0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F);
+                break;
+        }
+    }
+
+        public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int i, int j, int k) {
         int side = world.getBlockMetadata(i, j, k) & 0b1111;
         float f = 0.125F;
 
