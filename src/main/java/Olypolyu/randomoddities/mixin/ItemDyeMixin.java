@@ -19,6 +19,9 @@ public class ItemDyeMixin{
             if ( BlockBeans.growsOn.contains(Block.getBlock( world.getBlockId(i, j, k) ) ) ) {
 
                 switch (l) {
+                    default:
+                        return false;
+
                     case 2:
                         --k;
                         break;
@@ -35,6 +38,7 @@ public class ItemDyeMixin{
                         ++i;
                         break;
                     }
+                --itemstack.stackSize;
                 world.setBlockAndMetadataWithNotify( i, j, k, RandomOddities.CocoBeans.blockID, l );
                 return true;
                 }

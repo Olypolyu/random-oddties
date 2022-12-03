@@ -101,26 +101,34 @@ public class BlockBeans extends Block {
 
             // North
             case 2:
-                if ( !growsOn.contains( Block.getBlock( world.getBlockId(i, j, k + 1) )) )
+                if ( !growsOn.contains( Block.getBlock( world.getBlockId(i, j, k + 1) )) ) {
                     world.setBlockWithNotify(i, j, k, 0);
+                    this.dropBlockAsItem(world, i, j, k, 0);
+                }
                 break;
 
             // South
             case 3:
-                if ( !growsOn.contains( Block.getBlock( world.getBlockId( i, j, k - 1 ) )) )
+                if ( !growsOn.contains( Block.getBlock( world.getBlockId( i, j, k - 1 ) )) ) {
                     world.setBlockWithNotify(i, j, k, 0);
+                    this.dropBlockAsItem(world, i, j, k, 0);
+                }
                 break;
 
             // West
             case 4:
-                if ( !growsOn.contains( Block.getBlock( world.getBlockId( i + 1, j, k ) )) )
+                if ( !growsOn.contains( Block.getBlock( world.getBlockId( i + 1, j, k ) )) ) {
                     world.setBlockWithNotify(i, j, k, 0);
+                    this.dropBlockAsItem(world, i, j, k, 0);
+                    }
                 break;
 
             // East
             case 5:
-                if ( !growsOn.contains( Block.getBlock( world.getBlockId( i - 1, j, k ) )) )
+                if ( !growsOn.contains( Block.getBlock( world.getBlockId( i - 1, j, k ) )) ) {
                     world.setBlockWithNotify(i, j, k, 0);
+                    this.dropBlockAsItem(world, i, j, k, 0);
+                    }
                 break;
 
         }
