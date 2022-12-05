@@ -26,11 +26,15 @@ public class BlockEntityLauncher extends BlockContainerRotatable {
         return false;
     }
 
+    public boolean renderAsNormalBlock() {
+        return false;
+    }
+
     public boolean canPlaceOnSurfaceOnCondition(World world, int x, int y, int z) {
         return false;
     }
 
-        protected TileEntity getBlockEntity() {
+    protected TileEntity getBlockEntity() {
         TileEntityLauncher launcher = new TileEntityLauncher();
         launcher.setLauncherParameters(this.launchX, this.launchY, this.launchZ);
         return launcher;

@@ -48,8 +48,8 @@ public class BlockFishTrap extends Block {
         if (!isInWater(world, i, j, k)) {
             world.setBlockWithNotify(i, j, k, 0);
             world.dropItem(i, j, k, new ItemStack(RandomOddities.FishTrap));
+            }
         }
-    }
 
     public void onNeighborBlockChange(World world, int i, int j, int k, int l) {
         checkForWater(world, i, j, k);

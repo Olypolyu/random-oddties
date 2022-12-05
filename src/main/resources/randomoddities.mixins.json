@@ -8,6 +8,7 @@
         "RandomOdditiesEntityMixin",
         "ReparableRecipeMixin",
         "ItemDyeMixin",
+        "ItemShearsMixin",
         "DungeonLootMixin"
 
     ],

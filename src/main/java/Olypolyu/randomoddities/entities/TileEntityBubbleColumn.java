@@ -1,5 +1,6 @@
 package Olypolyu.randomoddities.entities;
 
+import Olypolyu.randomoddities.mixin.RandomOdditiesEntityMixin;
 import net.minecraft.src.*;
 
 import java.util.List;
@@ -32,12 +33,26 @@ public class TileEntityBubbleColumn extends TileEntity {
             for (int j = 0; j < list.size(); ++j) {
                 Entity entity = list.get(j);
 
+                //things related to players
+                if ( entity instanceof EntityPlayer ) {
+
+                    // slowly regenerate air points
+                    if ( entity.air < ((RandomOdditiesEntityMixin) entity).getMaxAir() - 2 )
+                        entity.air = entity.air + 2;
+
+                    // don't lift the player if they are sneaking
+                    if (entity.isSneaking())
+                        break;
+
+                    }
+
                 if (entity.motionY < 0.8) {
                     entity.motionY = entity.motionY + 0.25;
 
                     float Strength = (float) ((this.columnLength - entity.getDistance(this.xCoord, this.yCoord, this.zCoord) + 1) * 0.10);
                     if (Strength > 1) entity.motionY = entity.motionY + Strength;
                     }
+
                 }
 
             int i;

@@ -77,7 +77,7 @@ public class BlockResizableChest extends BlockContainer {
         else {
 
             // block's facing :
-            switch (meta){
+            switch (meta) {
 
                 //north
                 case 0:

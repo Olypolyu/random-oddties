@@ -1,24 +1,24 @@
 package Olypolyu.randomoddities;
 
-import Olypolyu.randomoddities.blocks.BlockBubbleGenerator;
-import Olypolyu.randomoddities.blocks.BlockCocoaBeans;
-import Olypolyu.randomoddities.blocks.BlockEntityLauncher;
-import Olypolyu.randomoddities.blocks.BlockFishTrap;
-import Olypolyu.randomoddities.blocks.BlockPaintedGlass;
-import Olypolyu.randomoddities.blocks.BlockPlatform;
-import Olypolyu.randomoddities.blocks.BlockPumpkinPie;
-import Olypolyu.randomoddities.blocks.BlockResizableChest;
-import Olypolyu.randomoddities.entities.EntityBoar;
-import Olypolyu.randomoddities.entities.TileEntityBubbleColumn;
-import Olypolyu.randomoddities.entities.TileEntityLauncher;
-import Olypolyu.randomoddities.entities.TileEntityResizableChest;
-import Olypolyu.randomoddities.items.ItemPaintBrush;
-import Olypolyu.randomoddities.items.ItemWindLamp;
+import Olypolyu.randomoddities.blocks.*;
+import Olypolyu.randomoddities.entities.*;
+import Olypolyu.randomoddities.items.*;
 import Olypolyu.randomoddities.mixin.ReparableRecipeMixin;
+
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.src.*;
+
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
+import net.minecraft.src.ItemBlockPainted;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.ItemSugarcane;
+import net.minecraft.src.Material;
+import net.minecraft.src.ModelQuadruped;
+import net.minecraft.src.RenderLiving;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import turniplabs.halplibe.helper.BlockHelper;
 import turniplabs.halplibe.helper.EntityHelper;
 import turniplabs.halplibe.helper.RecipeHelper;
@@ -116,7 +116,7 @@ public class RandomOddities implements ModInitializer {
     public static final Block Platform = BlockHelper.createBlock(
             new BlockPlatform(RandomOdditiesIds + 8, Material.iron),
             name("Platform"),
-            31,12,
+            30,22, 30, 21,
             Block.soundMetalFootstep,
             2.5f,
             5f,
@@ -233,13 +233,14 @@ public class RandomOddities implements ModInitializer {
         TextureHelper.addTextureToTerrain(MOD_ID, "FishTrap.png", 30,30);
         TextureHelper.addTextureToTerrain(MOD_ID, "FishTrapFull.png", 30,29);
 
-        //TextureHelper.addTextureToTerrain(MOD_ID, "tintedGlass.png", 30,28);
-
         TextureHelper.addTextureToTerrain(MOD_ID, "vines.png", 30,27);
         TextureHelper.addTextureToTerrain(MOD_ID, "vines1.png", 30,26);
         TextureHelper.addTextureToTerrain(MOD_ID, "vines2.png", 30,25);
         TextureHelper.addTextureToTerrain(MOD_ID, "vines3.png", 30,24);
         TextureHelper.addTextureToTerrain(MOD_ID, "vines4.png", 30,23);
+
+        TextureHelper.addTextureToTerrain(MOD_ID, "PlatformTop.png", 30,22);
+        TextureHelper.addTextureToTerrain(MOD_ID, "PlatformSides.png", 30,21);
 
 
 
