@@ -1,6 +1,13 @@
 package Olypolyu.randomoddities;
 
-import Olypolyu.randomoddities.blocks.*;
+import Olypolyu.randomoddities.blocks.BlockBubbleGenerator;
+import Olypolyu.randomoddities.blocks.BlockCocoaBeans;
+import Olypolyu.randomoddities.blocks.BlockEntityLauncher;
+import Olypolyu.randomoddities.blocks.BlockFishTrap;
+import Olypolyu.randomoddities.blocks.BlockPaintedGlass;
+import Olypolyu.randomoddities.blocks.BlockPlatform;
+import Olypolyu.randomoddities.blocks.BlockPumpkinPie;
+import Olypolyu.randomoddities.blocks.BlockResizableChest;
 import Olypolyu.randomoddities.entities.EntityBoar;
 import Olypolyu.randomoddities.entities.TileEntityBubbleColumn;
 import Olypolyu.randomoddities.entities.TileEntityLauncher;
@@ -125,7 +132,7 @@ public class RandomOddities implements ModInitializer {
             0);
 
     public static final Block CocoBeans = BlockHelper.createBlock(
-            new BlockBeans(RandomOdditiesIds + 12, Material.plants),
+            new BlockCocoaBeans(RandomOdditiesIds + 12, Material.plants),
             name("CocoBeans"),
             31,21,
             Block.soundGrassFootstep,
@@ -278,6 +285,7 @@ public class RandomOddities implements ModInitializer {
             RecipeHelper.Crafting.createRecipe(PaintBrushColors[Color], 1, new Object[]{" C", "SD", 'D', new ItemStack(Item.dye, 1, 15 - Color), 'C', Item.cloth, 'S', Item.stick});
         }
 
+        // creates crafting recipes for all painted glass.
         for ( Color = 1; Color <= 15; Color++)
             ((CraftingManagerInterface) RecipeHelper.craftingManager).callAddShapelessRecipe(new ItemStack(PaintedGlass, 1, Color), new Object[]{Block.glass, new ItemStack(Item.dye, 1, 15 - Color)});
 

@@ -6,22 +6,22 @@ import net.minecraft.src.helper.Direction;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class BlockBeans extends Block {
+public class BlockCocoaBeans extends Block {
+    public static int maxGrowth = 4;
 
-    public BlockBeans(int i, Material material) {
+    public BlockCocoaBeans(int i, Material material) {
         super(i, material);
         this.setTickOnLoad(true);
         this.notInCreativeMenu = true;
-    }
+        }
 
     public void updateTick(World world, int i, int j, int k, Random random) {
         int side = world.getBlockMetadata(i, j, k) & 0b1111;
-        int growStage = world.getBlockMetadata(i, j, k) >> 4;
+        int growthStage = world.getBlockMetadata(i, j, k) >> 4;
 
-        if ( random.nextInt(150) == 0 && growStage < 4 )
-            world.setBlockMetadataWithNotify(i, j, k, ( ( growStage + 1 ) << 4 ) | side);
-
-    }
+        if ( random.nextInt(150) == 0 && growthStage < maxGrowth )
+            world.setBlockMetadataWithNotify(i, j, k, ( ( growthStage + 1 ) << 4 ) | side);
+        }
 
     public int getBlockTextureFromSideAndMetadata(int side, int meta) {
         int growthStage = meta >> 4;
@@ -37,33 +37,26 @@ public class BlockBeans extends Block {
         growsOn.add(Block.logOak);
         growsOn.add(Block.logEucalyptus);
         growsOn.add(Block.logPine); */
-    }
+        }
 
     public int getRenderType() {
         return 0;
-    }
+        }
 
     public boolean renderAsNormalBlock() {
         return false;
-    }
+        }
 
     public boolean isOpaqueCube () {
         return false;
-    }
+        }
 
     public void dropBlockAsItemWithChance(World world, int x, int y, int z, int meta, float chance) {
         if ( (meta >> 4) > 1 )
             world.dropItem(x, y, z, new ItemStack(Item.dye, world.rand.nextInt(meta >> 4) + 1, 3));
         else
             world.dropItem(x, y, z, new ItemStack(Item.dye,1, 3));
-    }
-
-    public boolean canPlaceBlockAt(World world, int i, int j, int k) {
-        return growsOn.contains( Block.getBlock( world.getBlockId(i - 1, j, k) ))
-            || growsOn.contains( Block.getBlock( world.getBlockId(i + 1, j, k) ))
-            || growsOn.contains( Block.getBlock( world.getBlockId(i, j, k - 1) ))
-            || growsOn.contains( Block.getBlock( world.getBlockId(i, j, k + 1) ));
-    }
+        }
 
     public void onBlockPlaced(World world, int i, int j, int k, Direction side, EntityLiving player, double sideHeight) {
 
@@ -93,7 +86,7 @@ public class BlockBeans extends Block {
 
         this.dropBlockAsItem(world, i, j, k, 0);
         world.setBlockWithNotify(i, j, k, 0);
-    }
+        }
 
     public void onNeighborBlockChange(World world, int i, int j, int k, int l) {
         int side = world.getBlockMetadata(i, j, k) & 0b1111;
@@ -131,12 +124,12 @@ public class BlockBeans extends Block {
                     }
                 break;
 
+            }
         }
-    }
 
     public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int i, int j, int k) {
         return null;
-    }
+        }
 
     public void setBlockBoundsBasedOnState(World world, int i, int j, int k) {
         int side = world.getBlockMetadata(i, j, k) & 0b1111;
@@ -157,10 +150,10 @@ public class BlockBeans extends Block {
             case 5:
                 this.setBlockBounds(0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F);
                 break;
+            }
         }
-    }
 
-        public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int i, int j, int k) {
+    public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int i, int j, int k) {
         int side = world.getBlockMetadata(i, j, k) & 0b1111;
         float f = 0.125F;
 
@@ -180,9 +173,9 @@ public class BlockBeans extends Block {
             case 5:
                 this.setBlockBounds(0.0F, 0.0F, 0.0F, f, 1.0F, 1.0F);
                 break;
-        }
+            }
 
         return super.getSelectedBoundingBoxFromPool(world, i, j, k);
-    }
+        }
 
 }

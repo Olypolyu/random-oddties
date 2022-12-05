@@ -72,50 +72,41 @@ public class BlockResizableChest extends BlockContainer {
 
     @Override
     public int getBlockTextureFromSideAndMetadata(int side, int meta) {
-        if (side == 0 || side == 1) {
+        if (side == 0 || side == 1)
             return texCoordToIndex(this.topX, this.topY);
-        } else {
+        else {
 
-            // blocks facing :
+            // block's facing :
+            switch (meta){
 
-            //north
-            if (meta == 0) {
-                if (side == 3) {
-                    return texCoordToIndex(this.frontX, this.frontY);
-                } else {
-                    return texCoordToIndex(this.sideX, this.sideY);
+                //north
+                case 0:
+                    if (side == 3)
+                         return texCoordToIndex(this.frontX, this.frontY);
+                    else return texCoordToIndex(this.sideX, this.sideY);
+
+                //east
+                case 1:
+                    if (side == 4)
+                         return texCoordToIndex(this.frontX, this.frontY);
+                    else return texCoordToIndex(this.sideX, this.sideY);
+
+                //south
+                case 2:
+                    if (side == 2)
+                         return texCoordToIndex(this.frontX, this.frontY);
+                    else return texCoordToIndex(this.sideX, this.sideY);
+
+                //west
+                case 3:
+                    if (side == 5)
+                         return texCoordToIndex(this.frontX, this.frontY);
+                    else return texCoordToIndex(this.sideX, this.sideY);
                 }
             }
 
-            //east
-            if (meta == 1) {
-                if (side == 4) {
-                    return texCoordToIndex(this.frontX, this.frontY);
-                } else {
-                    return texCoordToIndex(this.sideX, this.sideY);
-                }
-            }
-
-            //south
-            if (meta == 2) {
-                if (side == 2) {
-                    return texCoordToIndex(this.frontX, this.frontY);
-                } else {
-                    return texCoordToIndex(this.sideX, this.sideY);
-                }
-            }
-
-            //west
-            if (meta == 3) {
-                if (side == 5) {
-                    return texCoordToIndex(this.frontX, this.frontY);
-                } else {
-                    return texCoordToIndex(this.sideX, this.sideY);
-                }
-            }
-
-            }
-        return texCoordToIndex(1, 1);
+        // this line will never actually be reached. it is in here to avoid errors.
+        return 80085;
     }
 
     // Sides           Metadata

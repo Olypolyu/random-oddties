@@ -1,8 +1,10 @@
 package Olypolyu.randomoddities.mixin;
 
 import Olypolyu.randomoddities.RandomOddities;
-import Olypolyu.randomoddities.blocks.BlockBeans;
+import Olypolyu.randomoddities.blocks.BlockCocoaBeans;
+
 import net.minecraft.src.*;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -16,7 +18,7 @@ public class ItemDyeMixin{
 
         if (itemstack.getMetadata() == 3) {
 
-            if ( BlockBeans.growsOn.contains(Block.getBlock( world.getBlockId(i, j, k) ) ) ) {
+            if ( BlockCocoaBeans.growsOn.contains(Block.getBlock( world.getBlockId(i, j, k) ) ) ) {
 
                 switch (l) {
                     default:
@@ -38,11 +40,29 @@ public class ItemDyeMixin{
                         ++i;
                         break;
                     }
-                --itemstack.stackSize;
-                world.setBlockAndMetadataWithNotify( i, j, k, RandomOddities.CocoBeans.blockID, l );
-                return true;
+
+                if ( world.canBlockBePlacedAt(RandomOddities.CocoBeans.blockID, i, j, k, false, l) ) {
+                    itemstack.consumeItem(entityplayer);
+                    world.setBlockAndMetadataWithNotify(i, j, k, RandomOddities.CocoBeans.blockID, l);
+                    return true;
+                    }
                 }
             }
+
+        if (itemstack.getMetadata() == 15 && Block.getBlock( world.getBlockId(i, j, k) ) == RandomOddities.CocoBeans) {
+            int metadata = world.getBlockMetadata(i, j, k);
+            int side = metadata & 0b1111;
+            int growthStage = metadata >> 4;
+
+            if ( growthStage >= BlockCocoaBeans.maxGrowth) return false;
+
+            world.setBlockMetadataWithNotify(i, j, k,( (growthStage + 1) << 4 )  + side  );
+            itemstack.consumeItem(entityplayer);
+            return true;
+        }
+
+
+        // I SURE HOPE THIS DOESNT RUINS ANYONE ELSE'S DAAAAAAAAAY
         return false;
         }
 

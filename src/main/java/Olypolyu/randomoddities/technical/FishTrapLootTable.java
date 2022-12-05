@@ -16,8 +16,8 @@ public class FishTrapLootTable {
             put(3, new LootStack(Block.tnt, 20, 3));
             put(4, new LootStack(RandomOddities.BrownPaintBrush, 20, 1,1, 24,12));
             put(5, new LootStack(Item.string, 10, 3));
-            put(6, new LootStack(Item.dye, 5, 2, 1, 3, 3));
-            put(7, new LootStack(Block.planksOakPainted, 5, 16, 1, 15, 0));
+            put(6, new LootStack(Item.dye, 10, 2, 1, 3, 3));
+            put(7, new LootStack(Block.planksOakPainted, 5, 16, 1, 15));
         }};
     }
 

@@ -62,6 +62,14 @@ public final class LootStack {
         this(item, rarity, maxQuantity, minQuantity, 0, 0);
     }
 
+    public LootStack(Item item, int rarity, int maxQuantity, int minQuantity, int maxMetadata){
+        this(item, rarity, maxQuantity, minQuantity, maxMetadata, 0);
+    }
+
+    public LootStack(Block block, int rarity, int maxQuantity, int minQuantity, int maxMetadata){
+        this(block, rarity, maxQuantity, minQuantity, maxMetadata, 0);
+    }
+
     private final Random random = new Random();
     public ItemStack generateLoot() {
         int quantity;
