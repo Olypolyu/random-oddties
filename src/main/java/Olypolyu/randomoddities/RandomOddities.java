@@ -1,24 +1,17 @@
 package Olypolyu.randomoddities;
 
 import Olypolyu.randomoddities.blocks.*;
-import Olypolyu.randomoddities.entities.*;
-import Olypolyu.randomoddities.items.*;
+import Olypolyu.randomoddities.entities.EntityBoar;
+import Olypolyu.randomoddities.entities.TileEntityBubbleColumn;
+import Olypolyu.randomoddities.entities.TileEntityLauncher;
+import Olypolyu.randomoddities.entities.TileEntityResizableChest;
+import Olypolyu.randomoddities.items.ItemPaintBrush;
+import Olypolyu.randomoddities.items.ItemWindLamp;
 import Olypolyu.randomoddities.mixin.ReparableRecipeMixin;
-
 import net.fabricmc.api.ModInitializer;
-
-import net.minecraft.src.Block;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemBlockPainted;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.ItemSugarcane;
-import net.minecraft.src.Material;
-import net.minecraft.src.ModelQuadruped;
-import net.minecraft.src.RenderLiving;
-
+import net.minecraft.src.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import turniplabs.halplibe.helper.BlockHelper;
 import turniplabs.halplibe.helper.EntityHelper;
 import turniplabs.halplibe.helper.RecipeHelper;
@@ -26,9 +19,15 @@ import turniplabs.halplibe.helper.TextureHelper;
 import turniplabs.halplibe.mixin.helper.CraftingManagerInterface;
 import turniplabs.halplibe.mixin.helper.TileEntityInterface;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.Random;
+
 import static net.minecraft.src.Block.blocksList;
 
 public class RandomOddities implements ModInitializer {
+
+    private final Random random = new Random();
 
     public static final String MOD_ID = "RandomOddities";
 
@@ -159,7 +158,7 @@ public class RandomOddities implements ModInitializer {
             0f);
 
     public static final Block JumpRail = BlockHelper.createBlock(
-            new BlockEntityLauncherRail(RandomOdditiesIds + 15, true),
+            new BlockMinecartUnloaderRail(RandomOdditiesIds + 15, true),
             name("JumpRail"),
             30,20,
             Block.soundStoneFootstep,
@@ -312,6 +311,15 @@ public class RandomOddities implements ModInitializer {
             ((CraftingManagerInterface) RecipeHelper.craftingManager).callAddShapelessRecipe(new ItemStack(PaintedGlass, 1, Color), new Object[]{Block.glass, new ItemStack(Item.dye, 1, 15 - Color)});
 
         ((ReparableRecipeMixin)RecipeHelper.craftingManager).callAddRepairableStackableRecipe(WindLamp,  new ItemStack(Item.featherChicken)); // Wind Bottle
+
+
+        // April fools thing
+        if ( LocalDate.now().getMonth() == Month.APRIL && LocalDate.now().getDayOfMonth() == 1) {
+
+            // windows joke, this joke is certainly funnier to me than it is to you.
+            if (System.getProperty("os.name").contains("Windows") && random.nextInt(11) == 0)
+                throw new RuntimeException("Unbased variable reference. Please check your OS and try again.");
+        }
 
     }
 

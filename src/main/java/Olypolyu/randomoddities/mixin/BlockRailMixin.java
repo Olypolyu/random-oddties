@@ -22,7 +22,6 @@ public class BlockRailMixin {
 
     @Inject(method = "isRailBlock", at = @At("TAIL"))
     private static boolean isRailBlock(int i, CallbackInfoReturnable<Boolean> info) {
-
         if ( i == RandomOddities.JumpRail.blockID) return true;
 
         return i == Block.rail.blockID || i == Block.railPowered.blockID || i == Block.railDetector.blockID;

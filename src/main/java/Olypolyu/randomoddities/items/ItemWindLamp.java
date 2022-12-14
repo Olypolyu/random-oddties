@@ -15,8 +15,7 @@ public class ItemWindLamp extends Item {
         }
 
     public int getIconFromDamage(int i) {
-        if ( i == this.getMaxDamage()) return Item.iconCoordToIndex(17, 0);
-        else return Item.iconCoordToIndex(17, 1);
+        return (i == this.getMaxDamage()) ? Item.iconCoordToIndex(17, 0) : Item.iconCoordToIndex(17, 1);
     }
 
         public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer) {

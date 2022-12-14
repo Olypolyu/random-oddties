@@ -10,7 +10,7 @@ public class TileEntityBubbleColumn extends TileEntity {
     private final Random random = new Random();
     private int columnLength;
 
-    private void getColumnLength() {
+    private void calculateColumnLength() {
         this.columnLength = 0;
         boolean reachedTop = false;
 
@@ -24,14 +24,14 @@ public class TileEntityBubbleColumn extends TileEntity {
         }
 
     public void updateEntity() {
-        getColumnLength();
+        calculateColumnLength();
 
         if (this.columnLength > 1) {
             // get entities within bounding box, then yeet.
-            List<Entity> list = this.worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(this.xCoord, this.yCoord, this.zCoord, this.xCoord + 1, this.yCoord + 0.6 + this.columnLength, this.zCoord + 1));
+            List<Entity> entitiesInBoundingBox = this.worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(this.xCoord, this.yCoord, this.zCoord, this.xCoord + 1, this.yCoord + 0.6 + this.columnLength, this.zCoord + 1));
 
-            for (int j = 0; j < list.size(); ++j) {
-                Entity entity = list.get(j);
+            for (int j = 0; j < entitiesInBoundingBox.size(); ++j) {
+                Entity entity = entitiesInBoundingBox.get(j);
 
                 // things related to players
                 if ( entity instanceof EntityPlayer ) {
