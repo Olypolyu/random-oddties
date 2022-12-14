@@ -149,7 +149,23 @@ public class RandomOddities implements ModInitializer {
             0.0F,
             0);
 
+    public static final Block FireStriker = BlockHelper.createBlock(
+            new BlockFireStriker(RandomOdditiesIds + 14, Material.rock),
+            name("FireStriker"),
+            31,14,
+            Block.soundStoneFootstep,
+            3f,
+            2f,
+            0f);
 
+    public static final Block JumpRail = BlockHelper.createBlock(
+            new BlockEntityLauncherRail(RandomOdditiesIds + 15, true),
+            name("JumpRail"),
+            30,20,
+            Block.soundStoneFootstep,
+            3f,
+            2f,
+            0f);
 
     // items
     public static final Item ItemPumpkinPie = new ItemSugarcane(RandomOdditiesIds + 7,PumpkinPie).setIconCoord(13, 3).setItemName(name("PumpkinPie"));
@@ -233,6 +249,8 @@ public class RandomOddities implements ModInitializer {
         TextureHelper.addTextureToTerrain(MOD_ID, "FishTrap.png", 30,30);
         TextureHelper.addTextureToTerrain(MOD_ID, "FishTrapFull.png", 30,29);
 
+        TextureHelper.addTextureToTerrain(MOD_ID, "fireman.png", 30,28);
+
         TextureHelper.addTextureToTerrain(MOD_ID, "vines.png", 30,27);
         TextureHelper.addTextureToTerrain(MOD_ID, "vines1.png", 30,26);
         TextureHelper.addTextureToTerrain(MOD_ID, "vines2.png", 30,25);
@@ -242,7 +260,10 @@ public class RandomOddities implements ModInitializer {
         TextureHelper.addTextureToTerrain(MOD_ID, "PlatformTop.png", 30,22);
         TextureHelper.addTextureToTerrain(MOD_ID, "PlatformSides.png", 30,21);
 
+        TextureHelper.addTextureToTerrain(MOD_ID, "minecartUnloader.png", 30,20);
 
+
+        // Item textures
 
         TextureHelper.addTextureToItems(MOD_ID, "whitePaintBrush.png", 16,0);
         TextureHelper.addTextureToItems(MOD_ID, "orangePaintBrush.png", 16,1);

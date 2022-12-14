@@ -9,6 +9,7 @@
         "ReparableRecipeMixin",
         "ItemDyeMixin",
         "ItemShearsMixin",
+        "BlockRailMixin",
         "DungeonLootMixin"
 
     ],

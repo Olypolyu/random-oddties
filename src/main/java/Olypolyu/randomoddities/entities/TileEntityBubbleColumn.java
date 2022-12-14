@@ -28,12 +28,12 @@ public class TileEntityBubbleColumn extends TileEntity {
 
         if (this.columnLength > 1) {
             // get entities within bounding box, then yeet.
-            List<Entity> list = this.worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(this.xCoord + 0.25, this.yCoord, this.zCoord + 0.25, this.xCoord + 0.75, this.yCoord + 0.6 + this.columnLength, this.zCoord + 0.75));
+            List<Entity> list = this.worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(this.xCoord, this.yCoord, this.zCoord, this.xCoord + 1, this.yCoord + 0.6 + this.columnLength, this.zCoord + 1));
 
             for (int j = 0; j < list.size(); ++j) {
                 Entity entity = list.get(j);
 
-                //things related to players
+                // things related to players
                 if ( entity instanceof EntityPlayer ) {
 
                     // slowly regenerate air points
@@ -46,6 +46,7 @@ public class TileEntityBubbleColumn extends TileEntity {
 
                     }
 
+                // yeet!
                 if (entity.motionY < 0.8) {
                     entity.motionY = entity.motionY + 0.25;
 
