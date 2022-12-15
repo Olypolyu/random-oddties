@@ -157,10 +157,19 @@ public class RandomOddities implements ModInitializer {
             2f,
             0f);
 
-    public static final Block JumpRail = BlockHelper.createBlock(
+    public static final Block UnLoaderRail = BlockHelper.createBlock(
             new BlockMinecartUnloaderRail(RandomOdditiesIds + 15, true),
-            name("JumpRail"),
+            name("UnLoaderRail"),
             30,20,
+            Block.soundStoneFootstep,
+            3f,
+            2f,
+            0f);
+
+    public static final Block LoaderRail = BlockHelper.createBlock(
+            new BlockMinecartLoaderRail(RandomOdditiesIds + 16, true),
+            name("LoaderRail"),
+            30,19,
             Block.soundStoneFootstep,
             3f,
             2f,
@@ -260,6 +269,7 @@ public class RandomOddities implements ModInitializer {
         TextureHelper.addTextureToTerrain(MOD_ID, "PlatformSides.png", 30,21);
 
         TextureHelper.addTextureToTerrain(MOD_ID, "minecartUnloader.png", 30,20);
+        TextureHelper.addTextureToTerrain(MOD_ID, "minecartLoader.png", 30,19);
 
 
         // Item textures

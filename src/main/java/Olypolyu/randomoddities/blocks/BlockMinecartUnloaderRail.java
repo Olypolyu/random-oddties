@@ -4,6 +4,11 @@ import net.minecraft.src.*;
 
 public class BlockMinecartUnloaderRail extends BlockRail {
 
+    protected final int maxCoolDown = 25;
+    protected final int extractionRate = 1;
+
+    private int coolDown = 0;
+
     public BlockMinecartUnloaderRail(int i, boolean flag) {
         super(i, flag);
     }
@@ -12,7 +17,6 @@ public class BlockMinecartUnloaderRail extends BlockRail {
         return this.atlasIndices[i];
     }
 
-    private int coolDown = 0;
 
     public boolean isPoweringTo(IBlockAccess iblockaccess, int i, int j, int k, int l) {
         return (iblockaccess.getBlockMetadata(i, j, k) & 8) != 0;
@@ -46,45 +50,26 @@ public class BlockMinecartUnloaderRail extends BlockRail {
                 }
 
                 if (itemstack != null) {
-                    // decrease stack by 1 then drop item.
-                    ((EntityMinecart) entity).decrStackSize(invSlot, 1);
+                    // decrease stack by the extraction rate then drop the item.
+                    ((EntityMinecart) entity).decrStackSize(invSlot, extractionRate);
 
-                    // put stuff inside chest
-                    int meta = world.getBlockMetadata(i, j, k);
+                    TileEntityChest chest = findChest(world, i, j, k);
 
-                    int xOffset = 0;
-                    int zOffset = 0;
+                    if (chest != null) {
+                        boolean flag = putInChest(chest, itemstack);
 
-                    if (meta == 1)
-                        zOffset = 1;
-                    else xOffset = 1;
-
-
-                    // look if there's a chest adjacent to the rail block
-                    TileEntityChest chest;
-                    boolean flag = false;
-
-                    int adjacentId = world.getBlockId(i + xOffset, j, k + zOffset);
-
-                    if (Block.blocksList[adjacentId] instanceof BlockChest) {
-                        chest = (TileEntityChest) world.getBlockTileEntity(i + xOffset, j, k + zOffset);
-                        flag = putInChest(chest, itemstack);
-                    } else {
-                        adjacentId = world.getBlockId(i - xOffset, j, k - zOffset);
-
-                        if (Block.blocksList[adjacentId] instanceof BlockChest) {
-                            chest = (TileEntityChest) world.getBlockTileEntity(i - xOffset, j, k - zOffset);
-                            flag = putInChest(chest, itemstack);
+                        // drop items if it cannot put item into chest
+                        if (!flag) {
+                            EntityItem entityitem = new EntityItem(world, i + 0.5, j - 1, k + 0.5, new ItemStack(itemstack.itemID, 1, itemstack.getMetadata()));
+                            world.entityJoinedWorld(entityitem);
                         }
-                    }
 
-                    // drop items if cannot put item into chest
-                    if (!flag) {
+                    } else {
                         EntityItem entityitem = new EntityItem(world, i + 0.5, j - 1, k + 0.5, new ItemStack(itemstack.itemID, 1, itemstack.getMetadata()));
                         world.entityJoinedWorld(entityitem);
                         }
-                    coolDown = 25;
 
+                    coolDown = maxCoolDown;
                 }
             } else
                 coolDown--;
@@ -93,19 +78,45 @@ public class BlockMinecartUnloaderRail extends BlockRail {
 
     }
 
-    private boolean putInChest( TileEntityChest chest, ItemStack itemstack) {
+    public TileEntityChest findChest(World world, int i, int j, int k) {
+        int xOffset = 0;
+        int zOffset = 0;
+
+        int meta = world.getBlockMetadata(i, j, k);
+        if (meta == 1)
+            zOffset = 1;
+        else xOffset = 1;
+
+        // look if there's a chest adjacent to the rail block
+        TileEntityChest chest = null;
+        int adjacentId = world.getBlockId(i + xOffset, j, k + zOffset);
+
+        if (Block.blocksList[adjacentId] instanceof BlockChest) {
+            chest = (TileEntityChest) world.getBlockTileEntity(i + xOffset, j, k + zOffset);
+
+        } else {
+            adjacentId = world.getBlockId(i - xOffset, j, k - zOffset);
+
+            if (Block.blocksList[adjacentId] instanceof BlockChest) {
+                chest = (TileEntityChest) world.getBlockTileEntity(i - xOffset, j, k - zOffset);
+            }
+        }
+        return chest;
+    }
+
+    public boolean putInChest( TileEntityChest chest, ItemStack itemstack) {
         int chestInvSlot;
 
         // looks up the chest's inventory for a place to place the item.
         for (chestInvSlot = 0; chestInvSlot < chest.getSizeInventory(); chestInvSlot++) {
 
             if (chest.getStackInSlot(chestInvSlot) == null) {
-                chest.setInventorySlotContents(chestInvSlot, new ItemStack(itemstack.getItem(), 1, itemstack.getMetadata()));
+                chest.setInventorySlotContents(chestInvSlot, new ItemStack(itemstack.getItem(), extractionRate, itemstack.getMetadata()));
                 return true;
             }
 
             if (chest.getStackInSlot(chestInvSlot).getItem() == itemstack.getItem() && chest.getStackInSlot(chestInvSlot).getMetadata() == itemstack.getMetadata() && chest.getStackInSlot(chestInvSlot).stackSize != chest.getStackInSlot(chestInvSlot).getMaxStackSize()) {
-                chest.setInventorySlotContents(chestInvSlot, new ItemStack(itemstack.getItem(), chest.getStackInSlot(chestInvSlot).stackSize + 1, itemstack.getMetadata()));
+                chest.setInventorySlotContents(chestInvSlot, new ItemStack(itemstack.getItem(), chest.getStackInSlot(chestInvSlot).stackSize + extractionRate, itemstack.getMetadata()));
                 return true;
             }
 

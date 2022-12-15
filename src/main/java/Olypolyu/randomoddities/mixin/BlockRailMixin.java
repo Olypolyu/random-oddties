@@ -16,13 +16,17 @@ public class BlockRailMixin {
     private static boolean isRailBlockAt(World world, int i, int j, int k, CallbackInfoReturnable<Boolean> info) {
         int l = world.getBlockId(i, j, k);
 
-        if ( l == RandomOddities.JumpRail.blockID ) { return true; }
+        if ( l == RandomOddities.UnLoaderRail.blockID ) { return true; }
+        if ( l == RandomOddities.LoaderRail.blockID ) { return true; }
+
         return l == Block.rail.blockID || l == Block.railPowered.blockID || l == Block.railDetector.blockID;
     }
 
     @Inject(method = "isRailBlock", at = @At("TAIL"))
     private static boolean isRailBlock(int i, CallbackInfoReturnable<Boolean> info) {
-        if ( i == RandomOddities.JumpRail.blockID) return true;
+
+        if ( i == RandomOddities.UnLoaderRail.blockID ) { return true; }
+        if ( i == RandomOddities.LoaderRail.blockID ) { return true; }
 
         return i == Block.rail.blockID || i == Block.railPowered.blockID || i == Block.railDetector.blockID;
     }
