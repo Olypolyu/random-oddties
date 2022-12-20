@@ -75,7 +75,7 @@ public class ItemPaintBrush extends Item {
                 return true;
 
             case 190: // Glass
-                paint(RandomOddities.PaintedGlass.blockID, false, world, i, j, k, itemstack, entityplayer);
+                paint(RandomOddities.paintedGlass.blockID, false, world, i, j, k, itemstack, entityplayer);
                 return true;
 
             case 160: // wooden stairs

@@ -63,11 +63,11 @@ public class TileEntityResizableChest extends TileEntity implements IInventory {
                 break;
 
             case 108:
-                invName = RandomOddities.ObsidianChest.translateBlockName(RandomOddities.ObsidianChest.blockID);
+                invName = RandomOddities.obsidianChest.translateBlockName(RandomOddities.obsidianChest.blockID);
                 break;
 
             case 45:
-                invName = RandomOddities.IronChest.translateBlockName(RandomOddities.IronChest.blockID);
+                invName = RandomOddities.ironChest.translateBlockName(RandomOddities.ironChest.blockID);
                 break;
         }
 

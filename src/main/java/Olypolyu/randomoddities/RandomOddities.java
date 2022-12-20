@@ -6,6 +6,7 @@ import Olypolyu.randomoddities.entities.TileEntityBubbleColumn;
 import Olypolyu.randomoddities.entities.TileEntityLauncher;
 import Olypolyu.randomoddities.entities.TileEntityResizableChest;
 import Olypolyu.randomoddities.items.ItemPaintBrush;
+import Olypolyu.randomoddities.items.ItemSpawnEgg;
 import Olypolyu.randomoddities.items.ItemWindLamp;
 import Olypolyu.randomoddities.mixin.ReparableRecipeMixin;
 import net.fabricmc.api.ModInitializer;
@@ -39,10 +40,10 @@ public class RandomOddities implements ModInitializer {
     }
 
     // blocks
-    static int RandomOdditiesIds = 700;
+    static int randomOdditiesIds = 700;
 
-    public static final Block FlintBlock = BlockHelper.createBlock(
-            new Block(RandomOdditiesIds + 1, Material.rock),
+    public static final Block flintBlock = BlockHelper.createBlock(
+            new Block(randomOdditiesIds + 1, Material.rock),
             name("FlintBlock"),
             31,14,
             Block.soundStoneFootstep,
@@ -50,8 +51,8 @@ public class RandomOddities implements ModInitializer {
             2f,
             0f);
 
-    public static final Block Trampoline =  BlockHelper.createBlock(
-            new BlockEntityLauncher(RandomOdditiesIds + 2,
+    public static final Block trampoline =  BlockHelper.createBlock(
+            new BlockEntityLauncher(randomOdditiesIds + 2,
             Material.iron,
             0,1.25,0),
             name("Trampoline"),
@@ -61,8 +62,8 @@ public class RandomOddities implements ModInitializer {
             5f,
             0);
 
-    public static final Block Pillow = BlockHelper.createBlock(
-            new BlockEntityLauncher(RandomOdditiesIds + 3,
+    public static final Block pillow = BlockHelper.createBlock(
+            new BlockEntityLauncher(randomOdditiesIds + 3,
             Material.cloth,
             0,0,0),
             name("Pillow"),
@@ -72,8 +73,8 @@ public class RandomOddities implements ModInitializer {
             1f,
             0f);
 
-    public static final Block ObsidianChest = BlockHelper.createBlock(
-            new BlockResizableChest(RandomOddities.RandomOdditiesIds + 4,
+    public static final Block obsidianChest = BlockHelper.createBlock(
+            new BlockResizableChest(RandomOddities.randomOdditiesIds + 4,
             Material.iron,
             108,31, 18, 31, 20, 31, 19),
             name("ObsidianChest"),
@@ -83,8 +84,8 @@ public class RandomOddities implements ModInitializer {
             150.0F,
             0F);
 
-    public static final Block IronChest = BlockHelper.createBlock(
-            new BlockResizableChest(RandomOddities.RandomOdditiesIds + 5,
+    public static final Block ironChest = BlockHelper.createBlock(
+            new BlockResizableChest(RandomOddities.randomOdditiesIds + 5,
             Material.iron,
             45,31, 23, 31, 25, 31, 24),
             name("IronChest"),
@@ -94,8 +95,8 @@ public class RandomOddities implements ModInitializer {
             2.5F,
             0F);
 
-    public static final Block PumpkinPie = BlockHelper.createBlock(
-            new BlockPumpkinPie(RandomOdditiesIds + 6),
+    public static final Block pumpkinPie = BlockHelper.createBlock(
+            new BlockPumpkinPie(randomOdditiesIds + 6),
             name("PumpkinPie"),
             31,26,31,27,31,28,
             Block.soundClothFootstep,
@@ -103,8 +104,8 @@ public class RandomOddities implements ModInitializer {
             2f,
             0f);
 
-    public static final Block BubbleGenerator = BlockHelper.createBlock(
-            new BlockBubbleGenerator(RandomOdditiesIds + 7, Material.iron),
+    public static final Block bubbleGenerator = BlockHelper.createBlock(
+            new BlockBubbleGenerator(randomOdditiesIds + 7, Material.iron),
             name("BubbleGenerator"),
             31, 31, 31, 17, 31, 30,
             Block.soundStoneFootstep,
@@ -112,8 +113,8 @@ public class RandomOddities implements ModInitializer {
             5f,
             0);
 
-    public static final Block Platform = BlockHelper.createBlock(
-            new BlockPlatform(RandomOdditiesIds + 8, Material.iron),
+    public static final Block platform = BlockHelper.createBlock(
+            new BlockPlatform(randomOdditiesIds + 8, Material.iron),
             name("Platform"),
             30,22, 30, 21,
             Block.soundMetalFootstep,
@@ -121,8 +122,8 @@ public class RandomOddities implements ModInitializer {
             5f,
             0);
 
-    public static final Block FishTrap = BlockHelper.createBlock(
-            new BlockFishTrap(RandomOdditiesIds + 9, Material.rock),
+    public static final Block fishTrap = BlockHelper.createBlock(
+            new BlockFishTrap(randomOdditiesIds + 9, Material.rock),
             name("FishTrap"),
             420,69,
             Block.soundStoneFootstep,
@@ -130,8 +131,8 @@ public class RandomOddities implements ModInitializer {
             5f,
             0);
 
-    public static final Block CocoBeans = BlockHelper.createBlock(
-            new BlockCocoaBeans(RandomOdditiesIds + 12, Material.plants),
+    public static final Block cocoaBeans = BlockHelper.createBlock(
+            new BlockCocoaBeans(randomOdditiesIds + 12, Material.plants),
             name("CocoBeans"),
             31,21,
             Block.soundGrassFootstep,
@@ -139,8 +140,8 @@ public class RandomOddities implements ModInitializer {
             0.0F,
             0);
 
-    public static final Block PaintedGlass = BlockHelper.createBlock(
-            new BlockPaintedGlass(RandomOdditiesIds + 13, Material.glass, false),
+    public static final Block paintedGlass = BlockHelper.createBlock(
+            new BlockPaintedGlass(randomOdditiesIds + 13, Material.glass, false),
             name("PaintedGlass"),
             1, 3,
             Block.soundGlassFootstep,
@@ -148,8 +149,8 @@ public class RandomOddities implements ModInitializer {
             0.0F,
             0);
 
-    public static final Block FireStriker = BlockHelper.createBlock(
-            new BlockFireStriker(RandomOdditiesIds + 14, Material.rock),
+    public static final Block fireStriker = BlockHelper.createBlock(
+            new BlockFireStriker(randomOdditiesIds + 14, Material.rock),
             name("FireStriker"),
             31,14,
             Block.soundStoneFootstep,
@@ -157,8 +158,8 @@ public class RandomOddities implements ModInitializer {
             2f,
             0f);
 
-    public static final Block UnLoaderRail = BlockHelper.createBlock(
-            new BlockMinecartUnloaderRail(RandomOdditiesIds + 15, true),
+    public static final Block unLoaderRail = BlockHelper.createBlock(
+            new BlockMinecartUnloaderRail(randomOdditiesIds + 15, true),
             name("UnLoaderRail"),
             30,20,
             Block.soundStoneFootstep,
@@ -166,8 +167,8 @@ public class RandomOddities implements ModInitializer {
             2f,
             0f);
 
-    public static final Block LoaderRail = BlockHelper.createBlock(
-            new BlockMinecartLoaderRail(RandomOdditiesIds + 16, true),
+    public static final Block loaderRail = BlockHelper.createBlock(
+            new BlockMinecartLoaderRail(randomOdditiesIds + 16, true),
             name("LoaderRail"),
             30,19,
             Block.soundStoneFootstep,
@@ -176,50 +177,53 @@ public class RandomOddities implements ModInitializer {
             0f);
 
     // items
-    public static final Item ItemPumpkinPie = new ItemSugarcane(RandomOdditiesIds + 7,PumpkinPie).setIconCoord(13, 3).setItemName(name("PumpkinPie"));
+    public static final Item itemPumpkinPie = new ItemSugarcane(randomOdditiesIds + 1, pumpkinPie).setIconCoord(13, 3).setItemName(name("PumpkinPie"));
 
     // paint brushes
-    public static final Item WhitePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 8,0).setItemName(name("WhitePaintBrush"));
-    public static final Item OrangePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 9,1).setItemName(name("OrangePaintBrush"));
-    public static final Item MagentaPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 10,2).setItemName(name("MagentaPaintBrush"));
-    public static final Item LightBluePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 11,3).setItemName(name("LightBluePaintBrush"));
-    public static final Item YellowPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 12,4).setItemName(name("YellowPaintBrush"));
-    public static final Item LimePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 13,5).setItemName(name("LimePaintBrush"));
-    public static final Item PinkPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 14,6).setItemName(name("PinkPaintBrush"));
-    public static final Item GrayPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 15,7).setItemName(name("GrayPaintBrush"));
-    public static final Item LightGrayPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 16,8).setItemName(name("LightGrayPaintBrush"));
-    public static final Item CyanPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 17,9).setItemName(name("CyanPaintBrush"));
-    public static final Item PurplePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 18,10).setItemName(name("PurplePaintBrush"));
-    public static final Item BluePaintBrush = new ItemPaintBrush(RandomOdditiesIds + 19,11).setItemName(name("BluePaintBrush"));
-    public static final Item BrownPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 20,12).setItemName(name("BrownPaintBrush"));
-    public static final Item GreenPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 21,13).setItemName(name("GreenPaintBrush"));
-    public static final Item RedPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 22,14).setItemName(name("RedPaintBrush"));
-    public static final Item BlackPaintBrush = new ItemPaintBrush(RandomOdditiesIds + 23,15).setItemName(name("BlackPaintBrush"));
+    public static final Item whitePaintBrush = new ItemPaintBrush(randomOdditiesIds + 2,0).setItemName(name("WhitePaintBrush"));
+    public static final Item orangePaintBrush = new ItemPaintBrush(randomOdditiesIds + 3,1).setItemName(name("OrangePaintBrush"));
+    public static final Item magentaPaintBrush = new ItemPaintBrush(randomOdditiesIds + 4,2).setItemName(name("MagentaPaintBrush"));
+    public static final Item lightBluePaintBrush = new ItemPaintBrush(randomOdditiesIds + 5,3).setItemName(name("LightBluePaintBrush"));
+    public static final Item yellowPaintBrush = new ItemPaintBrush(randomOdditiesIds + 6,4).setItemName(name("YellowPaintBrush"));
+    public static final Item limePaintBrush = new ItemPaintBrush(randomOdditiesIds + 7,5).setItemName(name("LimePaintBrush"));
+    public static final Item pinkPaintBrush = new ItemPaintBrush(randomOdditiesIds + 8,6).setItemName(name("PinkPaintBrush"));
+    public static final Item grayPaintBrush = new ItemPaintBrush(randomOdditiesIds + 9,7).setItemName(name("GrayPaintBrush"));
+    public static final Item lightGrayPaintBrush = new ItemPaintBrush(randomOdditiesIds + 10,8).setItemName(name("LightGrayPaintBrush"));
+    public static final Item cyanPaintBrush = new ItemPaintBrush(randomOdditiesIds + 11,9).setItemName(name("CyanPaintBrush"));
+    public static final Item purplePaintBrush = new ItemPaintBrush(randomOdditiesIds + 12,10).setItemName(name("PurplePaintBrush"));
+    public static final Item bluePaintBrush = new ItemPaintBrush(randomOdditiesIds + 13,11).setItemName(name("BluePaintBrush"));
+    public static final Item brownPaintBrush = new ItemPaintBrush(randomOdditiesIds + 14,12).setItemName(name("BrownPaintBrush"));
+    public static final Item greenPaintBrush = new ItemPaintBrush(randomOdditiesIds + 15,13).setItemName(name("GreenPaintBrush"));
+    public static final Item redPaintBrush = new ItemPaintBrush(randomOdditiesIds + 16,14).setItemName(name("RedPaintBrush"));
+    public static final Item blackPaintBrush = new ItemPaintBrush(randomOdditiesIds + 17,15).setItemName(name("BlackPaintBrush"));
 
-    private final Item[] PaintBrushColors = {WhitePaintBrush, OrangePaintBrush, MagentaPaintBrush, LightBluePaintBrush, YellowPaintBrush, LimePaintBrush, PinkPaintBrush, GrayPaintBrush, LightGrayPaintBrush,
-            CyanPaintBrush, PurplePaintBrush, BluePaintBrush, BrownPaintBrush, GreenPaintBrush, RedPaintBrush, BlackPaintBrush};
+    private final Item[] PaintBrushColors = {whitePaintBrush, orangePaintBrush, magentaPaintBrush, lightBluePaintBrush, yellowPaintBrush, limePaintBrush, pinkPaintBrush, grayPaintBrush, lightGrayPaintBrush,
+            cyanPaintBrush, purplePaintBrush, bluePaintBrush, brownPaintBrush, greenPaintBrush, redPaintBrush, blackPaintBrush};
 
     // wind bottle
-    private static final int WindLampCharges = 3;
+    private static final int windLampCharges = 3;
 
-    public static final Item WindLamp = new ItemWindLamp(RandomOdditiesIds + 25, WindLampCharges).setItemName(name("windLamp"));
+    public static final Item windLamp = new ItemWindLamp(randomOdditiesIds + 18, windLampCharges).setItemName(name("windLamp"));
 
+    // Spawn eggs
 
-
+    public static final Item pigSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 19, EntityPig.class).setIconCoord(17, 2).setItemName(name("pigSpawnEgg"));
+    public static final Item cowSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 20, EntityCow.class).setIconCoord(17, 3).setItemName(name("cowSpawnEgg"));
+    public static final Item chickenSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 21, EntityChicken.class).setIconCoord(17, 4).setItemName(name("chickenSpawnEgg"));
 
 
     public void onInitialize() {
         LOGGER.info("RandomOddities initialized.");
 
         // items
-        RandomOddities.ItemPumpkinPie.setMaxStackSize(1);
-        RandomOddities.PumpkinPie.notInCreativeMenu = true;
+        RandomOddities.itemPumpkinPie.setMaxStackSize(1);
+        RandomOddities.pumpkinPie.notInCreativeMenu = true;
 
-        Item.itemsList[PaintedGlass.blockID] = new ItemBlockPainted(PaintedGlass.blockID - blocksList.length, true);
+        Item.itemsList[paintedGlass.blockID] = new ItemBlockPainted(paintedGlass.blockID - blocksList.length, true);
 
         // hehe... it's buggy
-        RandomOddities.Platform.notInCreativeMenu = true;
-        RandomOddities.PaintedGlass.notInCreativeMenu = true;
+        //RandomOddities.Platform.notInCreativeMenu = true;
+        RandomOddities.paintedGlass.notInCreativeMenu = true;
 
         // add in entities
         EntityHelper.createEntity(EntityBoar.class, new RenderLiving(new ModelQuadruped(6, 0), 0.5f), 61, "Boar");
@@ -274,60 +278,76 @@ public class RandomOddities implements ModInitializer {
 
         // Item textures
 
-        TextureHelper.addTextureToItems(MOD_ID, "whitePaintBrush.png", 16,0);
-        TextureHelper.addTextureToItems(MOD_ID, "orangePaintBrush.png", 16,1);
-        TextureHelper.addTextureToItems(MOD_ID, "magentaPaintBrush.png", 16, 2);
-        TextureHelper.addTextureToItems(MOD_ID, "lightBluePaintBrush.png", 16,3);
-        TextureHelper.addTextureToItems(MOD_ID, "yellowPaintBrush.png", 16,4);
-        TextureHelper.addTextureToItems(MOD_ID, "limePaintBrush.png", 16,5);
-        TextureHelper.addTextureToItems(MOD_ID, "pinkPaintBrush.png", 16,6);
-        TextureHelper.addTextureToItems(MOD_ID, "grayPaintBrush.png", 16,7);
-        TextureHelper.addTextureToItems(MOD_ID, "lightGrayPaintBrush.png", 16,8);
-        TextureHelper.addTextureToItems(MOD_ID, "cyanPaintBrush.png", 16,9);
-        TextureHelper.addTextureToItems(MOD_ID, "purplePaintBrush.png", 16,10);
-        TextureHelper.addTextureToItems(MOD_ID, "bluePaintBrush.png", 16,11);
-        TextureHelper.addTextureToItems(MOD_ID, "brownPaintBrush.png", 16,12);
-        TextureHelper.addTextureToItems(MOD_ID, "greenPaintBrush.png", 16,13);
-        TextureHelper.addTextureToItems(MOD_ID, "redPaintBrush.png", 16,14);
-        TextureHelper.addTextureToItems(MOD_ID, "blackPaintBrush.png", 16,15);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/whitePaintBrush.png", 16,0);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/orangePaintBrush.png", 16,1);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/magentaPaintBrush.png", 16, 2);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/lightBluePaintBrush.png", 16,3);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/yellowPaintBrush.png", 16,4);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/limePaintBrush.png", 16,5);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/pinkPaintBrush.png", 16,6);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/grayPaintBrush.png", 16,7);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/lightGrayPaintBrush.png", 16,8);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/cyanPaintBrush.png", 16,9);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/purplePaintBrush.png", 16,10);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/bluePaintBrush.png", 16,11);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/brownPaintBrush.png", 16,12);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/greenPaintBrush.png", 16,13);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/redPaintBrush.png", 16,14);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/blackPaintBrush.png", 16,15);
 
         TextureHelper.addTextureToItems(MOD_ID, "emptyWindBottle.png", 17,0);
         TextureHelper.addTextureToItems(MOD_ID, "windBottle.png", 17,1);
 
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/pig.png", 17,2);
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/cow.png", 17,3);
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/chicken.png", 17,4);
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/sheep.png", 17,5);
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/squid.png", 17,6);
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/wolf.png", 17,7);
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/zombie.png", 17,8);
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/creeper.png", 17,9);
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/skeleton.png", 17,10);
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/spider.png", 17,11); // spoider
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/slime.png", 17,12);
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/zombiePigman.png", 17,13);
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/ghast.png", 17,18);
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/giant.png", 17,19);
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/armouredZombie.png", 17,20);
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/monster.png", 17,21); // hooman
+
         // load crafting recipes
-        RecipeHelper.Crafting.createRecipe(FlintBlock, 1, new Object[]{"FF", "FF", 'F', Item.flint}); // flint to flint block
-        RecipeHelper.Crafting.createShapelessRecipe(Item.flint, 4, new Object[]{new ItemStack(FlintBlock, 1)}); // flint block to flint
+        RecipeHelper.Crafting.createRecipe(flintBlock, 1, new Object[]{"FF", "FF", 'F', Item.flint}); // flint to flint block
+        RecipeHelper.Crafting.createShapelessRecipe(Item.flint, 4, new Object[]{new ItemStack(flintBlock, 1)}); // flint block to flint
 
-        RecipeHelper.Crafting.createRecipe(Trampoline, 1, new Object[]{"LFL", "IFI", 'F', Item.featherChicken, 'I', Item.ingotIron, 'L', new ItemStack(Item.dye, 1, 4)}); // Trampoline
-        RecipeHelper.Crafting.createRecipe(Pillow, 4, new Object[]{"WWW", "FFF", 'W', Block.wool, 'F', Item.featherChicken}); //pillow
+        RecipeHelper.Crafting.createRecipe(trampoline, 1, new Object[]{"LFL", "IFI", 'F', Item.featherChicken, 'I', Item.ingotIron, 'L', new ItemStack(Item.dye, 1, 4)}); // Trampoline
+        RecipeHelper.Crafting.createRecipe(pillow, 4, new Object[]{"WWW", "FFF", 'W', Block.wool, 'F', Item.featherChicken}); //pillow
 
-        RecipeHelper.Crafting.createRecipe(IronChest, 1, new Object[]{"ISI", "SCS", "ISI", 'I', new ItemStack(Block.blockIron, 1), 'S', Item.ingotSteelCrude, 'C', new ItemStack(Block.chestPlanksOak, 1)}); // Iron Chest
-        RecipeHelper.Crafting.createRecipe(ObsidianChest, 1, new Object[]{"ODO", "DCD", "ODO", 'O', new ItemStack(Block.obsidian, 1), 'D', Item.diamond, 'C', new ItemStack(IronChest, 1)}); // Obsidian Chest
+        RecipeHelper.Crafting.createRecipe(ironChest, 1, new Object[]{"ISI", "SCS", "ISI", 'I', new ItemStack(Block.blockIron, 1), 'S', Item.ingotSteelCrude, 'C', new ItemStack(Block.chestPlanksOak, 1)}); // Iron Chest
+        RecipeHelper.Crafting.createRecipe(obsidianChest, 1, new Object[]{"ODO", "DCD", "ODO", 'O', new ItemStack(Block.obsidian, 1), 'D', Item.diamond, 'C', new ItemStack(ironChest, 1)}); // Obsidian Chest
 
-        RecipeHelper.Crafting.createRecipe(ItemPumpkinPie, 1, new Object[]{"EPE", "WMW", 'P', new ItemStack(Block.pumpkin, 1), 'E', Item.eggChicken, 'W', Item.wheat, 'M', Item.bucketMilk});  // Pumpkin Pie
+        RecipeHelper.Crafting.createRecipe(itemPumpkinPie, 1, new Object[]{"EPE", "WMW", 'P', new ItemStack(Block.pumpkin, 1), 'E', Item.eggChicken, 'W', Item.wheat, 'M', Item.bucketMilk});  // Pumpkin Pie
 
-        RecipeHelper.Crafting.createRecipe(BubbleGenerator, 1, new Object[]{"IFI", "IWI", "BFB", 'B', new ItemStack(Item.dye, 1, 4), 'I', Item.ingotIron, 'F',  Item.featherChicken, 'W', WindLamp}); // Bubble generator
+        RecipeHelper.Crafting.createRecipe(bubbleGenerator, 1, new Object[]{"IFI", "IWI", "BFB", 'B', new ItemStack(Item.dye, 1, 4), 'I', Item.ingotIron, 'F',  Item.featherChicken, 'W', windLamp}); // Bubble generator
 
-        RecipeHelper.Crafting.createRecipe(FishTrap, 1, new Object[]{" A ", "AMA", " A ", 'A', Block.algae, 'M', Block.mesh }); // Bubble generator
+        RecipeHelper.Crafting.createRecipe(fishTrap, 1, new Object[]{" A ", "AMA", " A ", 'A', Block.algae, 'M', Block.mesh }); // Bubble generator
 
         // create crafting recipes for all paint brushes, you are sorely mistaken if you think im going to add another 16 lines for this.
         int Color;
-        for ( Color = 0; Color <= 15; Color++) {
+        for ( Color = 0; Color <= 15; Color++)
             RecipeHelper.Crafting.createRecipe(PaintBrushColors[Color], 1, new Object[]{" C", "SD", 'D', new ItemStack(Item.dye, 1, 15 - Color), 'C', Item.cloth, 'S', Item.stick});
-        }
 
         // creates crafting recipes for all painted glass.
         for ( Color = 1; Color <= 15; Color++)
-            ((CraftingManagerInterface) RecipeHelper.craftingManager).callAddShapelessRecipe(new ItemStack(PaintedGlass, 1, Color), new Object[]{Block.glass, new ItemStack(Item.dye, 1, 15 - Color)});
+            ((CraftingManagerInterface) RecipeHelper.craftingManager).callAddShapelessRecipe(new ItemStack(paintedGlass, 1, Color), new Object[]{Block.glass, new ItemStack(Item.dye, 1, 15 - Color)});
 
-        ((ReparableRecipeMixin)RecipeHelper.craftingManager).callAddRepairableStackableRecipe(WindLamp,  new ItemStack(Item.featherChicken)); // Wind Bottle
+        ((ReparableRecipeMixin)RecipeHelper.craftingManager).callAddRepairableStackableRecipe(windLamp,  new ItemStack(Item.featherChicken)); // Wind Bottle
 
 
         // April fools thing
-        if ( LocalDate.now().getMonth() == Month.APRIL && LocalDate.now().getDayOfMonth() == 1) {
+        if ( LocalDate.now().getMonth() == Month.APRIL && LocalDate.now().getDayOfMonth() == 1 ) {
 
             // windows joke, this joke is certainly funnier to me than it is to you.
-            if (System.getProperty("os.name").contains("Windows") && random.nextInt(11) == 0)
+            if ( System.getProperty("os.name").contains("Windows") && random.nextInt(11) == 0 )
                 throw new RuntimeException("Unbased variable reference. Please check your OS and try again.");
         }
 

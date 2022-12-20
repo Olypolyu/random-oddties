@@ -84,16 +84,16 @@ public class DungeonLootMixin {
                 break;
 
             case 14:
-                returnStack = new ItemStack(RandomOddities.ItemPumpkinPie);
+                returnStack = new ItemStack(RandomOddities.itemPumpkinPie);
                 break;
 
             case 15:
-                if (random.nextInt(100) == 0) returnStack = new ItemStack(RandomOddities.WindLamp, 1, random.nextInt(3));
+                if (random.nextInt(100) == 0) returnStack = new ItemStack(RandomOddities.windLamp, 1, random.nextInt(3));
                     else returnStack = null;
                 break;
 
             case 16:
-                returnStack = new ItemStack(RandomOddities.BrownPaintBrush);
+                returnStack = new ItemStack(RandomOddities.brownPaintBrush);
                 break;
         }
 

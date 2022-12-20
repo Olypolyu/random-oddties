@@ -41,15 +41,15 @@ public class ItemDyeMixin{
                         break;
                     }
 
-                if ( world.canBlockBePlacedAt(RandomOddities.CocoBeans.blockID, i, j, k, false, l) ) {
+                if ( world.canBlockBePlacedAt(RandomOddities.cocoaBeans.blockID, i, j, k, false, l) ) {
                     itemstack.consumeItem(entityplayer);
-                    world.setBlockAndMetadataWithNotify(i, j, k, RandomOddities.CocoBeans.blockID, l);
+                    world.setBlockAndMetadataWithNotify(i, j, k, RandomOddities.cocoaBeans.blockID, l);
                     return true;
                     }
                 }
             }
 
-        if (itemstack.getMetadata() == 15 && Block.getBlock( world.getBlockId(i, j, k) ) == RandomOddities.CocoBeans) {
+        if (itemstack.getMetadata() == 15 && Block.getBlock( world.getBlockId(i, j, k) ) == RandomOddities.cocoaBeans) {
             int metadata = world.getBlockMetadata(i, j, k);
             int side = metadata & 0b1111;
             int growthStage = metadata >> 4;
