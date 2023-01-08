@@ -1,5 +1,6 @@
 package Olypolyu.randomoddities.items;
 
+import Olypolyu.randomoddities.RandomOddities;
 import net.minecraft.src.*;
 import net.minecraft.src.command.commands.SummonCommand;
 
@@ -12,8 +13,17 @@ public class ItemSpawnEgg extends Item {
         this.entityClass = entity;
     }
 
+    private void spawnAt(World world, double i, double j, double k, EntityPlayer entityplayer){
+        Entity entity = SummonCommand.createEntity(this.entityClass, world);
+        entity.entityInitOnSpawn();
+        entity.setLocationAndAngles(i + 0.5, j, k + 0.5, 0.0F, 0.0F);
+        world.entityJoinedWorld(entity);
+
+        RandomOddities.LOGGER.info(entityClass.getName() + " spawned at " + i + " " + j + " " + k + " by " + entityplayer.nickname);
+    }
+
     public boolean onItemUse(ItemStack itemstack, EntityPlayer entityplayer, World world, int i, int j, int k, int l, double heightPlaced) {
-        j++; //helps with monsters spawning inside walls.
+        itemstack.consumeItem(entityplayer);
         switch (l) {
             case 0:
                 --j;
@@ -28,7 +38,7 @@ public class ItemSpawnEgg extends Item {
                 break;
 
             case 3:
-                k+=2;
+                k++;
                 break;
 
             case 4:
@@ -36,14 +46,17 @@ public class ItemSpawnEgg extends Item {
                 break;
 
             case 5:
-                i+=2;
+                i++;
                 break;
             }
 
-        Entity entity = SummonCommand.createEntity(this.entityClass, world);
-        entity.entityInitOnSpawn();
-        entity.setLocationAndAngles(i, j, k, 0.0F, 0.0F);
-        world.entityJoinedWorld(entity);
+        spawnAt(world, i, j, k, entityplayer);
+        return true;
+    }
+
+    public boolean useItemOnEntity(ItemStack itemstack, EntityLiving entityliving, EntityPlayer entityplayer) {
+        itemstack.consumeItem(entityplayer);
+        spawnAt(entityliving.worldObj, entityliving.posX, entityliving.posY + 0.5, entityliving.posZ, entityplayer);
         return true;
     }
 

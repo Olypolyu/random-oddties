@@ -88,7 +88,7 @@ public class DungeonLootMixin {
                 break;
 
             case 15:
-                if (random.nextInt(100) == 0) returnStack = new ItemStack(RandomOddities.windLamp, 1, random.nextInt(3));
+                if (random.nextInt(250) == 0) returnStack = new ItemStack(RandomOddities.windLamp, 1, random.nextInt(3));
                     else returnStack = null;
                 break;
 

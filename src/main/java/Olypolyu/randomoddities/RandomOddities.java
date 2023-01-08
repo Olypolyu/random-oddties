@@ -6,7 +6,6 @@ import Olypolyu.randomoddities.entities.TileEntityBubbleColumn;
 import Olypolyu.randomoddities.entities.TileEntityLauncher;
 import Olypolyu.randomoddities.entities.TileEntityResizableChest;
 import Olypolyu.randomoddities.items.ItemPaintBrush;
-import Olypolyu.randomoddities.items.ItemSpawnEgg;
 import Olypolyu.randomoddities.items.ItemWindLamp;
 import Olypolyu.randomoddities.mixin.ReparableRecipeMixin;
 import net.fabricmc.api.ModInitializer;
@@ -149,7 +148,7 @@ public class RandomOddities implements ModInitializer {
             0.0F,
             0);
 
-    public static final Block fireStriker = BlockHelper.createBlock(
+    /* public static final Block fireStriker = BlockHelper.createBlock(
             new BlockFireStriker(randomOdditiesIds + 14, Material.rock),
             name("FireStriker"),
             31,14,
@@ -175,6 +174,7 @@ public class RandomOddities implements ModInitializer {
             3f,
             2f,
             0f);
+    */
 
     // items
     public static final Item itemPumpkinPie = new ItemSugarcane(randomOdditiesIds + 1, pumpkinPie).setIconCoord(13, 3).setItemName(name("PumpkinPie"));
@@ -206,10 +206,24 @@ public class RandomOddities implements ModInitializer {
     public static final Item windLamp = new ItemWindLamp(randomOdditiesIds + 18, windLampCharges).setItemName(name("windLamp"));
 
     // Spawn eggs
-
+    /*
     public static final Item pigSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 19, EntityPig.class).setIconCoord(17, 2).setItemName(name("pigSpawnEgg"));
     public static final Item cowSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 20, EntityCow.class).setIconCoord(17, 3).setItemName(name("cowSpawnEgg"));
     public static final Item chickenSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 21, EntityChicken.class).setIconCoord(17, 4).setItemName(name("chickenSpawnEgg"));
+    public static final Item sheepSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 22, EntitySheep.class).setIconCoord(17, 5).setItemName(name("sheepSpawnEgg"));
+    public static final Item squidSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 23, EntitySquid.class).setIconCoord(17, 6).setItemName(name("squidSpawnEgg"));
+    public static final Item wolfSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 24, EntityWolf.class).setIconCoord(17, 7).setItemName(name("wolfSpawnEgg"));
+    public static final Item zombieSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 25, EntityZombie.class).setIconCoord(17, 8).setItemName(name("zombieSpawnEgg"));
+    public static final Item creeperSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 26, EntityCreeper.class).setIconCoord(17, 9).setItemName(name("creeperSpawnEgg"));
+    public static final Item skeletonSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 27, EntitySkeleton.class).setIconCoord(17, 10).setItemName(name("skeletonSpawnEgg"));
+    public static final Item spiderSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 28, EntitySpider.class).setIconCoord(17, 11).setItemName(name("spiderSpawnEgg"));
+    public static final Item slimeSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 29, EntitySlime.class).setIconCoord(17, 12).setItemName(name("slimeSpawnEgg"));
+    public static final Item zombiePigmanSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 30, EntityPigZombie.class).setIconCoord(17, 13).setItemName(name("zombiePigmanSpawnEgg"));
+    public static final Item ghastSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 31, EntityGhast.class).setIconCoord(17, 14).setItemName(name("ghastSpawnEgg"));
+    public static final Item giantZombieSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 32, EntityGiantZombie.class).setIconCoord(17, 15).setItemName(name("giantZombieSpawnEgg"));
+    public static final Item armouredZombieSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 33, EntityArmouredZombie.class).setIconCoord(17, 16).setItemName(name("armouredZombieSpawnEgg"));
+    public static final Item HumanSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 34, EntityMob.class).setIconCoord(17, 17).setItemName(name("HumanSpawnEgg"));
+     */
 
 
     public void onInitialize() {
@@ -222,7 +236,7 @@ public class RandomOddities implements ModInitializer {
         Item.itemsList[paintedGlass.blockID] = new ItemBlockPainted(paintedGlass.blockID - blocksList.length, true);
 
         // hehe... it's buggy
-        //RandomOddities.Platform.notInCreativeMenu = true;
+        RandomOddities.platform.notInCreativeMenu = true;
         RandomOddities.paintedGlass.notInCreativeMenu = true;
 
         // add in entities
@@ -277,7 +291,6 @@ public class RandomOddities implements ModInitializer {
 
 
         // Item textures
-
         TextureHelper.addTextureToItems(MOD_ID, "paintBrush/whitePaintBrush.png", 16,0);
         TextureHelper.addTextureToItems(MOD_ID, "paintBrush/orangePaintBrush.png", 16,1);
         TextureHelper.addTextureToItems(MOD_ID, "paintBrush/magentaPaintBrush.png", 16, 2);
@@ -310,10 +323,10 @@ public class RandomOddities implements ModInitializer {
         TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/spider.png", 17,11); // spoider
         TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/slime.png", 17,12);
         TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/zombiePigman.png", 17,13);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/ghast.png", 17,18);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/giant.png", 17,19);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/armouredZombie.png", 17,20);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/monster.png", 17,21); // hooman
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/ghast.png", 17,14);
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/giant.png", 17,15);
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/armouredZombie.png", 17,16);
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/monster.png", 17,17); // hooman
 
         // load crafting recipes
         RecipeHelper.Crafting.createRecipe(flintBlock, 1, new Object[]{"FF", "FF", 'F', Item.flint}); // flint to flint block
@@ -327,7 +340,7 @@ public class RandomOddities implements ModInitializer {
 
         RecipeHelper.Crafting.createRecipe(itemPumpkinPie, 1, new Object[]{"EPE", "WMW", 'P', new ItemStack(Block.pumpkin, 1), 'E', Item.eggChicken, 'W', Item.wheat, 'M', Item.bucketMilk});  // Pumpkin Pie
 
-        RecipeHelper.Crafting.createRecipe(bubbleGenerator, 1, new Object[]{"IFI", "IWI", "BFB", 'B', new ItemStack(Item.dye, 1, 4), 'I', Item.ingotIron, 'F',  Item.featherChicken, 'W', windLamp}); // Bubble generator
+        RecipeHelper.Crafting.createRecipe(bubbleGenerator, 1, new Object[]{"IFI", "IWI", "BFB", 'B', new ItemStack(Item.dye, 1, 4), 'I', Item.ingotIron, 'F',  Item.featherChicken, 'W', new ItemStack(Block.mesh, 1)}); // Bubble generator
 
         RecipeHelper.Crafting.createRecipe(fishTrap, 1, new Object[]{" A ", "AMA", " A ", 'A', Block.algae, 'M', Block.mesh }); // Bubble generator
 
