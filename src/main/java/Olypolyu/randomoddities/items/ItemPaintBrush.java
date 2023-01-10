@@ -21,7 +21,6 @@ public class ItemPaintBrush extends Item {
     }
 
     public boolean useItemOnEntity(ItemStack itemstack, EntityLiving entityliving, EntityPlayer entityplayer) {
-
         // if sheep set flee color to the color of paint brush
         if (entityliving instanceof EntitySheep) {
             EntitySheep entitysheep = (EntitySheep) entityliving;
@@ -75,6 +74,7 @@ public class ItemPaintBrush extends Item {
                 return true;
 
             case 190: // Glass
+                if(this.color == 0) return false; // glass is already white.
                 paint(RandomOddities.paintedGlass.blockID, false, world, i, j, k, itemstack, entityplayer);
                 return true;
 
@@ -99,7 +99,18 @@ public class ItemPaintBrush extends Item {
         // already painted blocks.
         switch (block) {
 
-            case 713:
+            case 713: // painted glass
+                world.setBlockWithNotify(i, j, k, 1); // helps glass update properly, life ain't always pretty, chief.
+
+                // set to normal glass instead of white painted glass.
+                if(this.color == 0) {
+                    world.setBlockWithNotify(i, j, k, 190);
+                    return true;
+                }
+
+                paint(block, false, world, i, j, k, itemstack, entityplayer);
+                return true;
+
             case 81: // fence
             case 51: // planks
             case 850: // lamps

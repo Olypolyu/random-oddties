@@ -6,6 +6,8 @@ import Olypolyu.randomoddities.entities.TileEntityBubbleColumn;
 import Olypolyu.randomoddities.entities.TileEntityLauncher;
 import Olypolyu.randomoddities.entities.TileEntityResizableChest;
 import Olypolyu.randomoddities.items.ItemPaintBrush;
+import Olypolyu.randomoddities.items.ItemPaintScrapper;
+import Olypolyu.randomoddities.items.ItemSpawnEgg;
 import Olypolyu.randomoddities.items.ItemWindLamp;
 import Olypolyu.randomoddities.mixin.ReparableRecipeMixin;
 import net.fabricmc.api.ModInitializer;
@@ -148,7 +150,7 @@ public class RandomOddities implements ModInitializer {
             0.0F,
             0);
 
-    /* public static final Block fireStriker = BlockHelper.createBlock(
+     public static final Block fireStriker = BlockHelper.createBlock(
             new BlockFireStriker(randomOdditiesIds + 14, Material.rock),
             name("FireStriker"),
             31,14,
@@ -174,7 +176,7 @@ public class RandomOddities implements ModInitializer {
             3f,
             2f,
             0f);
-    */
+
 
     // items
     public static final Item itemPumpkinPie = new ItemSugarcane(randomOdditiesIds + 1, pumpkinPie).setIconCoord(13, 3).setItemName(name("PumpkinPie"));
@@ -200,13 +202,9 @@ public class RandomOddities implements ModInitializer {
     private final Item[] PaintBrushColors = {whitePaintBrush, orangePaintBrush, magentaPaintBrush, lightBluePaintBrush, yellowPaintBrush, limePaintBrush, pinkPaintBrush, grayPaintBrush, lightGrayPaintBrush,
             cyanPaintBrush, purplePaintBrush, bluePaintBrush, brownPaintBrush, greenPaintBrush, redPaintBrush, blackPaintBrush};
 
-    // wind bottle
-    private static final int windLampCharges = 3;
-
-    public static final Item windLamp = new ItemWindLamp(randomOdditiesIds + 18, windLampCharges).setItemName(name("windLamp"));
+    public static final Item paintScrapper = new ItemPaintScrapper(randomOdditiesIds + 18).setIconCoord(16, 16).setItemName(name("paintScrapper"));
 
     // Spawn eggs
-    /*
     public static final Item pigSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 19, EntityPig.class).setIconCoord(17, 2).setItemName(name("pigSpawnEgg"));
     public static final Item cowSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 20, EntityCow.class).setIconCoord(17, 3).setItemName(name("cowSpawnEgg"));
     public static final Item chickenSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 21, EntityChicken.class).setIconCoord(17, 4).setItemName(name("chickenSpawnEgg"));
@@ -223,8 +221,11 @@ public class RandomOddities implements ModInitializer {
     public static final Item giantZombieSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 32, EntityGiantZombie.class).setIconCoord(17, 15).setItemName(name("giantZombieSpawnEgg"));
     public static final Item armouredZombieSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 33, EntityArmouredZombie.class).setIconCoord(17, 16).setItemName(name("armouredZombieSpawnEgg"));
     public static final Item HumanSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 34, EntityMob.class).setIconCoord(17, 17).setItemName(name("HumanSpawnEgg"));
-     */
+    public static final Item boarSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 34, EntityBoar.class).setIconCoord(17, 18).setItemName(name("boarSpawnEgg"));
 
+    // wind bottle
+    private static final int windLampCharges = 3;
+    public static final Item windLamp = new ItemWindLamp(randomOdditiesIds + 35, windLampCharges).setItemName(name("windLamp"));
 
     public void onInitialize() {
         LOGGER.info("RandomOddities initialized.");
@@ -307,6 +308,7 @@ public class RandomOddities implements ModInitializer {
         TextureHelper.addTextureToItems(MOD_ID, "paintBrush/greenPaintBrush.png", 16,13);
         TextureHelper.addTextureToItems(MOD_ID, "paintBrush/redPaintBrush.png", 16,14);
         TextureHelper.addTextureToItems(MOD_ID, "paintBrush/blackPaintBrush.png", 16,15);
+        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/paintScrapper.png", 16,16);
 
         TextureHelper.addTextureToItems(MOD_ID, "emptyWindBottle.png", 17,0);
         TextureHelper.addTextureToItems(MOD_ID, "windBottle.png", 17,1);
@@ -327,6 +329,7 @@ public class RandomOddities implements ModInitializer {
         TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/giant.png", 17,15);
         TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/armouredZombie.png", 17,16);
         TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/monster.png", 17,17); // hooman
+        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/boar.png", 17,18);
 
         // load crafting recipes
         RecipeHelper.Crafting.createRecipe(flintBlock, 1, new Object[]{"FF", "FF", 'F', Item.flint}); // flint to flint block
@@ -354,7 +357,6 @@ public class RandomOddities implements ModInitializer {
             ((CraftingManagerInterface) RecipeHelper.craftingManager).callAddShapelessRecipe(new ItemStack(paintedGlass, 1, Color), new Object[]{Block.glass, new ItemStack(Item.dye, 1, 15 - Color)});
 
         ((ReparableRecipeMixin)RecipeHelper.craftingManager).callAddRepairableStackableRecipe(windLamp,  new ItemStack(Item.featherChicken)); // Wind Bottle
-
 
         // April fools thing
         if ( LocalDate.now().getMonth() == Month.APRIL && LocalDate.now().getDayOfMonth() == 1 ) {
