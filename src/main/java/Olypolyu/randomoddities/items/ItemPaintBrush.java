@@ -94,7 +94,7 @@ public class ItemPaintBrush extends Item {
             }
 
         // if the block is already painted then don't paint it again.
-        if(world.getBlockMetadata(i, j, k) == this.color) return false;
+        if(world.getBlockMetadata(i, j, k) == this.color || (world.getBlockMetadata(i, j, k) >> 4) == this.color) return false;
 
         // already painted blocks.
         switch (block) {

@@ -5,10 +5,7 @@ import Olypolyu.randomoddities.entities.EntityBoar;
 import Olypolyu.randomoddities.entities.TileEntityBubbleColumn;
 import Olypolyu.randomoddities.entities.TileEntityLauncher;
 import Olypolyu.randomoddities.entities.TileEntityResizableChest;
-import Olypolyu.randomoddities.items.ItemPaintBrush;
-import Olypolyu.randomoddities.items.ItemPaintScrapper;
-import Olypolyu.randomoddities.items.ItemSpawnEgg;
-import Olypolyu.randomoddities.items.ItemWindLamp;
+import Olypolyu.randomoddities.items.*;
 import Olypolyu.randomoddities.mixin.ReparableRecipeMixin;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.src.*;
@@ -34,6 +31,9 @@ public class RandomOddities implements ModInitializer {
     public static final String MOD_ID = "RandomOddities";
 
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+    public static void info(Object obj) { LOGGER.info(String.valueOf(obj)); }
+    public static void warn(Object obj) { LOGGER.warn(String.valueOf(obj)); }
 
 
     public static String name(String name) {
@@ -221,11 +221,14 @@ public class RandomOddities implements ModInitializer {
     public static final Item giantZombieSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 32, EntityGiantZombie.class).setIconCoord(17, 15).setItemName(name("giantZombieSpawnEgg"));
     public static final Item armouredZombieSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 33, EntityArmouredZombie.class).setIconCoord(17, 16).setItemName(name("armouredZombieSpawnEgg"));
     public static final Item HumanSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 34, EntityMob.class).setIconCoord(17, 17).setItemName(name("HumanSpawnEgg"));
-    public static final Item boarSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 34, EntityBoar.class).setIconCoord(17, 18).setItemName(name("boarSpawnEgg"));
+    public static final Item boarSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 35, EntityBoar.class).setIconCoord(17, 18).setItemName(name("boarSpawnEgg"));
 
     // wind bottle
     private static final int windLampCharges = 3;
-    public static final Item windLamp = new ItemWindLamp(randomOdditiesIds + 35, windLampCharges).setItemName(name("windLamp"));
+    public static final Item windLamp = new ItemWindLamp(randomOdditiesIds + 36, windLampCharges).setItemName(name("windLamp"));
+
+    public static final Item glider = new ItemTestGlider(randomOdditiesIds + 37).setItemName(name("glider"));
+
 
     public void onInitialize() {
         LOGGER.info("RandomOddities initialized.");
@@ -346,6 +349,8 @@ public class RandomOddities implements ModInitializer {
         RecipeHelper.Crafting.createRecipe(bubbleGenerator, 1, new Object[]{"IFI", "IWI", "BFB", 'B', new ItemStack(Item.dye, 1, 4), 'I', Item.ingotIron, 'F',  Item.featherChicken, 'W', new ItemStack(Block.mesh, 1)}); // Bubble generator
 
         RecipeHelper.Crafting.createRecipe(fishTrap, 1, new Object[]{" A ", "AMA", " A ", 'A', Block.algae, 'M', Block.mesh }); // Bubble generator
+
+        RecipeHelper.Crafting.createRecipe(paintScrapper, 1, new Object[]{" I", "S ", 'S', Item.stick, 'I', Item.ingotIron}); // flint to flint block
 
         // create crafting recipes for all paint brushes, you are sorely mistaken if you think im going to add another 16 lines for this.
         int Color;

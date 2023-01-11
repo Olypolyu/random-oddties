@@ -10,7 +10,8 @@
         "ItemDyeMixin",
         "ItemShearsMixin",
         "BlockRailMixin",
-        "TheVoiceOfLove",
+        "PickaxeMixin",
+        "ContainerPlayerCreativeMixin",
         "DungeonLootMixin"
 
     ],
