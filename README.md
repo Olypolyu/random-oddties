@@ -7,7 +7,7 @@ i am not experienced in java in anyway, shape or form and i am *not* the person 
 if you are looking for a mod to reverse engineer check out 
 https://github.com/Turnip-Labs/bta-example-mod
 
-if you are looking for a template for your babric mod check out
+and, incase you are looking for a template for your babric mod check out
 https://github.com/Turnip-Labs/bta-minimal-mod
 
 (this mod was created when the minimal mod wasn't setup as a template just yet.)
