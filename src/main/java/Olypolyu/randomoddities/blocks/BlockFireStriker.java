@@ -2,6 +2,7 @@ package Olypolyu.randomoddities.blocks;
 
 import net.minecraft.src.*;
 
+import java.util.List;
 import java.util.Random;
 
 public class BlockFireStriker extends BlockRotatable {
@@ -11,27 +12,18 @@ public class BlockFireStriker extends BlockRotatable {
         super(i, material);
     }
 
+    private boolean lastState = false;
     public void onNeighborBlockChange(World world, int i, int j, int k, int l) {
-        if ( world.isBlockGettingPowered(i, j, k) || world.isBlockIndirectlyGettingPowered(i, j, k) )
-            this.onPowered(world, i, j, k);
+        boolean power = world.isBlockGettingPowered(i, j, k) || world.isBlockIndirectlyGettingPowered(i, j, k);
+        if (power && !lastState) this.onPowered(world, i, j, k);
+        lastState = power;
     }
+
 
     public int getBlockTextureFromSideAndMetadata(int side, int meta) {
 
             // block's facing :
             switch (meta) {
-
-                //bottom
-                case 0:
-                    if (side == 0)
-                        return texCoordToIndex(30, 28);
-                    else return texCoordToIndex(14, 3);
-
-                //top
-                case 1:
-                    if (side == 1)
-                        return texCoordToIndex(30, 28);
-                    else return texCoordToIndex(14, 3);
 
                 //north
                 case 2:
@@ -46,7 +38,7 @@ public class BlockFireStriker extends BlockRotatable {
                     else return texCoordToIndex(14, 3);
 
                 //west
-                case 4:
+                default:
                     if (side == 4)
                         return texCoordToIndex(30, 28);
                     else return texCoordToIndex(14, 3);
@@ -58,9 +50,6 @@ public class BlockFireStriker extends BlockRotatable {
                     else return texCoordToIndex(14, 3);
 
             }
-
-        // this line will never actually be reached. it is in here to avoid errors.
-        return 80085;
     }
 
     // Sides           Metadata
@@ -77,7 +66,6 @@ public class BlockFireStriker extends BlockRotatable {
         // is getting powered
         if (world.isBlockIndirectlyGettingPowered(i, j, k) || world.isBlockIndirectlyGettingPowered(i, j, k)) {
             switch (side) {
-
                 // north
                 case 2:
                     k--;
@@ -94,21 +82,10 @@ public class BlockFireStriker extends BlockRotatable {
                     break;
 
                 // west
-                case 4:
+                default:
                     i--;
                     break;
-
-                // up
-                case 1:
-                    j--;
-                    break;
-
-                // down
-                case 0:
-                    j++;
-                    break;
-
-                }
+            }
 
             // ignite tnt
             if (world.getBlockId(i, j, k) == Block.tnt.blockID) {
@@ -122,13 +99,27 @@ public class BlockFireStriker extends BlockRotatable {
                 world.playSoundAtEntity(e, "random.fuse", 1.0F, 1.0F);
 
                 return;
+            }
+
+            List<Entity> entitiesInBoundingBox = world.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(i, j, k, i + 1, j + 1, k + 1));
+
+            for (int list = 0; list < entitiesInBoundingBox.size(); ++list) {
+                Entity entity = entitiesInBoundingBox.get(list);
+
+                // things related to players
+                if (entity instanceof EntityCreeper) {
+                    world.createExplosion(entity, entity.posX, entity.posY, entity.posZ, 3.0F);
+                    entity.setEntityDead();
+                    return;
                 }
+            }
 
             // Set fire on whatever
-            if ( world.isAirBlock(i, j, k) ) {
+            if (world.canBlockBePlacedAt(Block.fire.blockID, i, j, k, false, 0)) {
                 world.setBlockWithNotify(i, j, k, Block.fire.blockID);
                 visualEffects(world, i, j, k);
-                }
+            }
+
         }
 }
 

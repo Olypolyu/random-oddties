@@ -28,15 +28,15 @@ public class BlockCocoaBeans extends Block {
         return texCoordToIndex(30,23 + growthStage);
     }
 
-    public static ArrayList<Block> growsOn = new ArrayList<>();
+    public static ArrayList<Integer> growsOn = new ArrayList<>();
 
     static {
-        growsOn.add(Block.logOakMossy);
-     /* growsOn.add(Block.logBirch);
-        growsOn.add(Block.logCherry);
-        growsOn.add(Block.logOak);
-        growsOn.add(Block.logEucalyptus);
-        growsOn.add(Block.logPine); */
+        growsOn.add(Block.logOakMossy.blockID);
+     /* growsOn.add(Block.logBirch.blockID);
+        growsOn.add(Block.logCherry.blockID);
+        growsOn.add(Block.logOak.blockID);
+        growsOn.add(Block.logEucalyptus.blockID);
+        growsOn.add(Block.logPine.blockID); */
         }
 
     public int getRenderType() {
@@ -61,25 +61,25 @@ public class BlockCocoaBeans extends Block {
     public void onBlockPlaced(World world, int i, int j, int k, Direction side, EntityLiving player, double sideHeight) {
 
         // North
-        if ( growsOn.contains( Block.getBlock( world.getBlockId( i, j, k + 1) )) )  {
+        if ( growsOn.contains( world.getBlockId( i, j, k + 1) ) )  {
             world.setBlockMetadataWithNotify(i, j, k,2);
             return;
         }
 
         // South
-        if ( growsOn.contains( Block.getBlock( world.getBlockId( i, j,k - 1 ) )) ) {
+        if ( growsOn.contains( world.getBlockId( i, j, k + 1) ) )  {
             world.setBlockMetadataWithNotify(i, j, k,3);
             return;
         }
 
         // West
-        if ( growsOn.contains( Block.getBlock( world.getBlockId(i + 1, j, k ) )) ) {
+        if ( growsOn.contains( world.getBlockId( i, j, k + 1) ) )  {
             world.setBlockMetadataWithNotify(i, j, k,4);
             return;
             }
 
         // East
-        if ( growsOn.contains( Block.getBlock( world.getBlockId(i - 1, j, k ) )) ) {
+        if ( growsOn.contains( world.getBlockId( i, j, k + 1) ) )  {
             world.setBlockMetadataWithNotify(i, j, k,5);
             return;
             }
@@ -94,7 +94,7 @@ public class BlockCocoaBeans extends Block {
 
             // North
             case 2:
-                if ( !growsOn.contains( Block.getBlock( world.getBlockId(i, j, k + 1) )) ) {
+                if ( !growsOn.contains( world.getBlockId(i, j, k + 1) ) ) {
                     world.setBlockWithNotify(i, j, k, 0);
                     this.dropBlockAsItem(world, i, j, k, 0);
                 }
@@ -102,7 +102,7 @@ public class BlockCocoaBeans extends Block {
 
             // South
             case 3:
-                if ( !growsOn.contains( Block.getBlock( world.getBlockId( i, j, k - 1 ) )) ) {
+                if ( !growsOn.contains( world.getBlockId( i, j, k - 1 ) ) ) {
                     world.setBlockWithNotify(i, j, k, 0);
                     this.dropBlockAsItem(world, i, j, k, 0);
                 }
@@ -110,7 +110,7 @@ public class BlockCocoaBeans extends Block {
 
             // West
             case 4:
-                if ( !growsOn.contains( Block.getBlock( world.getBlockId( i + 1, j, k ) )) ) {
+                if ( !growsOn.contains( world.getBlockId( i + 1, j, k ) ) ) {
                     world.setBlockWithNotify(i, j, k, 0);
                     this.dropBlockAsItem(world, i, j, k, 0);
                     }
@@ -118,7 +118,7 @@ public class BlockCocoaBeans extends Block {
 
             // East
             case 5:
-                if ( !growsOn.contains( Block.getBlock( world.getBlockId( i - 1, j, k ) )) ) {
+                if ( !growsOn.contains( world.getBlockId( i - 1, j, k ) ) ) {
                     world.setBlockWithNotify(i, j, k, 0);
                     this.dropBlockAsItem(world, i, j, k, 0);
                     }

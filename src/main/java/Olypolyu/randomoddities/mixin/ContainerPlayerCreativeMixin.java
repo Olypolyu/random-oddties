@@ -4,7 +4,6 @@ import Olypolyu.randomoddities.RandomOddities;
 import net.minecraft.src.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -21,12 +20,6 @@ public abstract class ContainerPlayerCreativeMixin extends ContainerPlayer {
     @Shadow
     public static ItemStack[] creativeItems;
 
-    @Accessor("creativeItemsCount")
-    static void setCreativeItemsCount(int value) {}
-
-    @Accessor("creativeItems")
-    static void setCreativeItems(ItemStack[] itemStacks) {}
-
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void injectPaintedGlass(CallbackInfo ci) {
         int glassCount = 0;
@@ -35,7 +28,6 @@ public abstract class ContainerPlayerCreativeMixin extends ContainerPlayer {
         // create array with glass
         for (int j = 1; j < 16; j++) {
             glasses[glassCount] = new ItemStack(RandomOddities.paintedGlass.blockID, 1, j);
-            RandomOddities.info(glasses[glassCount]);
             glassCount++;
         }
 
@@ -57,8 +49,8 @@ public abstract class ContainerPlayerCreativeMixin extends ContainerPlayer {
         }
 
         // set the actual values.
-        setCreativeItems(creativeItemsNew);
-        setCreativeItemsCount(creativeItemsCount + glassCount);
+        creativeItems = creativeItemsNew;
+        creativeItemsCount = creativeItemsCount + glassCount;
     }
 
 

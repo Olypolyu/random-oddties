@@ -13,7 +13,7 @@ public class ItemTestGlider extends Item {
 
         entityplayer.motionX = (-MathHelper.sin(entityplayer.rotationYaw / 180.0F * 3.141593F));
         entityplayer.motionZ = (MathHelper.cos(entityplayer.rotationYaw / 180.0F * 3.141593F));
-        entityplayer.motionY = (-MathHelper.cos(f / 30F * 3.141593F));
+        entityplayer.motionY = (-MathHelper.cos(f / 30F * 3.141593F) + 0.5F);
         ((RandomOdditiesEntityMixin) entityplayer).setFallDistance(0);
         return itemstack;
     }

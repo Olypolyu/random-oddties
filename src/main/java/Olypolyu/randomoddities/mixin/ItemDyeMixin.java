@@ -17,8 +17,7 @@ public class ItemDyeMixin{
     private boolean callOnItemUse(ItemStack itemstack, EntityPlayer entityplayer, World world, int i, int j, int k, int l, double heightPlaced, CallbackInfoReturnable<Boolean> info){
 
         if (itemstack.getMetadata() == 3) {
-
-            if ( BlockCocoaBeans.growsOn.contains(Block.getBlock( world.getBlockId(i, j, k) ) ) ) {
+            if ( BlockCocoaBeans.growsOn.contains( world.getBlockId(i, j, k) ) ) {
 
                 switch (l) {
                     default:

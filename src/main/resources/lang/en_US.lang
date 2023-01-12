@@ -1,6 +1,15 @@
 tile.RandomOddities.test.name= T E S T
 
 // Blocks
+tile.RandomOddities.FireStriker.name=Fire Striker
+tile.RandomOddities.FireStriker.desc=Remote arson!
+
+tile.RandomOddities.UnLoaderRail.name=Unloader Rail
+tile.RandomOddities.UnLoaderRail.desc=Unloads a mine cart's inventory to a chest
+
+tile.RandomOddities.LoaderRail.name=loader Rail
+tile.RandomOddities.LoaderRail.desc=loads a mine cart's inventory to a chest
+
 tile.RandomOddities.FlintBlock.name=Flint Block
 tile.RandomOddities.FlintBlock.desc=A block made out of flint... what else were you expecting?
 
@@ -84,6 +93,60 @@ item.RandomOddities.RedPaintBrush.desc=what a brush off...
 
 item.RandomOddities.BlackPaintBrush.name=Black Paint Brush
 item.RandomOddities.BlackPaintBrush.desc=what a brush off...
+
+item.RandomOddities.pigSpawnEgg.name=Pig spawn egg
+item.RandomOddities.pigSpawnEgg.desc=spawns a mob
+
+item.RandomOddities.cowSpawnEgg.name=Cow spawn egg
+item.RandomOddities.cowSpawnEgg.desc=spawns a mob
+
+item.RandomOddities.chickenSpawnEgg.name=Chicken spawn egg
+item.RandomOddities.chickenSpawnEgg.desc=spawns a mob
+
+item.RandomOddities.sheepSpawnEgg.name=Sheep spawn egg
+item.RandomOddities.sheepSpawnEgg.desc=spawns a mob
+
+item.RandomOddities.zombieSpawnEgg.name=Zombie spawn egg
+item.RandomOddities.zombieSpawnEgg.desc=spawns a mob
+
+item.RandomOddities.squidSpawnEgg.name=Squid spawn egg
+item.RandomOddities.squidSpawnEgg.desc=spawns a mob
+
+item.RandomOddities.wolfSpawnEgg.name=Wolf spawn egg
+item.RandomOddities.wolfSpawnEgg.desc=spawns a mob
+
+item.RandomOddities.creeperSpawnEgg.name=Creeper spawn egg
+item.RandomOddities.creeperSpawnEgg.desc=spawns a mob
+
+item.RandomOddities.skeletonSpawnEgg.name=Skeleton spawn egg
+item.RandomOddities.skeletonSpawnEgg.desc=spawns a mob
+
+item.RandomOddities.spiderSpawnEgg.name=Spider spawn egg
+item.RandomOddities.spiderSpawnEgg.desc=spawns a mob
+
+item.RandomOddities.slimeSpawnEgg.name=Slime spawn egg
+item.RandomOddities.slimeSpawnEgg.desc=spawns a mob
+
+item.RandomOddities.zombiePigmanSpawnEgg.name=Zombie Pigman spawn egg
+item.RandomOddities.zombiePigmanSpawnEgg.desc=spawns a mob
+
+item.RandomOddities.ghastSpawnEgg.name=Ghast spawn egg
+item.RandomOddities.ghastSpawnEgg.desc=spawns a mob
+
+item.RandomOddities.giantZombieSpawnEgg.name=Giant Zombie spawn egg
+item.RandomOddities.giantZombieSpawnEgg.desc=spawns a mob
+
+item.RandomOddities.armouredZombieSpawnEgg.name=Armoured Zombie spawn egg
+item.RandomOddities.armouredZombieSpawnEgg.desc=spawns a mob
+
+item.RandomOddities.humanSpawnEgg.name=Human spawn egg
+item.RandomOddities.humanSpawnEgg.desc=spawns a mob
+
+item.RandomOddities.boarSpawnEgg.name=Boar spawn egg
+item.RandomOddities.boarSpawnEgg.desc=spawns a mob
+
+item.RandomOddities.paintScrapper.name=Paint Scrapper
+item.RandomOddities.paintScrapper.desc=(Only applicable to wood) Paint begone!
 
 tile.RandomOddities.PaintedGlass.white.name=Painted Glass
 tile.RandomOddities.PaintedGlass.white.desc=Who even PAINTS glass???

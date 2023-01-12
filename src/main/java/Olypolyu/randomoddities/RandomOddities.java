@@ -220,7 +220,7 @@ public class RandomOddities implements ModInitializer {
     public static final Item ghastSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 31, EntityGhast.class).setIconCoord(17, 14).setItemName(name("ghastSpawnEgg"));
     public static final Item giantZombieSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 32, EntityGiantZombie.class).setIconCoord(17, 15).setItemName(name("giantZombieSpawnEgg"));
     public static final Item armouredZombieSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 33, EntityArmouredZombie.class).setIconCoord(17, 16).setItemName(name("armouredZombieSpawnEgg"));
-    public static final Item HumanSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 34, EntityMob.class).setIconCoord(17, 17).setItemName(name("HumanSpawnEgg"));
+    public static final Item humanSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 34, EntityMob.class).setIconCoord(17, 17).setItemName(name("humanSpawnEgg"));
     public static final Item boarSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 35, EntityBoar.class).setIconCoord(17, 18).setItemName(name("boarSpawnEgg"));
 
     // wind bottle
@@ -242,6 +242,7 @@ public class RandomOddities implements ModInitializer {
         // hehe... it's buggy
         RandomOddities.platform.notInCreativeMenu = true;
         RandomOddities.paintedGlass.notInCreativeMenu = true;
+        RandomOddities.glider.notInCreativeMenu = true;
 
         // add in entities
         EntityHelper.createEntity(EntityBoar.class, new RenderLiving(new ModelQuadruped(6, 0), 0.5f), 61, "Boar");
