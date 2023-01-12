@@ -1,7 +1,7 @@
 tile.RandomOddities.test.name= T E S T
 
 // Blocks
-tile.RandomOddities.FireStriker.name=Fire Striker
+tile.RandomOddities.FireStriker.name=Fire Striker Block
 tile.RandomOddities.FireStriker.desc=Remote arson!
 
 tile.RandomOddities.UnLoaderRail.name=Unloader Rail

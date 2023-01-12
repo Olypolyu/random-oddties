@@ -349,9 +349,11 @@ public class RandomOddities implements ModInitializer {
 
         RecipeHelper.Crafting.createRecipe(bubbleGenerator, 1, new Object[]{"IFI", "IWI", "BFB", 'B', new ItemStack(Item.dye, 1, 4), 'I', Item.ingotIron, 'F',  Item.featherChicken, 'W', new ItemStack(Block.mesh, 1)}); // Bubble generator
 
-        RecipeHelper.Crafting.createRecipe(fishTrap, 1, new Object[]{" A ", "AMA", " A ", 'A', Block.algae, 'M', Block.mesh }); // Bubble generator
+        RecipeHelper.Crafting.createRecipe(fishTrap, 1, new Object[]{" A ", "AMA", " A ", 'A', Block.algae, 'M', Block.mesh }); // Fish trap
 
-        RecipeHelper.Crafting.createRecipe(paintScrapper, 1, new Object[]{" I", "S ", 'S', Item.stick, 'I', Item.ingotIron}); // flint to flint block
+        RecipeHelper.Crafting.createRecipe(fireStriker, 1, new Object[]{"CCC", "CSC", "CRC", 'C', Block.cobbleStone, 'S', Item.toolFirestriker, 'R', Item.dustRedstone }); // Fire striker block
+
+        RecipeHelper.Crafting.createRecipe(paintScrapper, 1, new Object[]{" I", "S ", 'S', Item.stick, 'I', Item.ingotIron}); // Paint Scrapper
 
         // create crafting recipes for all paint brushes, you are sorely mistaken if you think im going to add another 16 lines for this.
         int Color;
