@@ -1,6 +1,6 @@
-package Olypolyu.randomoddities.blocks;
+package Olypolyu.randomoddities.block;
 
-import Olypolyu.randomoddities.entities.TileEntityBubbleColumn;
+import Olypolyu.randomoddities.entity.TileEntityBubbleColumn;
 import net.minecraft.src.*;
 
 public class BlockBubbleGenerator extends BlockContainer {

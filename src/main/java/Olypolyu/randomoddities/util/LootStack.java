@@ -1,4 +1,4 @@
-package Olypolyu.randomoddities.technical;
+package Olypolyu.randomoddities.util;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;

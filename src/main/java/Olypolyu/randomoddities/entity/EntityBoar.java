@@ -1,4 +1,4 @@
-package Olypolyu.randomoddities.entities;
+package Olypolyu.randomoddities.entity;
 
 import net.minecraft.src.*;
 import net.minecraft.src.helper.DamageType;

@@ -1,7 +1,7 @@
 package Olypolyu.randomoddities.mixin;
 
 import Olypolyu.randomoddities.RandomOddities;
-import Olypolyu.randomoddities.blocks.BlockCocoaBeans;
+import Olypolyu.randomoddities.block.BlockCocoaBeans;
 
 import net.minecraft.src.*;
 

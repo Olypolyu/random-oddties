@@ -1,4 +1,4 @@
-package Olypolyu.randomoddities.entities;
+package Olypolyu.randomoddities.entity;
 
 import Olypolyu.randomoddities.mixin.RandomOdditiesEntityMixin;
 import net.minecraft.src.AxisAlignedBB;

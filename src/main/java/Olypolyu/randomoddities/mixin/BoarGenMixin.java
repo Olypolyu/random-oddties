@@ -1,6 +1,6 @@
 package Olypolyu.randomoddities.mixin;
 
-import Olypolyu.randomoddities.entities.EntityBoar;
+import Olypolyu.randomoddities.entity.EntityBoar;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.BiomeGenRainforest;
 import net.minecraft.src.SpawnListEntry;

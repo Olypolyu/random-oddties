@@ -1,22 +1,24 @@
 package Olypolyu.randomoddities;
 
-import Olypolyu.randomoddities.blocks.*;
-import Olypolyu.randomoddities.entities.EntityBoar;
-import Olypolyu.randomoddities.entities.TileEntityBubbleColumn;
-import Olypolyu.randomoddities.entities.TileEntityLauncher;
-import Olypolyu.randomoddities.entities.TileEntityResizableChest;
-import Olypolyu.randomoddities.items.*;
+import Olypolyu.randomoddities.block.*;
+import Olypolyu.randomoddities.entity.EntityBoar;
+import Olypolyu.randomoddities.entity.TileEntityBubbleColumn;
+import Olypolyu.randomoddities.entity.TileEntityLauncher;
+import Olypolyu.randomoddities.entity.TileEntityResizableChest;
+import Olypolyu.randomoddities.item.*;
 import Olypolyu.randomoddities.mixin.ReparableRecipeMixin;
+
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.src.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import turniplabs.halplibe.helper.BlockHelper;
 import turniplabs.halplibe.helper.EntityHelper;
 import turniplabs.halplibe.helper.RecipeHelper;
 import turniplabs.halplibe.helper.TextureHelper;
-import turniplabs.halplibe.mixin.helper.CraftingManagerInterface;
-import turniplabs.halplibe.mixin.helper.TileEntityInterface;
+import turniplabs.halplibe.mixin.accessors.CraftingManagerInterface;
+import turniplabs.halplibe.mixin.accessors.TileEntityInterface;
 
 import java.time.LocalDate;
 import java.time.Month;

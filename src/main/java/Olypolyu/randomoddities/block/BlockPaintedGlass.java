@@ -1,4 +1,4 @@
-package Olypolyu.randomoddities.blocks;
+package Olypolyu.randomoddities.block;
 
 import net.minecraft.src.BlockGlass;
 import net.minecraft.src.IBlockAccess;

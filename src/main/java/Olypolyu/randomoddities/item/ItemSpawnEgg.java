@@ -1,4 +1,4 @@
-package Olypolyu.randomoddities.items;
+package Olypolyu.randomoddities.item;
 
 import Olypolyu.randomoddities.RandomOddities;
 import net.minecraft.src.*;
@@ -19,7 +19,7 @@ public class ItemSpawnEgg extends Item {
         entity.setLocationAndAngles(i + 0.5, j, k + 0.5, 0.0F, 0.0F);
         world.entityJoinedWorld(entity);
 
-        RandomOddities.LOGGER.info(entityClass.getName() + " spawned at " + i + " " + j + " " + k + " by " + entityplayer.nickname);
+        RandomOddities.LOGGER.info(entityClass.getName() + " spawned at " + i + " " + j + " " + k + " by " + entityplayer.username);
     }
 
     public boolean onItemUse(ItemStack itemstack, EntityPlayer entityplayer, World world, int i, int j, int k, int l, double heightPlaced) {

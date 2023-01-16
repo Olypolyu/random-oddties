@@ -1,6 +1,6 @@
-package Olypolyu.randomoddities.blocks;
+package Olypolyu.randomoddities.block;
 
-import Olypolyu.randomoddities.entities.TileEntityLauncher;
+import Olypolyu.randomoddities.entity.TileEntityLauncher;
 import net.minecraft.src.BlockContainerRotatable;
 import net.minecraft.src.Material;
 import net.minecraft.src.TileEntity;

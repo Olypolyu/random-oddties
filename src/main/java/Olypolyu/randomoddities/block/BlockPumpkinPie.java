@@ -1,4 +1,4 @@
-package Olypolyu.randomoddities.blocks;
+package Olypolyu.randomoddities.block;
 
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.BlockCake;

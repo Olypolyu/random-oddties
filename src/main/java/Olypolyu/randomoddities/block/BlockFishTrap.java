@@ -1,8 +1,8 @@
-package Olypolyu.randomoddities.blocks;
+package Olypolyu.randomoddities.block;
 
 import Olypolyu.randomoddities.RandomOddities;
-import Olypolyu.randomoddities.technical.FishTrapLootTable;
-import Olypolyu.randomoddities.technical.LootStack;
+import Olypolyu.randomoddities.util.FishTrapLootTable;
+import Olypolyu.randomoddities.util.LootStack;
 import net.minecraft.src.*;
 
 import java.util.Random;

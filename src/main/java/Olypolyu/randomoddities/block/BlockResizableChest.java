@@ -1,6 +1,6 @@
-package Olypolyu.randomoddities.blocks;
+package Olypolyu.randomoddities.block;
 
-import Olypolyu.randomoddities.entities.TileEntityResizableChest;
+import Olypolyu.randomoddities.entity.TileEntityResizableChest;
 import net.minecraft.src.*;
 import net.minecraft.src.helper.Direction;
 
