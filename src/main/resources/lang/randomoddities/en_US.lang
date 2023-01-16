@@ -1,0 +1,154 @@
+tile.randomoddities.test.name= T E S T
+
+// Blocks
+tile.randomoddities.FireStriker.name=Fire Striker Block
+tile.randomoddities.FireStriker.desc=Remote arson!
+
+tile.randomoddities.UnLoaderRail.name=Unloader Rail
+tile.randomoddities.UnLoaderRail.desc=Unloads a mine cart's inventory to a chest
+
+tile.randomoddities.LoaderRail.name=loader Rail
+tile.randomoddities.LoaderRail.desc=loads a mine cart's inventory to a chest
+
+tile.randomoddities.FlintBlock.name=Flint Block
+tile.randomoddities.FlintBlock.desc=A block made out of flint... what else were you expecting?
+
+tile.randomoddities.Trampoline.name=Trampoline
+tile.randomoddities.Trampoline.desc=Up and away! (to your death.)
+
+tile.randomoddities.Pillow.name=Pillow
+tile.randomoddities.Pillow.desc=squishy and confy.
+
+tile.randomoddities.IronChest.name=Iron Chest
+tile.randomoddities.IronChest.desc= Seriously, why do you need so much storage?
+
+tile.randomoddities.ObsidianChest.name=Obsidian Chest
+tile.randomoddities.ObsidianChest.desc=you *might* be a hoarder.
+
+tile.randomoddities.BubbleGenerator.name=Bubble Generator
+tile.randomoddities.BubbleGenerator.desc=Is this a bathhouse episode?
+
+tile.randomoddities.FishTrap.name=Fish Trap
+tile.randomoddities.FishTrap.desc=Textures made by Loafio
+
+tile.randomoddities.CocoBeans.name=Cocoa Beans Plant
+tile.randomoddities.CocoBeans.desc=You should not be able to get yo hands on these.
+
+// pie
+item.randomoddities.PumpkinPie.name=Pumpkin Pie
+item.randomoddities.PumpkinPie.desc=somehow, you feel like this thing has been with you all along.
+
+tile.randomoddities.PumpkinPie.name=Pumpkin Pie
+tile.randomoddities.PumpkinPie.desc=somehow, you feel like this thing has been with you all along.
+
+
+// wind bottle
+item.randomoddities.windLamp.name=Wind Lamp
+item.randomoddities.windLamp.desc=It's wick seems to be a feather...
+
+// paint brushes
+item.randomoddities.WhitePaintBrush.name=White Paint Brush
+item.randomoddities.WhitePaintBrush.desc=what a brush off...
+
+item.randomoddities.OrangePaintBrush.name=Orange Paint Brush
+item.randomoddities.OrangePaintBrush.desc=what a brush off...
+
+item.randomoddities.MagentaPaintBrush.name=Magenta Paint Brush
+item.randomoddities.MagentaPaintBrush.desc=what a brush off...
+
+item.randomoddities.LightBluePaintBrush.name=Light Blue Paint Brush
+item.randomoddities.LightBluePaintBrush.desc=what a brush off...
+
+item.randomoddities.YellowPaintBrush.name=Yellow Paint Brush
+item.randomoddities.YellowPaintBrush.desc=what a brush off...
+
+item.randomoddities.LimePaintBrush.name=Lime Paint Brush
+item.randomoddities.LimePaintBrush.desc=what a brush off...
+
+item.randomoddities.PinkPaintBrush.name=Pink Paint Brush
+item.randomoddities.PinkPaintBrush.desc=what a brush off...
+
+item.randomoddities.GrayPaintBrush.name=Gray Paint Brush
+item.randomoddities.GrayPaintBrush.desc=what a brush off...
+
+item.randomoddities.LightGrayPaintBrush.name=Light Gray Paint Brush
+item.randomoddities.LightGrayPaintBrush.desc=what a brush off...
+
+item.randomoddities.CyanPaintBrush.name=Cyan Paint Brush
+item.randomoddities.CyanPaintBrush.desc=what a brush off...
+
+item.randomoddities.PurplePaintBrush.name=Purple Paint Brush
+item.randomoddities.PurplePaintBrush.desc=what a brush off...
+
+item.randomoddities.BluePaintBrush.name=Blue Paint Brush
+item.randomoddities.BluePaintBrush.desc=what a brush off...
+
+item.randomoddities.BrownPaintBrush.name=Brown Paint Brush
+item.randomoddities.BrownPaintBrush.desc=what a brush off...
+
+item.randomoddities.GreenPaintBrush.name=Green Paint Brush
+item.randomoddities.GreenPaintBrush.desc=what a brush off...
+
+item.randomoddities.RedPaintBrush.name=Red Paint Brush
+item.randomoddities.RedPaintBrush.desc=what a brush off...
+
+item.randomoddities.BlackPaintBrush.name=Black Paint Brush
+item.randomoddities.BlackPaintBrush.desc=what a brush off...
+
+// Spawn eggs
+item.randomoddities.pigSpawnEgg.name=Pig spawn egg
+item.randomoddities.pigSpawnEgg.desc=spawns a mob
+
+item.randomoddities.cowSpawnEgg.name=Cow spawn egg
+item.randomoddities.cowSpawnEgg.desc=spawns a mob
+
+item.randomoddities.chickenSpawnEgg.name=Chicken spawn egg
+item.randomoddities.chickenSpawnEgg.desc=spawns a mob
+
+item.randomoddities.sheepSpawnEgg.name=Sheep spawn egg
+item.randomoddities.sheepSpawnEgg.desc=spawns a mob
+
+item.randomoddities.zombieSpawnEgg.name=Zombie spawn egg
+item.randomoddities.zombieSpawnEgg.desc=spawns a mob
+
+item.randomoddities.squidSpawnEgg.name=Squid spawn egg
+item.randomoddities.squidSpawnEgg.desc=spawns a mob
+
+item.randomoddities.wolfSpawnEgg.name=Wolf spawn egg
+item.randomoddities.wolfSpawnEgg.desc=spawns a mob
+
+item.randomoddities.creeperSpawnEgg.name=Creeper spawn egg
+item.randomoddities.creeperSpawnEgg.desc=spawns a mob
+
+item.randomoddities.skeletonSpawnEgg.name=Skeleton spawn egg
+item.randomoddities.skeletonSpawnEgg.desc=spawns a mob
+
+item.randomoddities.spiderSpawnEgg.name=Spider spawn egg
+item.randomoddities.spiderSpawnEgg.desc=spawns a mob
+
+item.randomoddities.slimeSpawnEgg.name=Slime spawn egg
+item.randomoddities.slimeSpawnEgg.desc=spawns a mob
+
+item.randomoddities.zombiePigmanSpawnEgg.name=Zombie Pigman spawn egg
+item.randomoddities.zombiePigmanSpawnEgg.desc=spawns a mob
+
+item.randomoddities.ghastSpawnEgg.name=Ghast spawn egg
+item.randomoddities.ghastSpawnEgg.desc=spawns a mob
+
+item.randomoddities.giantZombieSpawnEgg.name=Giant Zombie spawn egg
+item.randomoddities.giantZombieSpawnEgg.desc=spawns a mob
+
+item.randomoddities.armouredZombieSpawnEgg.name=Armoured Zombie spawn egg
+item.randomoddities.armouredZombieSpawnEgg.desc=spawns a mob
+
+item.randomoddities.humanSpawnEgg.name=Human spawn egg
+item.randomoddities.humanSpawnEgg.desc=spawns a mob
+
+item.randomoddities.boarSpawnEgg.name=Boar spawn egg
+item.randomoddities.boarSpawnEgg.desc=spawns a mob
+
+item.randomoddities.paintScrapper.name=Paint Scrapper
+item.randomoddities.paintScrapper.desc=(Only applicable to wood) Paint begone!
+
+tile.randomoddities.PaintedGlass.white.name=Painted Glass
+tile.randomoddities.PaintedGlass.white.desc=Who even PAINTS glass???

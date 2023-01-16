@@ -30,7 +30,7 @@ public class RandomOddities implements ModInitializer {
 
     private final Random random = new Random();
 
-    public static final String MOD_ID = "RandomOddities";
+    public static final String MOD_ID = "randomoddities";
 
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
