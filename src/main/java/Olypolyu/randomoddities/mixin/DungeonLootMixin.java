@@ -93,7 +93,8 @@ public class DungeonLootMixin {
                 break;
 
             case 16:
-                returnStack = new ItemStack(RandomOddities.brownPaintBrush);
+                //returnStack = new ItemStack(RandomOddities.brownPaintBrush);
+                returnStack = null;
                 break;
         }
 
