@@ -1,5 +1,6 @@
 package Olypolyu.randomoddities.block;
 
+import Olypolyu.randomoddities.RandomOddities;
 import net.minecraft.src.*;
 import net.minecraft.src.helper.Direction;
 
@@ -20,12 +21,12 @@ public class BlockCocoaBeans extends Block {
         int growthStage = world.getBlockMetadata(i, j, k) >> 4;
 
         if ( random.nextInt(150) == 0 && growthStage < maxGrowth )
-            world.setBlockMetadataWithNotify(i, j, k, ( ( growthStage + 1 ) << 4 ) | side);
-        }
+            world.setBlockAndMetadataWithNotify(i, j, k, RandomOddities.cocoaBeans.blockID, ((growthStage + 1) << 4) | side);
+    }
 
     public int getBlockTextureFromSideAndMetadata(int side, int meta) {
         int growthStage = meta >> 4;
-        return texCoordToIndex(30,23 + growthStage);
+        return RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID,"vines_" + growthStage + ".png");
     }
 
     public static ArrayList<Integer> growsOn = new ArrayList<>();

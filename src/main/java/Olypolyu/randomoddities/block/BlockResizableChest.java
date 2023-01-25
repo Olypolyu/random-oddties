@@ -1,5 +1,6 @@
 package Olypolyu.randomoddities.block;
 
+import Olypolyu.randomoddities.RandomOddities;
 import Olypolyu.randomoddities.entity.TileEntityResizableChest;
 import net.minecraft.src.*;
 import net.minecraft.src.helper.Direction;
@@ -9,22 +10,17 @@ import java.util.Random;
 public class BlockResizableChest extends BlockContainer {
     private final Random random = new Random();
     private final int chestSize;
-    private final int topX;
-    private final int topY;
-    private final int sideX;
-    private final int sideY;
-    private final int frontX;
-    private final int frontY;
 
-    public BlockResizableChest(int i, Material material, int chestSize, int topX, int topY, int sideX, int sideY, int frontX, int frontY) {
+    private final String top;
+    private final String side;
+    private final String front;
+
+    public BlockResizableChest(int i, Material material, int chestSize, String top, String side, String front) {
         super(i, material);
         this.chestSize = chestSize;
-        this.topX = topX;
-        this.topY = topY;
-        this.sideX = sideX;
-        this.sideY = sideY;
-        this.frontX = frontX;
-        this.frontY = frontY;
+        this.top = top;
+        this.side = side;
+        this.front = front;
     }
 
     public void onBlockRemoval(World world, int i, int j, int k) {
@@ -73,7 +69,7 @@ public class BlockResizableChest extends BlockContainer {
     @Override
     public int getBlockTextureFromSideAndMetadata(int side, int meta) {
         if (side == 0 || side == 1)
-            return texCoordToIndex(this.topX, this.topY);
+            return RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID, this.top);
         else {
 
             // block's facing :
@@ -82,31 +78,29 @@ public class BlockResizableChest extends BlockContainer {
                 //north
                 case 0:
                     if (side == 3)
-                         return texCoordToIndex(this.frontX, this.frontY);
-                    else return texCoordToIndex(this.sideX, this.sideY);
+                         return RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID, this.front);
+                    else return RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID, this.side);
 
                 //east
                 case 1:
                     if (side == 4)
-                         return texCoordToIndex(this.frontX, this.frontY);
-                    else return texCoordToIndex(this.sideX, this.sideY);
+                         return RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID, this.front);
+                    else return RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID, this.side);
 
                 //south
                 case 2:
                     if (side == 2)
-                         return texCoordToIndex(this.frontX, this.frontY);
-                    else return texCoordToIndex(this.sideX, this.sideY);
+                         return RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID, this.front);
+                    else return RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID, this.side);
 
                 //west
-                case 3:
+                default:
                     if (side == 5)
-                         return texCoordToIndex(this.frontX, this.frontY);
-                    else return texCoordToIndex(this.sideX, this.sideY);
+                         return RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID, this.front);
+                    else return RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID, this.side);
                 }
             }
 
-        // this line will never actually be reached. it is in here to avoid errors.
-        return 80085;
     }
 
     // Sides           Metadata

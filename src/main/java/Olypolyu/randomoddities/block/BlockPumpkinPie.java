@@ -1,5 +1,6 @@
 package Olypolyu.randomoddities.block;
 
+import Olypolyu.randomoddities.RandomOddities;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.BlockCake;
 import net.minecraft.src.EntityPlayer;
@@ -52,7 +53,7 @@ public class BlockPumpkinPie extends BlockCake {
     }
 
     public int getBlockTextureFromSideAndMetadata(int i, int j) {
-        return j > 0 && i == 4 ? texCoordToIndex(31, 29) : this.atlasIndices[i];
+        return j > 0 && i == 4 ? RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID, "pumpkinPieEaten.png") : this.atlasIndices[i];
     }
 
 }

@@ -8,6 +8,7 @@ import Olypolyu.randomoddities.entity.TileEntityResizableChest;
 import Olypolyu.randomoddities.item.*;
 import Olypolyu.randomoddities.mixin.ReparableRecipeMixin;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.shared.Minecraft;
 import net.minecraft.src.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +32,6 @@ public class RandomOddities implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public static void info(Object obj) { LOGGER.info(String.valueOf(obj)); }
     public static void warn(Object obj) { LOGGER.warn(String.valueOf(obj)); }
-
 
     public static String name(String name) {
         return RandomOddities.MOD_ID + "." + name;
@@ -74,9 +74,9 @@ public class RandomOddities implements ModInitializer {
     public static final Block obsidianChest = BlockHelper.createBlock( MOD_ID,
             new BlockResizableChest(RandomOddities.randomOdditiesIds + 4,
             Material.iron,
-            108,31, 18, 31, 20, 31, 19),
+            108, "obsidianChestTop.png","obsidianChestSides.png", "obsidianChestFront.png"),
             "ObsidianChest",
-            "FlintBlock.png",
+            "FlintBlock.png", // for symbolic purposes
             Block.soundMetalFootstep,
             15.0F,
             150.0F,
@@ -85,9 +85,9 @@ public class RandomOddities implements ModInitializer {
     public static final Block ironChest = BlockHelper.createBlock( MOD_ID,
             new BlockResizableChest(RandomOddities.randomOdditiesIds + 5,
             Material.iron,
-            45,31, 23, 31, 25, 31, 24),
+            45, "ironChestTop.png","ironChestSides.png","ironChestFront.png"),
             "IronChest",
-            "FlintBlock.png",
+            "FlintBlock.png", // useless!
             Block.soundMetalFootstep,
             5F,
             2.5F,
@@ -123,7 +123,7 @@ public class RandomOddities implements ModInitializer {
     public static final Block fishTrap = BlockHelper.createBlock( MOD_ID,
             new BlockFishTrap(randomOdditiesIds + 9, Material.rock),
             "FishTrap",
-            "FishTrap.png",
+            "FishTrap.png", // doesn't actually do anything
             Block.soundStoneFootstep,
             2.5f,
             5f,
@@ -132,14 +132,14 @@ public class RandomOddities implements ModInitializer {
     public static final Block cocoaBeans = BlockHelper.createBlock( MOD_ID,
             new BlockCocoaBeans(randomOdditiesIds + 12, Material.plants),
             "CocoaBeans",
-            "FlintBlock.png",
+            "FlintBlock.png", // damn, wish this did sumethin.
             Block.soundGrassFootstep,
             0.3F,
             0.0F,
             0);
 
     public static final Block paintedGlass = new BlockPaintedGlass(randomOdditiesIds + 13, Material.glass, false)
-            .setBlockName("PaintedGlass")
+            .setBlockName(name("painted_glass"))
             .setTexCoords(1, 3)
             .setNotInCreativeMenu();
 
@@ -151,7 +151,7 @@ public class RandomOddities implements ModInitializer {
      public static final Block fireStriker = BlockHelper.createBlock( MOD_ID,
             new BlockFireStriker(randomOdditiesIds + 14, Material.rock),
             "FireStriker",
-             "FlintBlock.png",
+             "FlintBlock.png", // doesn't actually do anything
             Block.soundStoneFootstep,
             3f,
             2f,
@@ -200,26 +200,25 @@ public class RandomOddities implements ModInitializer {
     private final Item[] PaintBrushColors = { whitePaintBrush, orangePaintBrush, magentaPaintBrush, lightBluePaintBrush, yellowPaintBrush, limePaintBrush, pinkPaintBrush, grayPaintBrush, silverPaintBrush,
             cyanPaintBrush, purplePaintBrush, bluePaintBrush, brownPaintBrush, greenPaintBrush, redPaintBrush, blackPaintBrush };
 
-    public static final Item paintScrapper = new ItemPaintScrapper(randomOdditiesIds + 18).setIconCoord(16, 16).setItemName(name("paintScrapper"));
-
+    public static final Item paintScrapper = ItemHelper.createItem( MOD_ID, new ItemPaintScrapper(randomOdditiesIds + 18),"paint_brush.scrapper","paintBrush/scrapper.png");
     // Spawn eggs
-    public static final Item pigSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 19, EntityPig.class).setIconCoord(17, 2).setItemName(name("pigSpawnEgg"));
-    public static final Item cowSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 20, EntityCow.class).setIconCoord(17, 3).setItemName(name("cowSpawnEgg"));
-    public static final Item chickenSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 21, EntityChicken.class).setIconCoord(17, 4).setItemName(name("chickenSpawnEgg"));
-    public static final Item sheepSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 22, EntitySheep.class).setIconCoord(17, 5).setItemName(name("sheepSpawnEgg"));
-    public static final Item squidSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 23, EntitySquid.class).setIconCoord(17, 6).setItemName(name("squidSpawnEgg"));
-    public static final Item wolfSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 24, EntityWolf.class).setIconCoord(17, 7).setItemName(name("wolfSpawnEgg"));
-    public static final Item zombieSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 25, EntityZombie.class).setIconCoord(17, 8).setItemName(name("zombieSpawnEgg"));
-    public static final Item creeperSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 26, EntityCreeper.class).setIconCoord(17, 9).setItemName(name("creeperSpawnEgg"));
-    public static final Item skeletonSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 27, EntitySkeleton.class).setIconCoord(17, 10).setItemName(name("skeletonSpawnEgg"));
-    public static final Item spiderSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 28, EntitySpider.class).setIconCoord(17, 11).setItemName(name("spiderSpawnEgg"));
-    public static final Item slimeSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 29, EntitySlime.class).setIconCoord(17, 12).setItemName(name("slimeSpawnEgg"));
-    public static final Item zombiePigmanSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 30, EntityPigZombie.class).setIconCoord(17, 13).setItemName(name("zombiePigmanSpawnEgg"));
-    public static final Item ghastSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 31, EntityGhast.class).setIconCoord(17, 14).setItemName(name("ghastSpawnEgg"));
-    public static final Item giantZombieSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 32, EntityGiantZombie.class).setIconCoord(17, 15).setItemName(name("giantZombieSpawnEgg"));
-    public static final Item armouredZombieSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 33, EntityArmouredZombie.class).setIconCoord(17, 16).setItemName(name("armouredZombieSpawnEgg"));
-    public static final Item humanSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 34, EntityMob.class).setIconCoord(17, 17).setItemName(name("humanSpawnEgg"));
-    public static final Item boarSpawnEgg = new ItemSpawnEgg(randomOdditiesIds + 35, EntityBoar.class).setIconCoord(17, 18).setItemName(name("boarSpawnEgg"));
+    public static final Item pigSpawnEgg = ItemHelper.createItem( MOD_ID, new ItemSpawnEgg(randomOdditiesIds + 19, EntityPig.class), "spawn_egg.pig", "spawnEggs/pig.png");
+    public static final Item cowSpawnEgg = ItemHelper.createItem( MOD_ID, new ItemSpawnEgg(randomOdditiesIds + 20, EntityCow.class), "spawn_egg.cow", "spawnEggs/cow.png");
+    public static final Item chickenSpawnEgg = ItemHelper.createItem( MOD_ID, new ItemSpawnEgg(randomOdditiesIds + 21, EntityChicken.class), "spawn_egg.chicken", "spawnEggs/chicken.png");
+    public static final Item sheepSpawnEgg = ItemHelper.createItem( MOD_ID, new ItemSpawnEgg(randomOdditiesIds + 22, EntitySheep.class), "spawn_egg.sheep", "spawnEggs/sheep.png");
+    public static final Item squidSpawnEgg = ItemHelper.createItem( MOD_ID, new ItemSpawnEgg(randomOdditiesIds + 23, EntitySquid.class), "spawn_egg.squid", "spawnEggs/squid.png");
+    public static final Item wolfSpawnEgg = ItemHelper.createItem( MOD_ID, new ItemSpawnEgg(randomOdditiesIds + 24, EntityWolf.class), "spawn_egg.wolf", "spawnEggs/wolf.png");
+    public static final Item zombieSpawnEgg = ItemHelper.createItem( MOD_ID, new ItemSpawnEgg(randomOdditiesIds + 25, EntityZombie.class), "spawn_egg.zombie", "spawnEggs/zombie.png");
+    public static final Item creeperSpawnEgg = ItemHelper.createItem( MOD_ID, new ItemSpawnEgg(randomOdditiesIds + 26, EntityCreeper.class), "spawn_egg.creeper", "spawnEggs/creeper.png");
+    public static final Item skeletonSpawnEgg = ItemHelper.createItem( MOD_ID, new ItemSpawnEgg(randomOdditiesIds + 27, EntitySkeleton.class), "spawn_egg.skeleton", "spawnEggs/skeleton.png");
+    public static final Item spiderSpawnEgg = ItemHelper.createItem( MOD_ID, new ItemSpawnEgg(randomOdditiesIds + 28, EntitySpider.class), "spawn_egg.spider", "spawnEggs/spider.png");
+    public static final Item slimeSpawnEgg = ItemHelper.createItem( MOD_ID, new ItemSpawnEgg(randomOdditiesIds + 29, EntitySlime.class), "spawn_egg.slime", "spawnEggs/slime.png");
+    public static final Item zombiePigmanSpawnEgg = ItemHelper.createItem( MOD_ID, new ItemSpawnEgg(randomOdditiesIds + 30, EntityPigZombie.class), "spawn_egg.pigman", "spawnEggs/pigman.png");
+    public static final Item ghastSpawnEgg = ItemHelper.createItem( MOD_ID, new ItemSpawnEgg(randomOdditiesIds + 31, EntityGhast.class), "spawn_egg.ghast", "spawnEggs/ghast.png");
+    public static final Item giantZombieSpawnEgg = ItemHelper.createItem( MOD_ID, new ItemSpawnEgg(randomOdditiesIds + 32, EntityGiantZombie.class), "spawn_egg.giant", "spawnEggs/giant.png");
+    public static final Item armouredZombieSpawnEgg = ItemHelper.createItem( MOD_ID, new ItemSpawnEgg(randomOdditiesIds + 33, EntityArmouredZombie.class), "spawn_egg.armoured_zombie", "spawnEggs/armoured_zombie.png");
+    public static final Item monsterSpawnEgg = ItemHelper.createItem( MOD_ID, new ItemSpawnEgg(randomOdditiesIds + 34, EntityMob.class), "spawn_egg.monster", "spawnEggs/monster.png");
+    public static final Item boarSpawnEgg = ItemHelper.createItem( MOD_ID, new ItemSpawnEgg(randomOdditiesIds + 35, EntityBoar.class), "spawn_egg.boar", "spawnEggs/boar.png");
 
     // wind bottle
     private static final int windLampCharges = 3;
@@ -227,6 +226,17 @@ public class RandomOddities implements ModInitializer {
 
     public static final Item glider = new ItemTestGlider(randomOdditiesIds + 37).setItemName(name("glider"));
 
+    public static int getRegisteredItemTexture( String MOD_ID, String texture) {
+        int[] item = TextureHelper.registeredItemTextures.get(MOD_ID + ":" + texture);
+        if (item == null) return 0;
+        return item[0] + item[1] * Minecraft.TEXTURE_ATLAS_WIDTH_TILES;
+    }
+
+    public static int getRegisteredBlockTexture( String MOD_ID, String texture) {
+        int[] block = TextureHelper.registeredBlockTextures.get(MOD_ID + ":" + texture);
+        if (block == null) return 0;
+        return block[0] + block[1] * Minecraft.TEXTURE_ATLAS_WIDTH_TILES;
+    }
 
     public void onInitialize() {
         LOGGER.info("RandomOddities initialized.");
@@ -249,51 +259,31 @@ public class RandomOddities implements ModInitializer {
         TileEntityAccessor.callAddMapping(TileEntityBubbleColumn.class, "TileEntityBubbleColumn");
 
         // load textures
-        TextureHelper.addTextureToTerrain(MOD_ID, "obsidianChestTop.png", 31, 18);
-        TextureHelper.addTextureToTerrain(MOD_ID, "obsidianChestFront.png", 31, 19);
-        TextureHelper.addTextureToTerrain(MOD_ID, "obsidianChestSides.png", 31, 20);
+        TextureHelper.registerBlockTexture(MOD_ID, "obsidianChestTop.png");
+        TextureHelper.registerBlockTexture(MOD_ID, "obsidianChestFront.png");
+        TextureHelper.registerBlockTexture(MOD_ID, "obsidianChestSides.png");
 
-        TextureHelper.addTextureToTerrain(MOD_ID, "ironChestTop.png", 31, 23);
-        TextureHelper.addTextureToTerrain(MOD_ID, "ironChestFront.png", 31, 24);
-        TextureHelper.addTextureToTerrain(MOD_ID, "ironChestSides.png", 31, 25);
+        TextureHelper.registerBlockTexture(MOD_ID, "ironChestTop.png");
+        TextureHelper.registerBlockTexture(MOD_ID, "ironChestFront.png");
+        TextureHelper.registerBlockTexture(MOD_ID, "ironChestSides.png");
 
-        TextureHelper.addTextureToTerrain(MOD_ID, "pumpkinPieEaten.png", 31, 29);
+        TextureHelper.registerBlockTexture(MOD_ID, "pumpkinPieEaten.png");
 
-        TextureHelper.addTextureToTerrain(MOD_ID, "FishTrapEngaged.png", 30,31);
-        TextureHelper.addTextureToTerrain(MOD_ID, "FishTrap.png", 30,30);
-        TextureHelper.addTextureToTerrain(MOD_ID, "FishTrapFull.png", 30,29);
+        TextureHelper.registerBlockTexture(MOD_ID, "FishTrapEngaged.png");
+        TextureHelper.registerBlockTexture(MOD_ID, "FishTrap.png");
+        TextureHelper.registerBlockTexture(MOD_ID, "FishTrapFull.png");
 
-        TextureHelper.addTextureToTerrain(MOD_ID, "fireman.png", 30,28);
+        TextureHelper.registerBlockTexture(MOD_ID, "vines_0.png");
+        TextureHelper.registerBlockTexture(MOD_ID, "vines_1.png");
+        TextureHelper.registerBlockTexture(MOD_ID, "vines_2.png");
+        TextureHelper.registerBlockTexture(MOD_ID, "vines_3.png");
+        TextureHelper.registerBlockTexture(MOD_ID, "vines_4.png");
 
-        TextureHelper.addTextureToTerrain(MOD_ID, "vines.png", 30,27);
-        TextureHelper.addTextureToTerrain(MOD_ID, "vines1.png", 30,26);
-        TextureHelper.addTextureToTerrain(MOD_ID, "vines2.png", 30,25);
-        TextureHelper.addTextureToTerrain(MOD_ID, "vines3.png", 30,24);
-        TextureHelper.addTextureToTerrain(MOD_ID, "vines4.png", 30,23);
+        TextureHelper.registerBlockTexture(MOD_ID, "fireman.png");
 
         // Item textures
-        TextureHelper.addTextureToItems(MOD_ID, "paintBrush/paint_scrapper.png", 16,16);
-
-        TextureHelper.addTextureToItems(MOD_ID, "emptyWindBottle.png", 17,0);
-        TextureHelper.addTextureToItems(MOD_ID, "windBottle.png", 17,1);
-
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/pig.png", 17,2);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/cow.png", 17,3);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/chicken.png", 17,4);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/sheep.png", 17,5);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/squid.png", 17,6);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/wolf.png", 17,7);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/zombie.png", 17,8);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/creeper.png", 17,9);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/skeleton.png", 17,10);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/spider.png", 17,11); // spoider
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/slime.png", 17,12);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/zombiePigman.png", 17,13);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/ghast.png", 17,14);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/giant.png", 17,15);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/armouredZombie.png", 17,16);
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/monster.png", 17,17); // hooman
-        TextureHelper.addTextureToItems(MOD_ID, "spawnEggs/boar.png", 17,18);
+        TextureHelper.registerItemTexture(MOD_ID, "emptyWindBottle.png");
+        TextureHelper.registerItemTexture(MOD_ID, "windBottle.png");
 
         // load crafting recipes
         RecipeHelper.Crafting.createRecipe(flintBlock, 1, new Object[]{"FF", "FF", 'F', Item.flint}); // flint to flint block

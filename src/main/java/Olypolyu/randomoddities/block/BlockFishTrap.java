@@ -57,12 +57,12 @@ public class BlockFishTrap extends Block {
 
     public int getBlockTextureFromSideAndMetadata(int side, int meta) {
         if (meta == 1)
-            return texCoordToIndex(30, 31);
-        else if (meta == 2)
-            return texCoordToIndex(30,29);
-        else
-            return texCoordToIndex(30,30);
-        }
+            return RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID,"FishTrapEngaged.png");
+        if (meta == 2)
+            return RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID,"FishTrapFull.png");
+
+        return RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID,"FishTrap.png");
+    }
 
     public boolean blockActivated(World world, int i, int j, int k, EntityPlayer entityplayer) {
         ItemStack currentItem = entityplayer.getCurrentEquippedItem();

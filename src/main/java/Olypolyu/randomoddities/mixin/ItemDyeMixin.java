@@ -55,7 +55,7 @@ public class ItemDyeMixin{
 
             if ( growthStage >= BlockCocoaBeans.maxGrowth) return false;
 
-            world.setBlockMetadataWithNotify(i, j, k,( (growthStage + 1) << 4 )  + side  );
+            world.setBlockAndMetadataWithNotify(i, j, k, RandomOddities.cocoaBeans.blockID,( (growthStage + 1) << 4 )  + side  );
             itemstack.consumeItem(entityplayer);
             return true;
         }

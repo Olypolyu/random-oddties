@@ -1,5 +1,6 @@
 package Olypolyu.randomoddities.block;
 
+import Olypolyu.randomoddities.RandomOddities;
 import net.minecraft.src.*;
 
 import java.util.List;
@@ -11,7 +12,6 @@ public class BlockFireStriker extends BlockRotatable {
     public BlockFireStriker(int i, Material material) {
         super(i, material);
     }
-
     private boolean lastState = false;
     public void onNeighborBlockChange(World world, int i, int j, int k, int l) {
         boolean power = world.isBlockGettingPowered(i, j, k) || world.isBlockIndirectlyGettingPowered(i, j, k);
@@ -28,25 +28,25 @@ public class BlockFireStriker extends BlockRotatable {
                 //north
                 case 2:
                     if (side == 2)
-                        return texCoordToIndex(30, 28);
+                         return RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID,"fireman.png");
                     else return texCoordToIndex(14, 3);
 
                 //south
                 case 3:
                     if (side == 3)
-                        return texCoordToIndex(30, 28);
+                         return RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID,"fireman.png");
                     else return texCoordToIndex(14, 3);
 
                 //west
                 default:
                     if (side == 4)
-                        return texCoordToIndex(30, 28);
+                         return RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID,"fireman.png");
                     else return texCoordToIndex(14, 3);
 
                 //east
                 case 5:
                     if (side == 5)
-                        return texCoordToIndex(30, 28);
+                         return RandomOddities.getRegisteredBlockTexture(RandomOddities.MOD_ID,"fireman.png");
                     else return texCoordToIndex(14, 3);
 
             }

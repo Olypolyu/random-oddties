@@ -16,10 +16,6 @@ public class ItemPaintBrush extends Item {
         this.bFull3D = true;
     }
 
-    public int getIconIndex(ItemStack itemstack) {
-        return Item.iconCoordToIndex(16, this.color );
-    }
-
     public boolean useItemOnEntity(ItemStack itemstack, EntityLiving entityliving, EntityPlayer entityplayer) {
         // if sheep set flee color to the color of paint brush
         if (entityliving instanceof EntitySheep) {
@@ -105,7 +101,6 @@ public class ItemPaintBrush extends Item {
         switch (block) {
 
             case 713: // painted glass
-                world.setBlockWithNotify(i, j, k, 1); // helps glass update properly, life ain't always pretty, chief.
 
                 // set to normal glass instead of white painted glass.
                 if(this.color == 0) {
@@ -113,7 +108,9 @@ public class ItemPaintBrush extends Item {
                     return true;
                 }
 
-                paint(block, false, world, i, j, k, itemstack, entityplayer);
+                // turns out it only updates properly if you set block and metadata.
+                world.setBlockAndMetadataWithNotify(i, j, k, RandomOddities.paintedGlass.blockID, this.color);
+                itemstack.damageItem(1, entityplayer);
                 return true;
 
             case 81: // fence
